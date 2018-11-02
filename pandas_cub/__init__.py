@@ -10,23 +10,27 @@ class DataFrame:
 
     def __init__(self, values):
         """
-        1. Our DataFrame is constructed with a single parameter, values, a
-        dictionary of column names as strings mapped to one dimensional
+        Our DataFrame is constructed with a single parameter, `values`, a
+        dictionary of column names as strings mapped to one-dimensional
         NumPy arrays. The DataFrame will hold four different data types
-        with their single character abbreviated characters:
+        with their single character **kind**:
+
         * bool (b)
         * int (i)
         * float (f)
         * string (O) (represented by NumPy object)
 
+        Retrieve the `kind` of a NumPy array with `a.dype.kind`
+
         Steps
-        * Verify that values is a dict
+        * Verify that `values` is a dict
         * Verify that each key is a string
         * Verify that each value is a 1D NumPy array
         * If the array kind is 'U' change it to 'O'
-        * Create an instance variable `_values` to store the data
-        * Create another instance variable `_column_info` that maps the column
-        name to the data type kind.
+        * Create a variable `_values` to store the data
+        * Create another variable `_column_info` that maps the column name
+        to the data type by converting the array kind with help from
+        the constant dictionary `DTYPE_NAME`
         """
 
         # Check for correct input types
