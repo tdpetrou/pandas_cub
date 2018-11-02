@@ -26,7 +26,7 @@ class TestDataFrameCreation:
 
     def test_column_info(self,):
         assert df._column_info == {'a': 'O', 'b': 'O', 'c': 'f',
-                                        'd': 'b', 'e': 'i'}
+                                   'd': 'b', 'e': 'i'}
 
     def test_len(self):
         assert len(df) == 3
