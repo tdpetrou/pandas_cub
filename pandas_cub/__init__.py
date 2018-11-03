@@ -96,9 +96,11 @@ class DataFrame:
             raise ValueError('Column names must be unique')
 
         new_values = {}
+        new_column_info = {}
         # code here
 
         self._values = new_values
+        self._column_info = new_column_info
 
     @property
     def shape(self):
@@ -201,7 +203,7 @@ class DataFrame:
         """
         Returns
         -------
-        A dictionary of the underlying data
+        A single 2D NumPy array (or 1D if 1 column) of the underlying data
         """
         pass
 
@@ -390,9 +392,12 @@ class DataFrame:
 
         Returns
         -------
-        A list of DataFrames
+        A list of DataFrames or a single DataFrame if one column
         """
-        pass
+        dfs = []
+        # code here
+
+        return dfs
 
     def rename(self, columns):
         """

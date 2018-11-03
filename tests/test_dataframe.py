@@ -285,7 +285,6 @@ df42 = pdc.DataFrame({'a': a42, 'b': b42})
 
 class TestNonAgg:
 
-    # abs, cum, clip, copy
     def test_abs(self):
         df_result = df42.abs()
         df_answer = pdc.DataFrame({'a': np.abs(a42), 'b': np.abs(b42)})
@@ -489,7 +488,7 @@ class TestGrouping:
                                    'count': np.array([5, 3])})
         assert_df_equals(df_results[0], df_answer)
 
-        df_answer = pdc.DataFrame({'b': np.array(['B', 'A'], dtype=object),
+        df_answer = pdc.DataFrame({'b': np.array(['A', 'B'], dtype=object),
                                    'count': np.array([4, 4])})
         assert_df_equals(df_results[1], df_answer)
 

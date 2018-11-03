@@ -81,11 +81,11 @@ Steps
 * Verify that `values` is a dict
 * Verify that each key is a string
 * Verify that each value is a 1D NumPy array
+* Verify that each NumPy array is the same length
 * If the array kind is 'U' change it to 'O'
 * Create an instance variable `_values` to store the data as a dictionary
 * Create another instance variable `_column_info`, a dictionary that maps 
-the column name to the data type as a string. Use the `kind` of each array
-to get the data type as a string from the constant dictionary `DTYPE_NAME`.
+the column name to the data type `kind` character.
 
 Verify results with:  
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`  
@@ -122,7 +122,7 @@ notebook and move on.
 ### 7. The `values` attribute
 This is a public attribute that returns a single 2D NumPy array 
 of all the columns. If there is just a single column, return a 
-one dimensional array.
+one dimensional array. The NumPy `column_stack` function can be helpful here.
 
 ### 8. The `dtypes` attribute
 Return a two-column DataFrame. Put the column names under the 'Column Name'
@@ -193,7 +193,8 @@ as the name of the original column and the second column name 'count'
 containing the number of occurrences for each value. 
 
 Use the `Counter` method of the `collections` module. Return the DataFrames
-with sorted values from greatest to least.
+with sorted values from greatest to least. You hold off on sorting
+until you have defined the `sort_values` method.
 
 Accept a boolean parameter `normalize` that returns relative 
 frequencies when `True`.

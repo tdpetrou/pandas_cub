@@ -46,16 +46,15 @@ class DataFrame:
         for i, (col_name, col_values) in enumerate(values.items()):
             if i == 0:
                 length = len(col_values)
-            if col_values.dtype.kind == 'U':
-                self._values[col_name] = col_values.astype('O')
-            else:
-                self._values[col_name] = col_values
-
             if length != len(col_values):
                 raise ValueError('All values must be the same length')
 
+            if col_values.dtype.kind == 'U':
+                col_values = col_values.astype('O')
+            self._values[col_name] = col_values
+
             # map the column name to its single char 'kind'
-            self._column_info[col_name] = self._values[col_name].dtype.kind
+            self._column_info[col_name] = col_values.dtype.kind
 
         # Allow for special methods for strings
         self.str = StringMethods(self)
@@ -111,10 +110,14 @@ class DataFrame:
             raise ValueError('Column names must be unique')
 
         new_values = {}
-        for new_col, (old_col, values) in zip(columns, self._values.items()):
-            new_values[new_col] = values
+        new_column_info = {}
+        # code here
+        for col, col_values in zip(columns, self._values.values()):
+            new_values[col] = col_values
+            new_column_info[col] = col_values.dtype.kind
 
         self._values = new_values
+        self._column_info = new_column_info
 
     @property
     def shape(self):
@@ -217,9 +220,9 @@ class DataFrame:
         """
         Returns
         -------
-        A dictionary of the underlying data
+        A single 2D NumPy array (or 1D if 1 column) of the underlying data
         """
-        vals = [values for col, values in self._values.items()]
+        vals = list(self._values.values())
         if len(vals) == 1:
             return vals[0]
         return np.column_stack(vals)
@@ -232,12 +235,9 @@ class DataFrame:
         A two-column DataFrame of column names in a column and
         their data type in the other
         """
-        d = {'Column Name': np.array(self.columns)}
-        dtypes = []
-        for _, dtype in self._column_info.items():
-            dtypes.append(DTYPE_NAME[dtype])
-        d['Data Type'] = np.array(dtypes)
-        return DataFrame(d)
+        col_arr = np.array(self.columns)
+        dtypes = np.array([DTYPE_NAME[dtype] for dtype in self._column_info.values()])
+        return DataFrame({'Column Name': col_arr, 'Data Type': dtypes})
 
     def __getitem__(self, item):
         """
@@ -506,20 +506,18 @@ class DataFrame:
 
         Returns
         -------
-        A list of DataFrames
+        A list of DataFrames or a single DataFrame if one column
         """
         dfs = []
         for col, values in self._values.items():
             counts = Counter(values)
 
-            cols = np.array(list(counts.keys()))
+            keys = np.array(list(counts.keys()))
             raw_counts = np.array(list(counts.values()))
             if normalize:
                 raw_counts = raw_counts / raw_counts.sum()
-            order = np.argsort(-raw_counts)
-            new_values = {col: cols[order],
-                          'count': raw_counts[order]}
-            dfs.append(DataFrame(new_values))
+            df = DataFrame({col: keys, 'count': raw_counts}).sort_values('count', asc=False)
+            dfs.append(df)
         if len(dfs) == 1:
             return dfs[0]
         return dfs
