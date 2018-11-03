@@ -59,7 +59,7 @@ class DataFrame:
 
         # Allow for special methods for strings
         self.str = StringMethods(self)
-        self.add_docs()
+        self._add_docs()
 
     def __len__(self):
         """
@@ -67,7 +67,7 @@ class DataFrame:
 
         Returns
         -------
-        int: the length of the first column
+        int: the number of rows in the dataframe
         """
         for _, values in self._values.items():
             return len(values)
@@ -420,8 +420,8 @@ class DataFrame:
         A DataFrame
         """
         new_values = {}
+        func = getattr(np, aggfunc)
         for col, values in self._values.items():
-            func = getattr(np, aggfunc)
             try:
                 val = func(values)
             except TypeError:
@@ -487,7 +487,7 @@ class DataFrame:
         """
         dfs = self.unique()
         if isinstance(dfs, DataFrame):
-            return len(dfs)
+            return DataFrame({dfs.columns[0]: np.array([len(dfs)])})
         else:
             new_values = {}
             for df, col in zip(dfs, self.columns):
@@ -665,8 +665,8 @@ class DataFrame:
         A DataFrame
         """
         new_values = {}
+        func = operator.attrgetter(funcname)(np)
         for col, values in self._values.items():
-            func = operator.attrgetter(funcname)(np)
             try:
                 val = func(values, *args)
             except TypeError:
@@ -945,7 +945,7 @@ class DataFrame:
 
         return DataFrame(new_values)
 
-    def add_docs(self):
+    def _add_docs(self):
         agg_names = ['min', 'max', 'mean', 'median', 'sum', 'var',
                      'std', 'any', 'all', 'argmax', 'argmin']
         agg_doc = \
@@ -1060,22 +1060,4 @@ class StringMethods:
 
 
 def read_csv(fn):
-    values = {}
-    with open(fn) as f:
-        header = f.readline()
-        column_names = header.split(',')
-        for name in column_names:
-            values[name] = []
-        for line in f.readlines():
-            for val, name in zip(line.split(','), column_names):
-                values[name].append(val)
-    new_values = {}
-    for col, vals in values.items():
-        try:
-            new_values[col] = np.array(vals, dtype='int')
-        except ValueError:
-            try:
-                new_values[col] = np.array(vals, dtype='float')
-            except ValueError:
-                new_values[col] = np.array(vals, dtype='O')
-    return DataFrame(new_values)
+    pass

@@ -18,7 +18,7 @@ df = pdc.DataFrame({'a': a, 'b': b, 'c': c, 'd': d, 'e': e})
 class TestDataFrameCreation:
 
     def test_df_mix(self):
-        assert_array_equal(df._values['a'], a)
+        assert_array_equal(df._values['a'], a.astype('O'))
         assert_array_equal(df._values['b'], b)
         assert_array_equal(df._values['c'], c)
         assert_array_equal(df._values['d'], d)
