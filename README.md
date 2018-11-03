@@ -15,17 +15,17 @@ of Python and wish to build their own DataFrame class from scratch.
 
 ### Tutorial Requirements
 * Python 3.6+ along with NumPy, Pandas, and Jupyter Notebook
-* Recommended to have pytest as well
+* Recommended to have pytest installed
 * An editor such as PyCharm or VS Code 
 
 ### Objectives
 Most data scientists who use Python rely on Pandas. In this tutorial we will 
 build Pandas Cub, a library that implements many of the most common and useful
-methods found in Pandas. In this tutorial, we will:
+methods found in Pandas. We will:
 
 * Define a DataFrame class with data stored in NumPy arrays
 * Use special methods defined in the Python data model
-* Have a nicely formatted display in the notebook
+* Nicely format the display of the output in the notebook
 * Select subsets of data with the brackets operator 
 * Implement aggregation methods - sum, min, max, mean, median, etc...
 * Implement non-aggregation methods such as isna, unique, rename, drop
@@ -34,8 +34,7 @@ methods found in Pandas. In this tutorial, we will:
 
 ### Test Driven Development with pytest
 The completion of each part of this project is predicated upon passing the
-tests written in the test_dataframe.py and test_strings.py modules inside the 
-tests folder.
+tests written in the test_dataframe.py module inside the tests folder.
 
 To run the test suite you will need to install the [pytest library][1]. This also
 installs a command line tool with the same name.
@@ -59,7 +58,7 @@ Test your code in a Jupyter Notebook using the Test Notebook file.
 
 You will be editing a single file for this project - the `__init__.py` file
 found in the pandas_cub directory. Each section of the tutorial is numbered 
-below. Once you finish a section, you will test your code by running pytest.
+below. Once you finish a section, test your code by running pytest.
 
 A completed version of the project can be found in the pandas_cub_final directory.  
 
@@ -85,8 +84,8 @@ Steps
 * If the array kind is 'U' change it to 'O'
 * Create an instance variable `_values` to store the data as a dictionary
 * Create another instance variable `_column_info`, a dictionary that maps 
-the column name to the data type by converting the array kind with help from
-the constant dictionary `DTYPE_NAME`
+the column name to the data type as a string. Use the `kind` of each array
+to get the data type as a string from the constant dictionary `DTYPE_NAME`.
 
 Verify results with:  
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`  
@@ -116,7 +115,7 @@ returns a two-item tuple of ints (rows, columns)
 
 ### 6. Uncomment `_repr_html_` method
 This is a method specifically used by IPython to represent your object
-in the Jupyter Notebook. You must return a string from this function.
+in the Jupyter Notebook. You must return a string from this method.
 This is already implemented. Just uncomment it and test the output in the
 notebook and move on.
 
@@ -171,12 +170,12 @@ string. Use the  `getattr` function to get the actual NumPy function.
 String columns with missing values will not work. Except this error and don't 
 return columns where the aggregation cannot be found.
 
-Defining the `_agg` method will make all the other methods aggregation methods work.
+Defining the `_agg` method will make all the other aggregation methods work.
 
 ### 14. `isna` method
 Return a DataFrame of the same shape that has a boolean for every 
 single value in the DataFrame. Use `np.isnan` except in the case 
-for strings which you can use a vectorized equality check to `None`
+for strings which you can use a vectorized equality expression to `None`
 
 ### 15. `count` method
 Return the number of non-missing values for each column
@@ -193,13 +192,13 @@ Return a list of two-column DataFrames with the first column name
 as the name of the original column and the second column name 'count'
 containing the number of occurrences for each value. 
 
-Use the `Counter` method of the `collections` module. Return a DataFrame
+Use the `Counter` method of the `collections` module. Return the DataFrames
 with sorted values from greatest to least.
 
 Accept a boolean parameter `normalize` that returns relative 
 frequencies when `True`.
 
-If the calling DataFrame has a single column, just return a DataFrame.
+If the calling DataFrame has a single column, return a single DataFrame.
 
 ### 19. `rename` method
 Accept a dictionary of old column names mapped to new column names.
@@ -231,15 +230,15 @@ Return the raw difference or percentage change between rows given a distance `n`
 You can drop the first n rows
  
 ### 23. Arithmetic and Comparison Operators
-All the arithmetic and comparison operators have special methods available to implement
-for your object. For instance `__add__` is used for the plus sign, and `__le__` is used 
-for less than or equal to. Each of these methods accepts a single other parameter.
+All the arithmetic and comparison operators have special methods available. For instance 
+`__add__` is used for the plus sign, and `__le__` is used for less than or equal to. 
+Each of these methods accepts a single other parameter.
  
  Write a generic method, `_oper` that works with each of these methods.
  
 ### 24. `sort_values` method
 This method takes two parameters. The sorting column or columns (as a string or list) and 
-a boolean on the direction to sort. You will need to use NumPy's `argsort` to get the
+a boolean for the direction to sort. You will need to use NumPy's `argsort` to get the
 order of the sort for a single column and `lexsort` to sort multiple columns.
  
 ### 25. `sample` method
@@ -265,7 +264,7 @@ Allow either `rows` or `columns` to be `None`. If `values` or `aggfunc` is `None
 the frequency (like in `value_counts`).
 
 ### 28. Automatically add documentation
-This method is already completed automatically adds documentation to the aggregation
+This method is already completed and automatically adds documentation to the aggregation
 methods by setting the `__doc__` attribute.
 
 ### 29. Reading simple CSVs
