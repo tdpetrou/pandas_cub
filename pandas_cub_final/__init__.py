@@ -1060,4 +1060,22 @@ class StringMethods:
 
 
 def read_csv(fn):
-    pass
+    values = {}
+    with open(fn) as f:
+        header = f.readline()
+        column_names = header.split(',')
+        for name in column_names:
+            values[name] = []
+        for line in f.readlines():
+            for val, name in zip(line.split(','), column_names):
+                values[name].append(val)
+    new_values = {}
+    for col, vals in values.items():
+        try:
+            new_values[col] = np.array(vals, dtype='int')
+        except ValueError:
+            try:
+                new_values[col] = np.array(vals, dtype='float')
+            except ValueError:
+                new_values[col] = np.array(vals, dtype='O')
+    return DataFrame(new_values)

@@ -1,9 +1,12 @@
-# Pandas Cub
+# Raise your own Pandas Cub
 ODSC West Tutorial, San Francisco, CA, Nov 3, 2018 2 p.m. by Ted Petrou
 
+## Download material and open in editor
+# github.com/tdpetrou/pandas_cub
+
 ### Target Audience
-This talk is targeted towards those with a solid understanding of the fundamentals
-of Python. Previous experience with NumPy and Pandas will be very helpful.
+This talk is targeted towards those who understand the fundamentals
+of Python and wish to build their own DataFrame class from scratch.
 
 ### Pre-Requisites
 * Intermediate knowledge of Python
@@ -12,55 +15,45 @@ of Python. Previous experience with NumPy and Pandas will be very helpful.
 
 ### Tutorial Requirements
 * Python 3.6+ along with NumPy, Pandas, and Jupyter Notebook
-* Recommended to have installed Pytest as well
+* Recommended to have pytest as well
 * An editor such as PyCharm or VS Code 
 
 ### Objectives
-Most data scientists who use Python are heavy utilizers of Pandas, but might 
-not know how to build their own data analysis library. In this tutorial we will 
-build Pandas Cub, a library modeled after Pandas. In this tutorial, we will:
+Most data scientists who use Python rely on Pandas. In this tutorial we will 
+build Pandas Cub, a library that implements many of the most common and useful
+methods found in Pandas. In this tutorial, we will:
 
-*  Define our own DataFrame class with NumPy arrays holding heterogeneous data
-* Use special methods defined in the Python data model to make our own DataFrame 
-work with other built-in operators and functions
+* Define a DataFrame class with data stored in NumPy arrays
+* Use special methods defined in the Python data model
 * Have a nicely formatted display in the notebook
-* Be able to select subsets of data with the brackets operator using strings, ints, 
-lists, and single-column boolean DataFrames
-* Implement all the common aggregation methods - sum, min, max, mean, median, etc...
+* Select subsets of data with the brackets operator 
+* Implement aggregation methods - sum, min, max, mean, median, etc...
 * Implement non-aggregation methods such as isna, unique, rename, drop
 * Group by one or two columns
-* Have a special string accessor for specific string methods
-
-## Structure of Tutorial
-
-We will build each component of our DataFrame one at a time. The steps will be detailed below.
+* Have methods specific to string columns
 
 ### Test Driven Development with pytest
 The completion of each part of this project is predicated upon passing the
 tests written in the test_dataframe.py and test_strings.py modules inside the 
-test folder.
+tests folder.
 
-To run the test suite you will need to install the [pytest library][1]. The will also
-install a command line tool with the same name.
+To run the test suite you will need to install the [pytest library][1]. This also
+installs a command line tool with the same name.
 
 ### Testing
 If you open up one of the test modules, you will see the tests grouped in 
 different classes. To run all the tests in a single class, run the following on
 the command line:
 
-```
-$pytest tests/test_dataframe.py::TestDataFrameCreation
-```
+`$pytest tests/test_dataframe.py::TestDataFrameCreation`
 
 To run a single test, you can do the following:
 
-```
-$pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix
-```
+`$pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`
 
 ### Manually test in the Test Notebook
 
-Use the Test Notebook in the notebooks folder to test out your code in the Jupyter Notebook.
+Test your code in a Jupyter Notebook using the Test Notebook file.
 
 ## Starting Pandas Cub
 
@@ -68,9 +61,7 @@ You will be editing a single file for this project - the `__init__.py` file
 found in the pandas_cub directory. Each section of the tutorial is numbered 
 below. Once you finish a section, you will test your code by running pytest.
 
-A completed version of the project can be found in the pandas_cub_final directory. 
-You can check your work with that file once you have completed each step. Take 
-note that there might be more code.  
+A completed version of the project can be found in the pandas_cub_final directory.  
 
 ### 1. Dictionary of NumPy arrays
 
@@ -87,13 +78,14 @@ with their single character **kind**:
 Retrieve the `kind` of a NumPy array with `a.dype.kind`
 
 Steps
+* modify the `__init__` method
 * Verify that `values` is a dict
 * Verify that each key is a string
 * Verify that each value is a 1D NumPy array
 * If the array kind is 'U' change it to 'O'
-* Create an instance variable `_values` to store the data
-* Create another instance variable `_column_info` that maps the column name 
-to the data type by converting the array kind with help from
+* Create an instance variable `_values` to store the data as a dictionary
+* Create another instance variable `_column_info`, a dictionary that maps 
+the column name to the data type by converting the array kind with help from
 the constant dictionary `DTYPE_NAME`
 
 Verify results with:  
@@ -101,14 +93,14 @@ Verify results with:
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_column_info`
 
 ### 2. Implement `__len__`
-The special method `__len__` is used to make your object work with the builtin
+The special method `__len__` is used to make an object work with the builtin
 `len` function. Have it return the number of rows in your DataFrame.
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_len`
 
 ### 3. Return columns as a list
 Use the property decorator to make a `columns` attribute that returns the 
-names of the columns as a list
+names of the columns as a list.
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_columns`
 
@@ -116,7 +108,7 @@ names of the columns as a list
 Use the property decorator `columns.setter` to set new columns. Assign it a 
 list of strings.
 
-The tests should come in order.
+Keep running tests. They should come in order.
 
 ### 5. The `shape` attribute
 Use the property decorator to create a `shape` attribute that 
@@ -125,7 +117,7 @@ returns a two-item tuple of ints (rows, columns)
 ### 6. Uncomment `_repr_html_` method
 This is a method specifically used by IPython to represent your object
 in the Jupyter Notebook. You must return a string from this function.
-This is already complete. Just uncomment it and test the output in the
+This is already implemented. Just uncomment it and test the output in the
 notebook and move on.
 
 ### 7. The `values` attribute
@@ -228,6 +220,10 @@ generic method `_non_agg` that can implement:
  * `round`
  * `copy`
  
+The `cummin` and `cummax` functions in NumPy necessitate dot notation to reach.
+We cannot use `getattr` for this and instead have to use the more specialized
+`attrgetter` from the `operator` library.
+
  Notice that some of these have parameters. Collect them with `*args`.
  
 ### 22. `diff` and `pct_change` methods

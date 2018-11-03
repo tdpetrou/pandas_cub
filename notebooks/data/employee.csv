@@ -1,0 +1,1536 @@
+dept,race,gender,salary
+Houston Police Department-HPD,White,Male,45279
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Asian,Male,71680
+Houston Airport System (HAS),White,Male,42390
+Public Works & Engineering-PWE,White,Male,107962
+Houston Fire Department (HFD),Hispanic,Male,52644
+Health & Human Services,Black,Male,180416
+Public Works & Engineering-PWE,Black,Male,30347
+Health & Human Services,Black,Male,55269
+Houston Police Department-HPD,Black,Male,77076
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,White,Male,61506
+Houston Fire Department (HFD),Black,Male,57815
+Public Works & Engineering-PWE,Black,Male,43264
+Houston Fire Department (HFD),White,Male,55437
+Houston Police Department-HPD,Black,Male,52514
+Houston Police Department-HPD,White,Male,61643
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,29557
+Houston Fire Department (HFD),White,Male,62540
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,Black,Female,34923
+Public Works & Engineering-PWE,White,Female,60258
+Health & Human Services,Asian,Female,67499
+Public Works & Engineering-PWE,Black,Male,38168
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Fire Department (HFD),White,Male,48190
+Houston Fire Department (HFD),White,Male,48190
+Houston Fire Department (HFD),Hispanic,Male,165216
+Houston Police Department-HPD,White,Male,45279
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Black,Male,43597
+Public Works & Engineering-PWE,Black,Female,43618
+Houston Fire Department (HFD),White,Male,62540
+Houston Fire Department (HFD),White,Male,66523
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Airport System (HAS),Hispanic,Male,86297
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Black,Female,34757
+Public Works & Engineering-PWE,Hispanic,Male,49483
+Houston Airport System (HAS),White,Male,40144
+Houston Airport System (HAS),Black,Male,28163
+Public Works & Engineering-PWE,Hispanic,Male,30992
+Houston Fire Department (HFD),Black,Female,96668
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Female,26125
+Houston Airport System (HAS),White,Male,43826
+Health & Human Services,White,Female,100791
+Houston Police Department-HPD,Hispanic,Female,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Male,66614
+Health & Human Services,Hispanic,Female,31387
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),White,Female,36296
+Houston Fire Department (HFD),White,Male,78355
+Houston Police Department-HPD,Hispanic,Male,52514
+Houston Police Department-HPD,Hispanic,Male,43443
+Public Works & Engineering-PWE,Black,Female,30347
+Public Works & Engineering-PWE,White,Male,44283
+Houston Fire Department (HFD),White,Male,62540
+Health & Human Services,Black,Female,48984
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Hispanic,Female,30347
+Public Works & Engineering-PWE,Black,Male,53373
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,Hispanic,Male,52156
+Parks & Recreation,Black,Female,26125
+Houston Fire Department (HFD),Hispanic,Male,66523
+Houston Police Department-HPD,Hispanic,Male,77076
+Houston Police Department-HPD,Native American,Male,60347
+Public Works & Engineering-PWE,Black,Male,29557
+Public Works & Engineering-PWE,Black,Male,30139
+Houston Airport System (HAS),Hispanic,Female,26125
+Houston Fire Department (HFD),White,Male,66523
+Houston Fire Department (HFD),Hispanic,Male,51194
+Public Works & Engineering-PWE,Black,Female,45926
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Black,Male,62540
+Houston Fire Department (HFD),White,Male,63166
+Health & Human Services,Hispanic,Female,36650
+Public Works & Engineering-PWE,Black,Male,41288
+Houston Fire Department (HFD),Hispanic,Male,51194
+Health & Human Services,Asian,Female,31554
+Houston Police Department-HPD,White,Male,91181
+Houston Police Department-HPD,Black,Female,66614
+Public Works & Engineering-PWE,Hispanic,Male,30597
+Health & Human Services,Black,Female,44200
+Houston Fire Department (HFD),Black,Male,40170
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,White,Male,59819
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Police Department-HPD,Hispanic,Female,43443
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Black,Male,38646
+Houston Police Department-HPD,Black,Male,42000
+Parks & Recreation,Black,Male,33592
+Public Works & Engineering-PWE,Black,Male,52458
+Houston Police Department-HPD,Asian,Male,77076
+Houston Fire Department (HFD),Hispanic,Female,51194
+Houston Police Department-HPD,White,Female,81239
+Houston Police Department-HPD,Black,Female,36317
+Health & Human Services,Hispanic,Female,30826
+Houston Fire Department (HFD),Hispanic,Male,45791
+Houston Police Department-HPD,Black,Male,66614
+Houston Fire Department (HFD),White,Male,89590
+Houston Airport System (HAS),Black,Male,52499
+Public Works & Engineering-PWE,Black,Male,34798
+Public Works & Engineering-PWE,Black,Female,35942
+Houston Fire Department (HFD),Black,Male,52644
+Houston Police Department-HPD,White,Male,60347
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,Black,Male,31491
+Houston Police Department-HPD,White,Male,55461
+Houston Airport System (HAS),Black,Male,40435
+Public Works & Engineering-PWE,Black,Male,30555
+Houston Police Department-HPD,Asian,Male,62383
+Parks & Recreation,Black,Male,30368
+Public Works & Engineering-PWE,Black,Male,40435
+Houston Airport System (HAS),Black,Male,43826
+Houston Police Department-HPD,Black,Male,74511
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,Hispanic,Male,66614
+Parks & Recreation,Black,Male,29307
+Houston Police Department-HPD,Black,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,43528
+Public Works & Engineering-PWE,Black,Male,56742
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),White,Male,120916
+Parks & Recreation,Hispanic,Male,30347
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Airport System (HAS),Black,Male,26125
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,210588
+Houston Police Department-HPD,Hispanic,Female,47650
+Houston Police Department-HPD,Hispanic,Male,59530
+Health & Human Services,Black,Female,45906
+Houston Police Department-HPD,Black,Male,47650
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Asian,Male,30347
+Houston Police Department-HPD,White,Female,66614
+Public Works & Engineering-PWE,White,Male,110881
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,Hispanic,Female,30451
+Houston Fire Department (HFD),White,Male,57815
+Houston Airport System (HAS),Hispanic,Male,39707
+Public Works & Engineering-PWE,Hispanic,Male,28995
+Houston Airport System (HAS),White,Male,69514
+Public Works & Engineering-PWE,Black,Male,32344
+Public Works & Engineering-PWE,White,Male,30992
+Houston Police Department-HPD,Asian,Male,66614
+Houston Police Department-HPD,Black,Female,66614
+Health & Human Services,Black,Female,47382
+Public Works & Engineering-PWE,Black,Female,39104
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Airport System (HAS),Asian,Male,62432
+Houston Fire Department (HFD),Hispanic,Male,57815
+Houston Police Department-HPD,Asian,Male,55461
+Health & Human Services,Hispanic,Female,43784
+Houston Police Department-HPD,Asian,Male,27914
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Hispanic,Male,53123
+Houston Police Department-HPD,Hispanic,Male,42370
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Hispanic,Male,62540
+Public Works & Engineering-PWE,Black,Male,30347
+Houston Fire Department (HFD),Hispanic,Female,58040
+Houston Fire Department (HFD),White,Female,74270
+Houston Police Department-HPD,White,Female,46675
+Houston Police Department-HPD,Black,Female,59182
+Houston Police Department-HPD,White,Female,66614
+Public Works & Engineering-PWE,Black,Female,33987
+Houston Fire Department (HFD),Native American,Male,78355
+Public Works & Engineering-PWE,Hispanic,Male,47382
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),White,Female,45791
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Asian,Male,62338
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Male,45490
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Hispanic,Male,66523
+Houston Fire Department (HFD),Hispanic,Male,40170
+Health & Human Services,Hispanic,Male,32802
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,Black,Male,42000
+Public Works & Engineering-PWE,Hispanic,Male,38542
+Houston Fire Department (HFD),White,Male,51194
+Public Works & Engineering-PWE,Black,Female,35485
+Houston Fire Department (HFD),Hispanic,Male,45791
+Houston Airport System (HAS),Black,Male,26125
+Houston Police Department-HPD,Black,Male,47650
+Houston Fire Department (HFD),White,Male,66523
+Houston Fire Department (HFD),White,Male,48190
+Houston Police Department-HPD,Black,Male,55461
+Health & Human Services,White,Female,81849
+Houston Police Department-HPD,Black,Female,55461
+Health & Human Services,Black,Female,30347
+Houston Airport System (HAS),Black,Male,35277
+Health & Human Services,Hispanic,Female,39312
+Houston Airport System (HAS),White,Male,58677
+Houston Fire Department (HFD),White,Male,62540
+Houston Fire Department (HFD),White,Male,61921
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Hispanic,Male,66614
+Health & Human Services,White,Female,34382
+Houston Fire Department (HFD),White,Male,51194
+Public Works & Engineering-PWE,Hispanic,Male,38438
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,White,Male,43443
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,White,Male,52514
+Public Works & Engineering-PWE,White,Male,54600
+Public Works & Engineering-PWE,Black,Male,54995
+Public Works & Engineering-PWE,Hispanic,Male,51584
+Houston Fire Department (HFD),Black,Male,70181
+Public Works & Engineering-PWE,Black,Male,59748
+Public Works & Engineering-PWE,White,Male,141948
+Houston Airport System (HAS),Black,Male,100228
+Public Works & Engineering-PWE,Hispanic,Male,31450
+Public Works & Engineering-PWE,Black,Male,45989
+Health & Human Services,Black,Female,81972
+Parks & Recreation,Hispanic,Male,33634
+Houston Fire Department (HFD),White,Male,84995
+Health & Human Services,Hispanic,Female,28434
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Hispanic,Male,77076
+Houston Airport System (HAS),White,Female,51139
+Houston Police Department-HPD,Hispanic,Male,45279
+Public Works & Engineering-PWE,Black,Female,27373
+Houston Police Department-HPD,Black,Male,55461
+Houston Police Department-HPD,White,Male,91181
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),Hispanic,Female,68451
+Parks & Recreation,Hispanic,Female,36920
+Houston Police Department-HPD,White,Male,77076
+Houston Fire Department (HFD),Hispanic,Female,45791
+Houston Police Department-HPD,Black,Male,81239
+Houston Airport System (HAS),White,Male,65832
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Police Department-HPD,Black,Male,50621
+Houston Fire Department (HFD),Black,Male,52644
+Houston Fire Department (HFD),Hispanic,Female,40170
+Houston Fire Department (HFD),Hispanic,Male,51194
+Houston Fire Department (HFD),White,Female,63166
+Houston Fire Department (HFD),Hispanic,Male,48190
+Houston Police Department-HPD,White,Male,47650
+Houston Police Department-HPD,White,Female,60347
+Houston Fire Department (HFD),White,Female,40170
+Houston Police Department-HPD,Black,Male,61643
+Health & Human Services,Hispanic,Female,32864
+Public Works & Engineering-PWE,White,Male,56742
+Public Works & Engineering-PWE,Black,Male,41288
+Parks & Recreation,Black,Female,48090
+Houston Police Department-HPD,White,Male,60347
+Houston Police Department-HPD,Black,Male,66614
+Houston Fire Department (HFD),Black,Male,51194
+Houston Police Department-HPD,Asian,Male,61643
+Public Works & Engineering-PWE,Black,Male,30597
+Public Works & Engineering-PWE,Hispanic,Male,46800
+Houston Police Department-HPD,Hispanic,Male,50621
+Houston Fire Department (HFD),White,Male,61921
+Public Works & Engineering-PWE,White,Male,63315
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Hispanic,Female,30347
+Public Works & Engineering-PWE,Black,Male,39978
+Houston Police Department-HPD,Hispanic,Female,47650
+Parks & Recreation,Black,Male,54600
+Houston Police Department-HPD,Black,Female,86534
+Houston Police Department-HPD,Hispanic,Female,37294
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,White,Male,50621
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Fire Department (HFD),Black,Male,66523
+Houston Police Department-HPD,Black,Male,45279
+Parks & Recreation,Black,Male,33488
+Houston Fire Department (HFD),White,Male,51194
+Public Works & Engineering-PWE,Black,Male,28995
+Public Works & Engineering-PWE,Asian,Female,90716
+Houston Airport System (HAS),Hispanic,Male,41808
+Health & Human Services,Asian,Female,94149
+Public Works & Engineering-PWE,White,Female,73783
+Houston Police Department-HPD,Black,Male,81239
+Houston Fire Department (HFD),Black,Male,55437
+Houston Police Department-HPD,Hispanic,Female,45279
+Houston Fire Department (HFD),Hispanic,Female,48190
+Houston Fire Department (HFD),Hispanic,Male,51194
+Public Works & Engineering-PWE,Black,Male,54600
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,White,Male,39478
+Houston Police Department-HPD,White,Male,61643
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,Black,Female,28600
+Public Works & Engineering-PWE,White,Male,44096
+Houston Police Department-HPD,Black,Male,81239
+Public Works & Engineering-PWE,Black,Female,60133
+Health & Human Services,White,Male,52072
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Asian,Female,51168
+Public Works & Engineering-PWE,Black,Male,32240
+Public Works & Engineering-PWE,Hispanic,Female,33488
+Houston Fire Department (HFD),White,Male,61921
+Houston Police Department-HPD,Black,Male,45279
+Houston Police Department-HPD,Asian,Male,50621
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Black,Male,53851
+Houston Police Department-HPD,White,Male,104455
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),Black,Male,52644
+Houston Police Department-HPD,Black,Female,36317
+Houston Police Department-HPD,Black,Male,27893
+Public Works & Engineering-PWE,Black,Male,42266
+Houston Police Department-HPD,Black,Female,44970
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,Black,Male,35797
+Houston Airport System (HAS),White,Female,88003
+Houston Fire Department (HFD),White,Male,52644
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),White,Male,55437
+Health & Human Services,Black,Female,38189
+Houston Police Department-HPD,White,Male,61643
+Health & Human Services,Black,Female,76246
+Public Works & Engineering-PWE,Hispanic,Female,40352
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,70181
+Public Works & Engineering-PWE,Hispanic,Male,30597
+Public Works & Engineering-PWE,Black,Female,39666
+Houston Fire Department (HFD),White,Male,55437
+Houston Fire Department (HFD),White,Male,89590
+Health & Human Services,Hispanic,Female,30410
+Health & Human Services,Black,Female,30597
+Houston Airport System (HAS),White,Male,27851
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,55437
+Houston Police Department-HPD,Black,Female,24960
+Houston Police Department-HPD,Black,Male,47650
+Health & Human Services,Hispanic,Female,34299
+Health & Human Services,Black,Female,49379
+Public Works & Engineering-PWE,Black,Male,51605
+Public Works & Engineering-PWE,Black,Male,32968
+Houston Airport System (HAS),Hispanic,Female,26125
+Houston Police Department-HPD,Black,Female,66614
+Houston Police Department-HPD,Black,Male,60347
+Public Works & Engineering-PWE,Black,Female,35485
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Black,Female,30347
+Health & Human Services,Black,Female,31470
+Houston Police Department-HPD,White,Female,60347
+Public Works & Engineering-PWE,White,Male,63461
+Houston Police Department-HPD,Asian,Female,91181
+Public Works & Engineering-PWE,Black,Female,70780
+Houston Police Department-HPD,Asian,Male,81239
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Police Department-HPD,Black,Female,35318
+Houston Fire Department (HFD),White,Male,40170
+Houston Police Department-HPD,Hispanic,Male,50621
+Health & Human Services,Hispanic,Female,29245
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,83744
+Parks & Recreation,Black,Female,56826
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,Hispanic,Male,26104
+Public Works & Engineering-PWE,White,Male,59613
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,43528
+Houston Fire Department (HFD),White,Male,61921
+Public Works & Engineering-PWE,White,Male,93089
+Public Works & Engineering-PWE,Asian,Male,64432
+Public Works & Engineering-PWE,White,Female,53726
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,White,Female,34029
+Health & Human Services,Hispanic,Female,28600
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,81239
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),Hispanic,Male,48190
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,30992
+Parks & Recreation,Black,Male,35027
+Houston Police Department-HPD,Hispanic,Female,60347
+Houston Airport System (HAS),Black,Female,110686
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Black,Female,45157
+Houston Police Department-HPD,Black,Female,52514
+Houston Police Department-HPD,White,Male,43443
+Houston Fire Department (HFD),Black,Male,28024
+Houston Police Department-HPD,White,Female,66614
+Public Works & Engineering-PWE,Black,Male,36130
+Houston Police Department-HPD,White,Male,47650
+Houston Fire Department (HFD),Hispanic,Male,66523
+Houston Airport System (HAS),Black,Male,43826
+Houston Police Department-HPD,Hispanic,Female,43443
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,White,Male,54600
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,Black,Male,34861
+Public Works & Engineering-PWE,Black,Female,56992
+Houston Fire Department (HFD),White,Male,45791
+Houston Police Department-HPD,White,Male,50621
+Houston Police Department-HPD,Black,Male,47650
+Parks & Recreation,Hispanic,Male,26125
+Health & Human Services,Hispanic,Female,38709
+Public Works & Engineering-PWE,Black,Male,34320
+Houston Police Department-HPD,Black,Male,35838
+Health & Human Services,Black,Male,60496
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,White,Male,90716
+Public Works & Engineering-PWE,Asian,Male,55695
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Police Department-HPD,Black,Female,60347
+Houston Police Department-HPD,Black,Male,61643
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Female,61643
+Houston Police Department-HPD,White,Female,81239
+Public Works & Engineering-PWE,Black,Female,40851
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,Black,Female,30347
+Houston Fire Department (HFD),Hispanic,Male,61921
+Public Works & Engineering-PWE,Black,Male,45926
+Public Works & Engineering-PWE,White,Male,56576
+Public Works & Engineering-PWE,White,Male,58157
+Houston Police Department-HPD,Black,Female,55461
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Black,Female,51563
+Houston Fire Department (HFD),White,Male,61921
+Public Works & Engineering-PWE,Black,Female,52957
+Houston Airport System (HAS),Asian,Male,37003
+Houston Police Department-HPD,Hispanic,Male,61643
+Public Works & Engineering-PWE,White,Male,40622
+Houston Police Department-HPD,White,Female,66614
+Parks & Recreation,Hispanic,Male,36920
+Houston Fire Department (HFD),Black,Male,61226
+Public Works & Engineering-PWE,White,Female,105503
+Houston Police Department-HPD,White,Female,99953
+Public Works & Engineering-PWE,Hispanic,Male,63338
+Public Works & Engineering-PWE,White,Female,90715
+Houston Police Department-HPD,White,Male,60347
+Public Works & Engineering-PWE,Black,Female,33488
+Houston Police Department-HPD,White,Female,35318
+Houston Airport System (HAS),Hispanic,Male,35318
+Houston Police Department-HPD,White,Male,74511
+Houston Airport System (HAS),Black,Female,150416
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Asian,Male,61643
+Houston Fire Department (HFD),Asian,Male,43528
+Houston Police Department-HPD,Hispanic,Female,47650
+Health & Human Services,Black,Female,45614
+Houston Fire Department (HFD),White,Male,51194
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Male,55461
+Houston Police Department-HPD,Black,Female,29827
+Houston Airport System (HAS),Black,Female,26125
+Public Works & Engineering-PWE,White,Male,29765
+Parks & Recreation,Hispanic,Male,29910
+Parks & Recreation,Black,Male,26125
+Houston Police Department-HPD,Black,Male,42000
+Public Works & Engineering-PWE,Black,Female,32406
+Health & Human Services,Black,Female,31387
+Houston Fire Department (HFD),White,Male,70181
+Public Works & Engineering-PWE,Black,Female,27373
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,61226
+Houston Police Department-HPD,Hispanic,Male,50621
+Public Works & Engineering-PWE,Hispanic,Male,31158
+Public Works & Engineering-PWE,Hispanic,Male,84500
+Houston Police Department-HPD,Black,Male,41621
+Houston Fire Department (HFD),White,Male,40170
+Health & Human Services,Hispanic,Male,31803
+Houston Fire Department (HFD),Hispanic,Male,57815
+Health & Human Services,Asian,Male,46010
+Health & Human Services,White,Male,47362
+Public Works & Engineering-PWE,Asian,Female,95950
+Houston Fire Department (HFD),Hispanic,Male,78355
+Houston Police Department-HPD,White,Male,45279
+Public Works & Engineering-PWE,Black,Female,29931
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Female,34757
+Parks & Recreation,Hispanic,Female,42640
+Parks & Recreation,Black,Female,57533
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Black,Female,30347
+Houston Police Department-HPD,Black,Female,32261
+Houston Police Department-HPD,Hispanic,Female,47650
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),White,Male,70181
+Health & Human Services,Black,Female,63785
+Parks & Recreation,Black,Male,28205
+Houston Fire Department (HFD),White,Male,45791
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Hispanic,Male,40170
+Houston Police Department-HPD,Hispanic,Male,60347
+Public Works & Engineering-PWE,White,Female,98752
+Public Works & Engineering-PWE,Black,Female,32968
+Houston Fire Department (HFD),Hispanic,Male,45791
+Houston Police Department-HPD,White,Male,47650
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,Black,Male,34653
+Houston Fire Department (HFD),White,Male,45791
+Public Works & Engineering-PWE,Black,Male,32968
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,White,Male,60347
+Houston Police Department-HPD,Hispanic,Female,66614
+Public Works & Engineering-PWE,Hispanic,Male,36920
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,50621
+Public Works & Engineering-PWE,Hispanic,Female,44866
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Hispanic,Male,53581
+Houston Police Department-HPD,White,Male,43443
+Houston Airport System (HAS),Black,Female,39229
+Houston Police Department-HPD,Black,Female,29890
+Houston Police Department-HPD,Black,Male,81239
+Houston Fire Department (HFD),White,Male,61921
+Houston Fire Department (HFD),White,Male,66523
+Houston Airport System (HAS),Hispanic,Male,33238
+Public Works & Engineering-PWE,Asian,Male,34611
+Houston Fire Department (HFD),Hispanic,Female,41267
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Black,Male,43035
+Houston Police Department-HPD,Asian,Female,35152
+Houston Fire Department (HFD),Hispanic,Male,70181
+Houston Fire Department (HFD),White,Male,70181
+Houston Fire Department (HFD),Black,Male,66523
+Houston Fire Department (HFD),Black,Male,130585
+Houston Police Department-HPD,Black,Female,66614
+Houston Fire Department (HFD),Hispanic,Female,66523
+Houston Police Department-HPD,White,Male,28169
+Public Works & Engineering-PWE,Black,Male,42182
+Public Works & Engineering-PWE,Black,Male,29557
+Houston Fire Department (HFD),White,Male,52644
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Female,48360
+Houston Police Department-HPD,Asian,Male,163228
+Houston Airport System (HAS),Hispanic,Male,39125
+Houston Fire Department (HFD),Black,Male,51194
+Houston Police Department-HPD,Black,Female,58409
+Houston Fire Department (HFD),White,Male,66523
+Houston Fire Department (HFD),White,Male,61921
+Public Works & Engineering-PWE,Black,Female,37440
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Hispanic,Male,52514
+Houston Airport System (HAS),White,Male,96284
+Public Works & Engineering-PWE,Hispanic,Male,90293
+Houston Fire Department (HFD),Hispanic,Male,48190
+Houston Fire Department (HFD),White,Male,62540
+Health & Human Services,Black,Female,57433
+Houston Fire Department (HFD),White,Male,51194
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Asian,Male,31408
+Parks & Recreation,Hispanic,Male,46580
+Public Works & Engineering-PWE,Black,Female,40581
+Houston Police Department-HPD,White,Female,45552
+Houston Police Department-HPD,Black,Male,47650
+Houston Police Department-HPD,White,Female,50621
+Houston Fire Department (HFD),Black,Male,43528
+Houston Fire Department (HFD),White,Male,55437
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,White,Male,60347
+Health & Human Services,Hispanic,Female,37835
+Public Works & Engineering-PWE,Black,Male,30139
+Houston Police Department-HPD,Black,Male,81239
+Public Works & Engineering-PWE,Asian,Male,50960
+Health & Human Services,Hispanic,Female,34008
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Police Department-HPD,Hispanic,Female,27914
+Health & Human Services,Hispanic,Female,32198
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Black,Male,40170
+Houston Police Department-HPD,White,Male,199596
+Public Works & Engineering-PWE,White,Male,57304
+Houston Police Department-HPD,White,Male,66614
+Parks & Recreation,Hispanic,Male,26125
+Houston Police Department-HPD,Asian,Female,35880
+Public Works & Engineering-PWE,Black,Male,31762
+Houston Police Department-HPD,Hispanic,Male,42000
+Public Works & Engineering-PWE,Black,Male,27373
+Parks & Recreation,Black,Female,31075
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Black,Male,43528
+Health & Human Services,Black,Female,34320
+Parks & Recreation,Black,Male,36920
+Houston Fire Department (HFD),White,Male,78355
+Houston Fire Department (HFD),White,Male,66523
+Public Works & Engineering-PWE,Black,Male,41288
+Houston Fire Department (HFD),Black,Male,70181
+Houston Police Department-HPD,Hispanic,Male,74511
+Houston Fire Department (HFD),White,Male,45791
+Public Works & Engineering-PWE,Black,Male,28995
+Public Works & Engineering-PWE,White,Male,63336
+Houston Airport System (HAS),White,Female,100873
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Asian,Male,81239
+Houston Police Department-HPD,Hispanic,Male,91181
+Houston Police Department-HPD,Hispanic,Female,60347
+Public Works & Engineering-PWE,White,Male,31429
+Houston Fire Department (HFD),White,Male,89590
+Houston Fire Department (HFD),White,Male,78355
+Houston Police Department-HPD,Hispanic,Female,55461
+Houston Fire Department (HFD),Black,Male,61226
+Houston Fire Department (HFD),White,Male,99480
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Asian,Female,66614
+Public Works & Engineering-PWE,Black,Male,36837
+Houston Fire Department (HFD),Black,Male,61226
+Health & Human Services,Black,Female,83174
+Houston Fire Department (HFD),Hispanic,Male,61226
+Houston Fire Department (HFD),Black,Male,48190
+Houston Fire Department (HFD),Black,Male,43528
+Houston Police Department-HPD,Asian,Male,66614
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),White,Male,51194
+Houston Fire Department (HFD),White,Male,40170
+Health & Human Services,Hispanic,Female,65589
+Houston Police Department-HPD,White,Male,43443
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Female,33322
+Houston Police Department-HPD,Hispanic,Female,47008
+Houston Fire Department (HFD),Black,Male,70181
+Houston Police Department-HPD,Black,Female,32490
+Parks & Recreation,White,Male,37565
+Houston Police Department-HPD,White,Male,86534
+Health & Human Services,Black,Female,82915
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Hispanic,Male,51194
+Houston Police Department-HPD,Black,Male,61643
+Public Works & Engineering-PWE,Hispanic,Male,40518
+Houston Fire Department (HFD),Hispanic,Male,40170
+Public Works & Engineering-PWE,Asian,Male,79953
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Hispanic,Male,46238
+Houston Fire Department (HFD),White,Male,70181
+Health & Human Services,Black,Female,46384
+Public Works & Engineering-PWE,Black,Male,30597
+Houston Airport System (HAS),Black,Male,186192
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Asian,Male,28169
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Police Department-HPD,Hispanic,Female,43035
+Public Works & Engineering-PWE,White,Male,46550
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Native American,Male,81239
+Houston Fire Department (HFD),White,Male,45791
+Public Works & Engineering-PWE,White,Female,70565
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Asian,Male,50378
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),White,Male,55437
+Houston Fire Department (HFD),White,Male,61921
+Public Works & Engineering-PWE,Hispanic,Male,30139
+Public Works & Engineering-PWE,Black,Male,66310
+Houston Police Department-HPD,White,Male,69661
+Houston Police Department-HPD,Black,Male,66614
+Houston Fire Department (HFD),White,Male,70181
+Health & Human Services,Black,Female,31782
+Houston Police Department-HPD,Black,Female,66614
+Public Works & Engineering-PWE,White,Male,86288
+Public Works & Engineering-PWE,Asian,Male,87236
+Houston Fire Department (HFD),White,Male,63166
+Houston Airport System (HAS),Hispanic,Female,29640
+Houston Police Department-HPD,Black,Male,47650
+Public Works & Engineering-PWE,White,Male,105354
+Houston Airport System (HAS),Black,Male,47237
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,34528
+Parks & Recreation,Black,Male,50028
+Houston Airport System (HAS),Black,Male,48568
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,Black,Female,26125
+Public Works & Engineering-PWE,Black,Male,34320
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Airport System (HAS),Black,Male,62650
+Public Works & Engineering-PWE,Black,Male,32968
+Public Works & Engineering-PWE,Asian,Male,44096
+Public Works & Engineering-PWE,Hispanic,Male,54600
+Public Works & Engineering-PWE,Hispanic,Female,45178
+Health & Human Services,Hispanic,Female,40976
+Health & Human Services,Black,Female,70762
+Houston Fire Department (HFD),White,Male,51194
+Houston Fire Department (HFD),White,Male,43528
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,55461
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,Black,Male,36213
+Houston Police Department-HPD,Black,Male,77076
+Public Works & Engineering-PWE,Black,Male,71170
+Health & Human Services,Asian,Male,52624
+Public Works & Engineering-PWE,White,Male,37211
+Houston Police Department-HPD,Black,Female,37336
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Black,Male,60653
+Houston Police Department-HPD,Black,Female,81239
+Houston Fire Department (HFD),Black,Male,43528
+Health & Human Services,Black,Female,40144
+Houston Police Department-HPD,White,Male,42000
+Houston Fire Department (HFD),Hispanic,Male,70181
+Houston Police Department-HPD,White,Male,61643
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,Asian,Male,66614
+Public Works & Engineering-PWE,Hispanic,Female,66449
+Houston Fire Department (HFD),White,Male,74270
+Houston Police Department-HPD,Asian,Male,45279
+Houston Airport System (HAS),Black,Male,27082
+Health & Human Services,White,Male,47632
+Houston Fire Department (HFD),White,Male,43528
+Houston Police Department-HPD,White,Female,91181
+Public Works & Engineering-PWE,Black,Male,42640
+Public Works & Engineering-PWE,Hispanic,Female,62426
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,44429
+Houston Police Department-HPD,Asian,Male,52514
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,Black,Female,86763
+Public Works & Engineering-PWE,Asian,Male,47382
+Houston Police Department-HPD,Black,Female,31907
+Health & Human Services,Black,Female,48027
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,Hispanic,Male,60347
+Public Works & Engineering-PWE,Black,Male,54995
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,White,Male,30888
+Houston Police Department-HPD,Black,Male,60347
+Houston Fire Department (HFD),Black,Male,63166
+Houston Police Department-HPD,Hispanic,Male,66614
+Health & Human Services,Hispanic,Male,46363
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,52644
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,Hispanic,Male,57470
+Parks & Recreation,Black,Male,56014
+Public Works & Engineering-PWE,Black,Female,77899
+Houston Police Department-HPD,Black,Male,77076
+Houston Police Department-HPD,Hispanic,Female,26125
+Houston Fire Department (HFD),Black,Male,62540
+Houston Police Department-HPD,Black,Female,31845
+Public Works & Engineering-PWE,Black,Male,39666
+Health & Human Services,Black,Male,38709
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Airport System (HAS),White,Female,35256
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,White,Male,34632
+Public Works & Engineering-PWE,Black,Male,37128
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,Black,Male,53832
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Black,Female,30888
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Black,Male,66614
+Houston Fire Department (HFD),White,Male,63166
+Houston Airport System (HAS),White,Male,51501
+Houston Airport System (HAS),Hispanic,Male,31158
+Houston Fire Department (HFD),White,Male,61226
+Houston Police Department-HPD,Asian,Male,61643
+Public Works & Engineering-PWE,Hispanic,Male,41683
+Parks & Recreation,Black,Male,30347
+Houston Police Department-HPD,White,Female,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,55453
+Houston Fire Department (HFD),White,Male,78355
+Health & Human Services,White,Male,120799
+Houston Police Department-HPD,Hispanic,Male,43443
+Parks & Recreation,Black,Male,28766
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,Hispanic,Female,66614
+Houston Fire Department (HFD),White,Male,74270
+Houston Fire Department (HFD),Hispanic,Male,57815
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Female,55461
+Public Works & Engineering-PWE,Hispanic,Male,53435
+Health & Human Services,Native American,Female,49379
+Public Works & Engineering-PWE,Hispanic,Male,48776
+Houston Police Department-HPD,White,Male,91181
+Houston Fire Department (HFD),Hispanic,Male,89590
+Houston Fire Department (HFD),White,Male,70181
+Public Works & Engineering-PWE,White,Male,78076
+Houston Fire Department (HFD),White,Male,70181
+Houston Fire Department (HFD),Hispanic,Male,89590
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,40186
+Public Works & Engineering-PWE,Hispanic,Male,69493
+Houston Police Department-HPD,Hispanic,Female,47650
+Houston Fire Department (HFD),Hispanic,Male,62540
+Parks & Recreation,Black,Female,26125
+Houston Fire Department (HFD),White,Male,61921
+Houston Police Department-HPD,Black,Female,35318
+Public Works & Engineering-PWE,Hispanic,Male,45989
+Public Works & Engineering-PWE,Hispanic,Male,70115
+Houston Police Department-HPD,White,Female,74961
+Public Works & Engineering-PWE,Hispanic,Male,65853
+Public Works & Engineering-PWE,White,Female,146141
+Houston Police Department-HPD,White,Female,55461
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Black,Male,45279
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),Black,Male,40170
+Houston Airport System (HAS),Black,Female,80791
+Public Works & Engineering-PWE,White,Male,50586
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,Black,Female,43909
+Houston Police Department-HPD,Asian,Male,43443
+Houston Fire Department (HFD),Hispanic,Male,40170
+Houston Police Department-HPD,Black,Female,27872
+Houston Airport System (HAS),Hispanic,Female,67671
+Public Works & Engineering-PWE,Hispanic,Female,45490
+Public Works & Engineering-PWE,Asian,Male,102297
+Houston Police Department-HPD,Black,Female,66614
+Houston Airport System (HAS),Black,Male,37669
+Houston Police Department-HPD,White,Female,47650
+Houston Airport System (HAS),White,Male,61589
+Houston Fire Department (HFD),White,Male,55437
+Houston Fire Department (HFD),White,Male,28024
+Houston Airport System (HAS),White,Male,103686
+Houston Fire Department (HFD),White,Male,28024
+Houston Fire Department (HFD),Hispanic,Male,78355
+Houston Police Department-HPD,Asian,Male,60347
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,49109
+Public Works & Engineering-PWE,White,Male,66560
+Public Works & Engineering-PWE,Hispanic,Female,42453
+Parks & Recreation,Black,Female,35339
+Houston Police Department-HPD,White,Male,81239
+Health & Human Services,Hispanic,Female,28600
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,Black,Male,60347
+Houston Fire Department (HFD),Hispanic,Male,70181
+Houston Police Department-HPD,White,Female,104455
+Houston Fire Department (HFD),White,Male,57815
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Fire Department (HFD),White,Male,48190
+Houston Airport System (HAS),Hispanic,Female,26125
+Health & Human Services,Black,Female,47382
+Houston Police Department-HPD,Black,Female,47278
+Houston Fire Department (HFD),Black,Male,45791
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,55437
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Fire Department (HFD),Black,Female,34902
+Houston Airport System (HAS),Black,Female,33467
+Houston Police Department-HPD,Asian,Male,52514
+Houston Police Department-HPD,Black,Male,55461
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Hispanic,Female,47008
+Public Works & Engineering-PWE,Asian,Male,74097
+Houston Fire Department (HFD),White,Male,45791
+Houston Fire Department (HFD),Black,Male,52644
+Public Works & Engineering-PWE,White,Female,43888
+Houston Police Department-HPD,White,Male,45279
+Houston Fire Department (HFD),White,Male,40170
+Public Works & Engineering-PWE,White,Male,97626
+Houston Police Department-HPD,White,Male,42000
+Parks & Recreation,White,Male,36920
+Houston Police Department-HPD,Black,Female,41704
+Houston Fire Department (HFD),White,Male,78355
+Public Works & Engineering-PWE,White,Female,57842
+Houston Airport System (HAS),Black,Male,45698
+Houston Fire Department (HFD),Black,Male,62540
+Houston Police Department-HPD,White,Female,45279
+Public Works & Engineering-PWE,Black,Female,71680
+Public Works & Engineering-PWE,White,Female,35027
+Houston Fire Department (HFD),White,Male,63166
+Public Works & Engineering-PWE,Asian,Male,124861
+Houston Police Department-HPD,Black,Male,66614
+Houston Fire Department (HFD),Black,Female,36400
+Public Works & Engineering-PWE,Black,Male,49587
+Health & Human Services,Hispanic,Male,33654
+Houston Police Department-HPD,Hispanic,Female,35318
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Male,38688
+Public Works & Engineering-PWE,White,Female,76085
+Public Works & Engineering-PWE,Hispanic,Male,32864
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,White,Male,60347
+Houston Fire Department (HFD),Black,Female,78355
+Houston Fire Department (HFD),Hispanic,Male,40170
+Houston Police Department-HPD,White,Female,60347
+Houston Police Department-HPD,White,Male,91181
+Houston Police Department-HPD,Black,Male,30618
+Houston Fire Department (HFD),Black,Male,63166
+Public Works & Engineering-PWE,Hispanic,Female,30493
+Houston Fire Department (HFD),Hispanic,Male,48190
+Houston Police Department-HPD,Asian,Male,66614
+Public Works & Engineering-PWE,Black,Female,92028
+Public Works & Engineering-PWE,Black,Male,44429
+Parks & Recreation,Hispanic,Male,72280
+Public Works & Engineering-PWE,Black,Male,40227
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,White,Male,39478
+Houston Fire Department (HFD),Black,Male,55437
+Houston Police Department-HPD,Asian,Male,42000
+Public Works & Engineering-PWE,Asian,Female,80433
+Houston Police Department-HPD,Black,Female,52333
+Houston Police Department-HPD,White,Male,81239
+Health & Human Services,Black,Male,41870
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Asian,Female,55378
+Public Works & Engineering-PWE,Black,Female,30347
+Houston Airport System (HAS),Black,Female,26125
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,White,Female,62400
+Houston Police Department-HPD,Hispanic,Male,77076
+Houston Police Department-HPD,White,Male,65416
+Houston Fire Department (HFD),White,Male,51194
+Houston Fire Department (HFD),Hispanic,Male,62540
+Public Works & Engineering-PWE,Black,Male,31450
+Houston Police Department-HPD,Black,Female,55461
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Fire Department (HFD),Hispanic,Male,62540
+Public Works & Engineering-PWE,White,Female,178331
+Houston Fire Department (HFD),White,Male,78355
+Public Works & Engineering-PWE,Black,Male,104389
+Houston Fire Department (HFD),Hispanic,Male,57815
+Houston Airport System (HAS),White,Male,74420
+Houston Police Department-HPD,Black,Female,26229
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Fire Department (HFD),White,Male,51194
+Health & Human Services,Black,Male,90305
+Houston Police Department-HPD,White,Male,55461
+Health & Human Services,Black,Female,54509
+Houston Police Department-HPD,Hispanic,Female,77076
+Houston Fire Department (HFD),Black,Male,66523
+Public Works & Engineering-PWE,Black,Male,27352
+Public Works & Engineering-PWE,Black,Female,53173
+Houston Airport System (HAS),White,Male,54080
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,Hispanic,Female,66614
+Public Works & Engineering-PWE,Hispanic,Male,54683
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,61643
+Houston Police Department-HPD,Black,Female,66614
+Houston Fire Department (HFD),Hispanic,Male,63166
+Houston Police Department-HPD,White,Female,42000
+Public Works & Engineering-PWE,Black,Male,38251
+Public Works & Engineering-PWE,Black,Female,36837
+Health & Human Services,Hispanic,Female,30410
+Public Works & Engineering-PWE,White,Male,51584
+Public Works & Engineering-PWE,White,Male,57450
+Public Works & Engineering-PWE,Asian,Male,57200
+Public Works & Engineering-PWE,Hispanic,Female,44096
+Houston Police Department-HPD,White,Male,60347
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Black,Male,51085
+Houston Airport System (HAS),Black,Female,36587
+Public Works & Engineering-PWE,Black,Female,33613
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,77076
+Public Works & Engineering-PWE,Asian,Male,32635
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,Black,Male,45989
+Houston Police Department-HPD,White,Male,91181
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Male,47650
+Houston Fire Department (HFD),Black,Male,52644
+Public Works & Engineering-PWE,Black,Female,37357
+Houston Police Department-HPD,Hispanic,Male,50621
+Public Works & Engineering-PWE,Black,Male,39021
+Houston Police Department-HPD,Black,Male,77076
+Public Works & Engineering-PWE,Asian,Male,40810
+Public Works & Engineering-PWE,Black,Male,30160
+Houston Airport System (HAS),Black,Female,29286
+Houston Airport System (HAS),Black,Male,33176
+Houston Police Department-HPD,Black,Male,47650
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,66614
+Houston Police Department-HPD,Hispanic,Female,50190
+Houston Fire Department (HFD),White,Male,40170
+Houston Police Department-HPD,Hispanic,Male,41059
+Houston Fire Department (HFD),Hispanic,Male,28024
+Houston Police Department-HPD,Black,Male,81239
+Public Works & Engineering-PWE,Black,Female,36629
+Houston Police Department-HPD,Hispanic,Male,50621
+Houston Airport System (HAS),Hispanic,Male,38730
+Houston Airport System (HAS),Black,Female,89416
+Houston Police Department-HPD,Hispanic,Female,36920
+Houston Fire Department (HFD),Black,Male,40170
+Houston Police Department-HPD,Hispanic,Male,60347
+Houston Police Department-HPD,Black,Female,66614
+Public Works & Engineering-PWE,White,Male,60715
+Houston Police Department-HPD,White,Male,60347
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),Hispanic,Female,53518
+Houston Fire Department (HFD),White,Male,74270
+Houston Fire Department (HFD),Hispanic,Male,61921
+Public Works & Engineering-PWE,Asian,Male,98748
+Houston Airport System (HAS),Hispanic,Female,73635
+Houston Fire Department (HFD),White,Male,45791
+Public Works & Engineering-PWE,Hispanic,Female,29453
+Houston Police Department-HPD,Asian,Female,50621
+Houston Fire Department (HFD),Hispanic,Male,51194
+Houston Police Department-HPD,White,Male,50621
+Public Works & Engineering-PWE,White,Male,53123
+Houston Fire Department (HFD),White,Male,40170
+Houston Police Department-HPD,White,Male,45279
+Public Works & Engineering-PWE,Black,Female,43867
+Houston Police Department-HPD,Black,Male,42000
+Public Works & Engineering-PWE,Black,Male,35318
+Parks & Recreation,Black,Male,26125
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Male,34382
+Houston Fire Department (HFD),White,Male,37918
+Houston Fire Department (HFD),Black,Male,66523
+Health & Human Services,Asian,Male,70864
+Public Works & Engineering-PWE,Black,Female,36754
+Houston Fire Department (HFD),White,Male,52644
+Public Works & Engineering-PWE,White,Female,78728
+Health & Human Services,White,Male,60082
+Houston Fire Department (HFD),White,Male,61921
+Houston Fire Department (HFD),White,Male,78355
+Houston Police Department-HPD,Black,Female,55016
+Houston Police Department-HPD,Black,Male,86534
+Public Works & Engineering-PWE,Hispanic,Male,51563
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Asian,Male,113930
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Fire Department (HFD),Hispanic,Male,63166
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Hispanic,Male,67038
+Public Works & Engineering-PWE,Black,Female,33613
+Houston Airport System (HAS),Hispanic,Female,28579
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Fire Department (HFD),White,Male,61921
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Asian,Male,66614
+Houston Fire Department (HFD),White,Male,40165
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Police Department-HPD,Black,Female,66614
+Houston Fire Department (HFD),White,Male,78355
+Houston Police Department-HPD,White,Male,47650
+Houston Police Department-HPD,Black,Male,27414
+Houston Fire Department (HFD),Hispanic,Male,62540
+Houston Police Department-HPD,Hispanic,Male,60347
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,31907
+Houston Police Department-HPD,Black,Female,30618
+Houston Fire Department (HFD),White,Male,48190
+Houston Fire Department (HFD),Black,Male,28024
+Public Works & Engineering-PWE,Hispanic,Female,33488
+Houston Police Department-HPD,White,Male,47650
+Houston Fire Department (HFD),White,Male,28024
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Hispanic,Male,50606
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Hispanic,Male,47650
+Public Works & Engineering-PWE,White,Female,54122
+Houston Fire Department (HFD),Black,Male,71174
+Public Works & Engineering-PWE,Black,Female,33488
+Public Works & Engineering-PWE,Hispanic,Female,44575
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,60347
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Black,Female,53186
+Houston Fire Department (HFD),White,Male,63166
+Public Works & Engineering-PWE,Black,Male,38418
+Houston Police Department-HPD,Asian,Male,47650
+Houston Fire Department (HFD),Hispanic,Male,45791
+Public Works & Engineering-PWE,White,Male,58816
+Houston Airport System (HAS),Black,Male,33301
+Parks & Recreation,Hispanic,Male,26125
+Houston Fire Department (HFD),Black,Male,62540
+Public Works & Engineering-PWE,Black,Female,30347
+Health & Human Services,Black,Female,103270
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,Asian,Male,47050
+Houston Fire Department (HFD),White,Male,70181
+Houston Fire Department (HFD),White,Male,66523
+Parks & Recreation,Hispanic,Male,26125
+Houston Airport System (HAS),Asian,Female,26125
+Public Works & Engineering-PWE,Black,Male,27102
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Hispanic,Female,61643
+Houston Airport System (HAS),Hispanic,Male,39125
+Houston Airport System (HAS),Black,Male,39125
+Houston Fire Department (HFD),Hispanic,Male,48190
+Public Works & Engineering-PWE,White,Male,43514
+Public Works & Engineering-PWE,Hispanic,Female,35485
+Parks & Recreation,Black,Female,29682
+Houston Police Department-HPD,Black,Female,55461
+Houston Airport System (HAS),Hispanic,Male,73065
+Houston Police Department-HPD,White,Female,66614
+Houston Airport System (HAS),White,Male,49275
+Public Works & Engineering-PWE,White,Male,49691
+Public Works & Engineering-PWE,Black,Female,39208
+Houston Airport System (HAS),White,Male,29286
+Houston Fire Department (HFD),Black,Male,89590
+Houston Police Department-HPD,Black,Male,52514
+Houston Fire Department (HFD),Black,Male,55437
+Parks & Recreation,White,Male,85055
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Fire Department (HFD),White,Male,62540
+Houston Airport System (HAS),Black,Male,96325
+Public Works & Engineering-PWE,Black,Female,35485
+Houston Police Department-HPD,White,Male,66614
+Health & Human Services,White,Female,33821
+Public Works & Engineering-PWE,Hispanic,Female,60248
+Public Works & Engineering-PWE,Black,Male,33987
+Houston Fire Department (HFD),Hispanic,Female,41995
+Public Works & Engineering-PWE,Hispanic,Male,32240
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Police Department-HPD,White,Male,60347
+Parks & Recreation,Hispanic,Female,83916
+Houston Airport System (HAS),Black,Female,39125
+Houston Airport System (HAS),Asian,Male,77535
+Houston Fire Department (HFD),White,Female,43014
+Houston Fire Department (HFD),White,Male,70181
+Public Works & Engineering-PWE,Hispanic,Male,36130
+Houston Airport System (HAS),Hispanic,Male,57782
+Houston Police Department-HPD,Asian,Male,55461
+Houston Fire Department (HFD),White,Male,63166
+Public Works & Engineering-PWE,White,Female,75224
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Black,Male,65000
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,Black,Female,74384
+Houston Fire Department (HFD),White,Male,99480
+Houston Fire Department (HFD),White,Male,48190
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,60347
+Health & Human Services,Black,Male,54857
+Houston Airport System (HAS),Black,Male,51501
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Fire Department (HFD),White,Male,55437
+Houston Police Department-HPD,Black,Female,91181
+Houston Police Department-HPD,Black,Female,61643
+Houston Fire Department (HFD),Black,Male,40170
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,Black,Female,45677
+Houston Police Department-HPD,Black,Female,35318
+Parks & Recreation,Black,Female,40706
+Health & Human Services,Black,Female,67782
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Black,Female,35318
+Houston Police Department-HPD,White,Male,55461
+Health & Human Services,Asian,Female,51861
+Houston Police Department-HPD,White,Male,28169
+Houston Fire Department (HFD),Black,Male,40170
+Houston Police Department-HPD,Hispanic,Male,61643
+Houston Fire Department (HFD),Hispanic,Male,62540
+Houston Police Department-HPD,White,Male,77076
+Houston Fire Department (HFD),Black,Male,74270
+Houston Police Department-HPD,Hispanic,Female,26229
+Houston Fire Department (HFD),White,Male,28024
+Houston Police Department-HPD,Hispanic,Female,47650
+Houston Police Department-HPD,White,Male,55461
+Health & Human Services,Black,Female,47445
+Houston Police Department-HPD,White,Male,43443
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,White,Male,55461
+Houston Airport System (HAS),White,Male,39333
+Health & Human Services,White,Female,36150
+Public Works & Engineering-PWE,Black,Male,51397
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,White,Male,55461
+Houston Fire Department (HFD),White,Male,70181
+Houston Airport System (HAS),Hispanic,Female,26125
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Police Department-HPD,Black,Male,66614
+Health & Human Services,Black,Female,42890
+Houston Police Department-HPD,White,Female,81239
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,Black,Male,26125
+Houston Police Department-HPD,Hispanic,Male,28169
+Houston Fire Department (HFD),Hispanic,Male,99480
+Parks & Recreation,Asian,Male,48651
+Houston Police Department-HPD,Asian,Male,55461
+Houston Police Department-HPD,Native American,Male,55461
+Public Works & Engineering-PWE,Hispanic,Male,61564
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Police Department-HPD,Asian,Male,61643
+Health & Human Services,Hispanic,Male,58406
+Health & Human Services,Hispanic,Female,47445
+Parks & Recreation,Black,Male,55462
+Houston Fire Department (HFD),White,Male,62540
+Houston Fire Department (HFD),White,Male,43528
+Public Works & Engineering-PWE,Hispanic,Male,41184
+Public Works & Engineering-PWE,Asian,Male,89955
+Parks & Recreation,White,Male,57824
+Health & Human Services,Black,Female,88361
+Houston Police Department-HPD,Black,Male,55461
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),Native American,Female,68299
+Houston Airport System (HAS),White,Male,90832
+Houston Police Department-HPD,Black,Female,66614
+Houston Fire Department (HFD),Black,Male,51194
+Houston Fire Department (HFD),White,Male,62540
+Health & Human Services,Black,Female,30846
+Houston Fire Department (HFD),Black,Male,61226
+Public Works & Engineering-PWE,White,Female,52562
+Houston Airport System (HAS),Black,Male,29286
+Public Works & Engineering-PWE,White,Male,27352
+Public Works & Engineering-PWE,Black,Male,60840
+Houston Fire Department (HFD),Black,Male,63166
+Houston Police Department-HPD,Black,Female,63551
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Black,Male,60347
+Houston Police Department-HPD,White,Male,81239
+Parks & Recreation,White,Male,46566
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,81239
+Public Works & Engineering-PWE,White,Female,66867
+Houston Fire Department (HFD),White,Male,66523
+Houston Fire Department (HFD),Black,Male,78355
+Houston Police Department-HPD,Black,Female,91181
+Houston Fire Department (HFD),Hispanic,Male,63166
+Public Works & Engineering-PWE,Hispanic,Male,32136
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Black,Female,35318
+Houston Police Department-HPD,Black,Male,66614
+Houston Police Department-HPD,Black,Male,66614
+Houston Airport System (HAS),Black,Male,45240
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Black,Male,57815
+Public Works & Engineering-PWE,Asian,Male,53373
+Houston Fire Department (HFD),Hispanic,Male,43528
+Houston Fire Department (HFD),Hispanic,Male,51194
+Public Works & Engineering-PWE,White,Male,98895
+Houston Police Department-HPD,White,Female,55461
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,White,Male,81239
+Health & Human Services,Black,Female,33675
+Public Works & Engineering-PWE,Black,Female,36629
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Police Department-HPD,White,Male,61755
+Houston Fire Department (HFD),White,Male,70181
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Fire Department (HFD),Hispanic,Male,70181
+Health & Human Services,Asian,Male,54288
+Houston Fire Department (HFD),White,Male,62540
+Public Works & Engineering-PWE,White,Male,53123
+Houston Police Department-HPD,White,Male,104455
+Public Works & Engineering-PWE,White,Male,83734
+Houston Airport System (HAS),Hispanic,Male,42099
+Houston Fire Department (HFD),White,Male,40170
+Houston Fire Department (HFD),White,Male,70181
+Parks & Recreation,White,Male,26125
+Houston Fire Department (HFD),White,Male,55437
+Public Works & Engineering-PWE,Black,Male,52832
+Parks & Recreation,Hispanic,Female,54607
+Houston Police Department-HPD,Hispanic,Male,61643
+Public Works & Engineering-PWE,White,Female,53061
+Public Works & Engineering-PWE,Black,Male,45926
+Houston Police Department-HPD,Black,Female,60347
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Male,66614
+Public Works & Engineering-PWE,White,Male,57928
+Houston Police Department-HPD,White,Male,42000
+Houston Fire Department (HFD),White,Male,63166
+Houston Fire Department (HFD),Black,Male,57815
+Houston Police Department-HPD,White,Female,55411
+Houston Police Department-HPD,Black,Male,55461
+Public Works & Engineering-PWE,Black,Male,31450
+Public Works & Engineering-PWE,White,Male,54600
+Public Works & Engineering-PWE,Black,Male,33987
+Houston Police Department-HPD,White,Male,45344
+Public Works & Engineering-PWE,White,Male,51584
+Houston Police Department-HPD,Black,Female,37336
+Houston Police Department-HPD,White,Male,66614
+Houston Fire Department (HFD),White,Male,52644
+Public Works & Engineering-PWE,Black,Female,39270
+Parks & Recreation,Black,Male,38147
+Houston Fire Department (HFD),White,Male,62540
+Houston Fire Department (HFD),White,Male,57815
+Houston Police Department-HPD,Hispanic,Male,60347
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),White,Male,78355
+Public Works & Engineering-PWE,White,Male,52582
+Houston Fire Department (HFD),Hispanic,Male,52644
+Houston Airport System (HAS),Hispanic,Female,96157
+Public Works & Engineering-PWE,White,Male,91063
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Hispanic,Male,47650
+Health & Human Services,Black,Female,36941
+Public Works & Engineering-PWE,Black,Female,45240
+Houston Airport System (HAS),Black,Female,37752
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Airport System (HAS),White,Male,103427
+Parks & Recreation,Black,Female,30347
+Public Works & Engineering-PWE,Black,Male,43326
+Public Works & Engineering-PWE,Hispanic,Male,44658
+Houston Fire Department (HFD),Black,Female,33405
+Houston Fire Department (HFD),White,Male,66523
+Public Works & Engineering-PWE,Black,Male,53373
+Public Works & Engineering-PWE,Black,Male,31450
+Houston Fire Department (HFD),White,Male,62540
+Houston Police Department-HPD,Black,Male,81239
+Public Works & Engineering-PWE,Black,Male,34320
+Houston Police Department-HPD,White,Female,77076
+Houston Airport System (HAS),Black,Female,33613
+Houston Police Department-HPD,Hispanic,Female,47650
+Houston Police Department-HPD,Asian,Male,47650
+Public Works & Engineering-PWE,Black,Male,26125
+Parks & Recreation,White,Male,29682
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Police Department-HPD,Black,Male,37024
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Fire Department (HFD),White,Male,63166
+Houston Police Department-HPD,Hispanic,Male,81239
+Public Works & Engineering-PWE,Black,Male,73193
+Houston Fire Department (HFD),Black,Male,51194
+Public Works & Engineering-PWE,Black,Male,30139
+Houston Police Department-HPD,Black,Male,61643
+Houston Fire Department (HFD),White,Male,48190
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,White,Male,66614
+Houston Airport System (HAS),Hispanic,Male,35485
+Houston Fire Department (HFD),Hispanic,Male,40170
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,White,Female,66614
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Fire Department (HFD),Hispanic,Male,74270
+Public Works & Engineering-PWE,Asian,Male,45074
+Public Works & Engineering-PWE,Black,Male,97581
+Houston Fire Department (HFD),Hispanic,Male,52644
+Public Works & Engineering-PWE,Black,Male,36130
+Public Works & Engineering-PWE,Black,Female,29931
+Houston Police Department-HPD,White,Male,81239
+Health & Human Services,Black,Female,36358
+Houston Fire Department (HFD),Black,Male,70181
+Parks & Recreation,Black,Female,26125
+Public Works & Engineering-PWE,Hispanic,Male,31158
+Houston Police Department-HPD,Hispanic,Male,74511
+Houston Police Department-HPD,White,Male,81239
+Houston Fire Department (HFD),Black,Male,70181
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Asian,Male,55461
+Public Works & Engineering-PWE,Black,Female,29016
+Houston Fire Department (HFD),Hispanic,Male,43528
+Public Works & Engineering-PWE,Black,Male,26125
+Houston Fire Department (HFD),White,Male,63166
+Public Works & Engineering-PWE,Black,Male,49150
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Black,Female,35318
+Houston Police Department-HPD,Black,Female,63165
+Public Works & Engineering-PWE,Black,Female,70717
+Houston Police Department-HPD,Hispanic,Male,47650
+Houston Fire Department (HFD),White,Female,55437
+Health & Human Services,Black,Female,66178
+Houston Fire Department (HFD),Hispanic,Male,70181
+Houston Police Department-HPD,White,Male,66614
+Public Works & Engineering-PWE,Hispanic,Female,52562
+Houston Fire Department (HFD),White,Male,52644
+Houston Police Department-HPD,White,Male,104455
+Houston Police Department-HPD,Black,Male,61643
+Public Works & Engineering-PWE,Black,Female,32178
+Houston Police Department-HPD,White,Male,72332
+Houston Police Department-HPD,White,Male,91181
+Houston Police Department-HPD,Black,Male,55461
+Houston Police Department-HPD,White,Male,55461
+Houston Airport System (HAS),Hispanic,Male,40435
+Houston Fire Department (HFD),White,Male,40170
+Houston Fire Department (HFD),Black,Male,48190
+Houston Fire Department (HFD),White,Male,89590
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Hispanic,Male,61643
+Public Works & Engineering-PWE,Asian,Male,114671
+Public Works & Engineering-PWE,Black,Male,43264
+Houston Police Department-HPD,Hispanic,Male,60347
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,49608
+Houston Airport System (HAS),Asian,Male,32323
+Houston Fire Department (HFD),White,Male,62540
+Health & Human Services,Black,Female,83466
+Public Works & Engineering-PWE,Black,Female,47008
+Houston Fire Department (HFD),Hispanic,Male,28024
+Houston Police Department-HPD,Hispanic,Male,66614
+Health & Human Services,Hispanic,Female,26125
+Public Works & Engineering-PWE,Asian,Male,47840
+Health & Human Services,Black,Male,55806
+Houston Airport System (HAS),Hispanic,Male,76097
+Health & Human Services,Asian,Female,48672
+Public Works & Engineering-PWE,Hispanic,Male,36629
+Houston Police Department-HPD,Black,Male,43443
+Public Works & Engineering-PWE,Hispanic,Male,28766
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,Hispanic,Male,55461
+Public Works & Engineering-PWE,Black,Female,38750
+Houston Fire Department (HFD),Hispanic,Male,66523
+Houston Fire Department (HFD),Black,Male,63166
+Public Works & Engineering-PWE,Black,Female,27352
+Public Works & Engineering-PWE,Hispanic,Male,57200
+Houston Fire Department (HFD),Hispanic,Male,70181
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Fire Department (HFD),Hispanic,Male,61226
+Public Works & Engineering-PWE,Black,Male,29557
+Houston Fire Department (HFD),White,Male,78355
+Houston Airport System (HAS),Hispanic,Male,115416
+Houston Police Department-HPD,Black,Female,43722
+Houston Fire Department (HFD),White,Male,61226
+Public Works & Engineering-PWE,Black,Male,39666
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Airport System (HAS),Black,Male,29453
+Health & Human Services,Black,Female,68432
+Health & Human Services,Black,Male,47050
+Houston Fire Department (HFD),Hispanic,Male,61921
+Houston Police Department-HPD,Black,Male,66614
+Houston Airport System (HAS),Hispanic,Female,32906
+Houston Police Department-HPD,White,Female,30888
+Public Works & Engineering-PWE,Black,Male,31158
+Houston Police Department-HPD,Hispanic,Male,66614
+Public Works & Engineering-PWE,White,Male,53123
+Houston Fire Department (HFD),Black,Male,61226
+Houston Fire Department (HFD),Black,Male,62540
+Parks & Recreation,White,Male,29307
+Health & Human Services,Hispanic,Female,27310
+Public Works & Engineering-PWE,White,Female,83036
+Houston Police Department-HPD,Hispanic,Male,81239
+Houston Fire Department (HFD),Hispanic,Male,63166
+Parks & Recreation,Hispanic,Male,47466
+Houston Police Department-HPD,Black,Female,37211
+Health & Human Services,Native American,Female,58855
+Houston Fire Department (HFD),Black,Female,63166
+Houston Fire Department (HFD),White,Male,61921
+Health & Human Services,Black,Female,38563
+Houston Police Department-HPD,White,Male,81239
+Public Works & Engineering-PWE,Black,Male,83734
+Houston Fire Department (HFD),Hispanic,Male,55437
+Houston Fire Department (HFD),White,Male,48190
+Houston Fire Department (HFD),White,Male,66523
+Houston Airport System (HAS),White,Male,39707
+Houston Airport System (HAS),Black,Male,75462
+Houston Fire Department (HFD),White,Male,55437
+Public Works & Engineering-PWE,Asian,Male,28995
+Houston Police Department-HPD,Black,Male,42000
+Public Works & Engineering-PWE,Hispanic,Male,39666
+Health & Human Services,Black,Female,87222
+Houston Police Department-HPD,Black,Female,47650
+Houston Police Department-HPD,Black,Female,35838
+Houston Airport System (HAS),Black,Male,26125
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Hispanic,Male,55461
+Houston Police Department-HPD,Black,Male,81239
+Houston Airport System (HAS),Black,Female,26125
+Houston Police Department-HPD,Hispanic,Female,34216
+Houston Fire Department (HFD),White,Male,66523
+Houston Police Department-HPD,Black,Female,33550
+Health & Human Services,Asian,Female,44366
+Houston Police Department-HPD,White,Male,66614
+Houston Police Department-HPD,Black,Female,26250
+Houston Police Department-HPD,White,Male,55461
+Public Works & Engineering-PWE,Black,Male,51584
+Houston Police Department-HPD,Black,Female,66614
+Public Works & Engineering-PWE,Black,Male,41267
+Houston Airport System (HAS),White,Female,128606
+Public Works & Engineering-PWE,Black,Female,93089
+Houston Airport System (HAS),Hispanic,Male,43826
+Public Works & Engineering-PWE,Black,Male,56489
+Parks & Recreation,Hispanic,Female,41330
+Houston Police Department-HPD,Black,Female,47650
+Public Works & Engineering-PWE,White,Female,39666
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Hispanic,Male,62481
+Houston Police Department-HPD,White,Male,55461
+Houston Police Department-HPD,Black,Female,37461
+Public Works & Engineering-PWE,Black,Male,37606
+Public Works & Engineering-PWE,Hispanic,Male,36962
+Houston Police Department-HPD,White,Female,66614
+Houston Fire Department (HFD),Black,Female,52000
+Public Works & Engineering-PWE,Black,Male,43264
+Houston Police Department-HPD,Asian,Male,55461
+Houston Police Department-HPD,Black,Female,47996
+Houston Police Department-HPD,White,Male,78286
+Health & Human Services,White,Female,65338
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Police Department-HPD,Hispanic,Female,45279
+Houston Fire Department (HFD),White,Male,63166
+Public Works & Engineering-PWE,White,Male,77325
+Houston Police Department-HPD,Black,Male,66614
+Houston Airport System (HAS),Asian,Female,32157
+Houston Police Department-HPD,White,Male,45279
+Houston Police Department-HPD,Black,Female,27914
+Houston Police Department-HPD,Hispanic,Male,66614
+Houston Fire Department (HFD),Black,Male,70181
+Houston Fire Department (HFD),Black,Male,55437
+Houston Fire Department (HFD),White,Male,61921
+Houston Police Department-HPD,White,Male,77076
+Public Works & Engineering-PWE,Black,Male,37211
+Parks & Recreation,Black,Female,30347
+Houston Police Department-HPD,Hispanic,Female,44429
+Houston Airport System (HAS),Hispanic,Male,29286
+Houston Police Department-HPD,White,Male,81239
+Houston Police Department-HPD,Black,Male,104455
+Houston Police Department-HPD,White,Male,43443
+Houston Fire Department (HFD),Black,Male,66523
+Houston Police Department-HPD,White,Male,43443
+Houston Police Department-HPD,Asian,Male,55461
+Houston Fire Department (HFD),Hispanic,Male,51194
