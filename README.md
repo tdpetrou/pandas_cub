@@ -2,10 +2,10 @@
 
 This repository contains a detailed project that teaches you how to build your own Python data analysis library.
 
-## Target Audience
+## Target Student
 
 This project is targeted towards those who understand the fundamentals
-of Python and wish to build their own DataFrame class from scratch.
+of Python and wish to build their own data analysis library similar to Pandas from scratch.
 
 ## Pre-Requisites
 
@@ -71,21 +71,14 @@ You should see `pandas_cub` in parentheses preceding your command prompt. You ca
 
 You should only use the `pandas_cub` environment to develop this library. When you are done with this session, run the command `conda deactivate` to return to your default conda environment.
 
-## Starting Pandas Cub
-
-You will be editing a single file for this project - the `__init__.py` file
-found in the `pandas_cub` directory. Each section of the tutorial is numbered below.
-
-A completed version of the project can be found in the `pandas_cub_final` directory.
-
 ## Test-Driven Development with pytest
 
 The completion of each part of this project is predicated upon passing the
-tests written in the `test_dataframe.py` module inside the tests folder.
+tests written in the `test_dataframe.py` module inside the `tests` folder.
 
 We will rely upon the [pytest library][1] to test our code. We installed it along with a command line tool with the same name during our environment creation.
 
-[Test-Driven the development][3] is a popular approach for development. It involves writing tests first and then writing code that passes the tests.
+[Test-Driven development][3] is a popular approach for development. It involves writing tests first and then writing code that passes the tests.
 
 ### Testing
 
@@ -95,9 +88,13 @@ All the tests are located in the `test_dataframe.py` module found in the `tests`
 
 If you run this command right now, all the tests will fail. As you complete the steps in the project, you will start passing the tests. Once all the tests are passed, the project will be complete.
 
+### Automated test discovery
+
 The pytest library has [rules for automated test discovery][4]. It isn't necessary to supply the path to the test module if your directories and module names follow those rules. You can simply run `pytest` to run all the tests in this library.
 
-If you open up one of the test module `test_dataframe.py`, you will see the tests grouped under different classes. Each method of the classes represents exactly one test. To run all the tests within a single class, append two columns followed by the class name. The following is a concrete example:
+### Running specific tests
+
+If you open up one of the test module `test_dataframe.py`, you will see the tests grouped under different classes. Each method of the classes represents exactly one test. To run all the tests within a single class, append two colons followed by the class name. The following is a concrete example:
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation`
 
@@ -105,21 +102,42 @@ It is possible to run just a single test by appending two more colons followed b
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`
 
-### Manually test in the Test Notebook
-
-During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing.
-
 ## The answer is in pandas_cub_final
 
 The `pandas_cub_final` directory contains the completed `__init__.py` file that contains the code that passes all the tests. Only look at this file after you have attempted to complete the section on your own.
 
-## The `__init__.py` file
+## Manually test in a Jupyter Notebook
 
-Open up the `__init__.py` file in the `pandas_cub` directory. This has the skeleton code of the entire project. You won't be defining your own classes or methods, but you will be filling out the bodies
+During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing. Within the `pandas_cub` environment, launch a Jupyter Notebook and open up the `Test Notebook.ipynb` notebook.
+
+### Autoreloading
+
+The first cell loads a notebook magic extension which automatically reloads code from files that have changed. Normally, we would have to restart the kernel if we made changes to our code to see it reflect its current state. This magic command saves us from doing this.
+
+### Importing pandas_cub
+
+This notebook is at the same level as the inner `pandas_cub` directory. This means that we can import `pandas_cub` directly into our namespace without changing directories. Technically, `pandas_cub` is a Python **package**, which is a directory containing a `__init__.py` file. It is this initialization file that gets run when we write `import pandas_cub as pdc`.
+
+`pandas_cub_final` is also imported so you can see how the completed object is supposed to behave.
+
+### A test DataFrame
+
+A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pandas`. The output for all three DataFrames are produced in the notebook. There currently is no nice representation for `pandas_cub` DataFrames.
+
+## Starting Pandas Cub
+
+You will be editing a single file for this project - the `__init__.py` file
+found in the `pandas_cub` directory. It contains skeleton code for the entire project. You won't be defining your own classes or methods, but you will be filling out the method bodies.
+
+Open up this file now. You will see many incomplete methods that have the keyword `pass` as their last line. Some methods have code with a comment that says 'your code here'. These are the methods that you will be editing. Other methods are complete and won't need editing.
+
+### How to complete the project
+
+Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered section below. Edit the method indicated in each section and then run the test. Once you pass that test, move on to the next section.
 
 ### 1. DataFrame of NumPy arrays
 
-Our DataFrame is constructed with a single parameter, `values`, a
+Our DataFrame is constructed with a single input parameter, `data`, a
 dictionary of column names as strings mapped to one-dimensional
 NumPy arrays. The DataFrame will hold four different data types
 with their single character **kind**:
