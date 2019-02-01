@@ -18,15 +18,11 @@ df = pdc.DataFrame({'a': a, 'b': b, 'c': c, 'd': d, 'e': e})
 class TestDataFrameCreation:
 
     def test_df_mix(self):
-        assert_array_equal(df._values['a'], a.astype('O'))
-        assert_array_equal(df._values['b'], b)
-        assert_array_equal(df._values['c'], c)
-        assert_array_equal(df._values['d'], d)
-        assert_array_equal(df._values['e'], e)
-
-    def test_column_info(self,):
-        assert df._column_info == {'a': 'O', 'b': 'O', 'c': 'f',
-                                   'd': 'b', 'e': 'i'}
+        assert_array_equal(df._data['a'], a.astype('O'))
+        assert_array_equal(df._data['b'], b)
+        assert_array_equal(df._data['c'], c)
+        assert_array_equal(df._data['d'], d)
+        assert_array_equal(df._data['e'], e)
 
     def test_len(self):
         assert len(df) == 3
@@ -62,7 +58,7 @@ class TestDataFrameCreation:
 class TestSelection:
 
     def test_one_column(self):
-        assert_array_equal(df['a'].values, a)
+        assert_array_equal(df['a'].values[:, 0], a)
 
     def test_multiple_columns(self):
         cols = ['a', 'c']
@@ -256,9 +252,9 @@ class TestOtherMethods:
 
     def test_unique(self):
         df_result = df4.unique()
-        assert_array_equal(df_result[0].values, np.unique(a4))
-        assert_array_equal(df_result[1].values, np.unique(b4))
-        assert_array_equal(df_result[2].values, np.unique(c4))
+        assert_array_equal(df_result[0].values[:, 0], np.unique(a4))
+        assert_array_equal(df_result[1].values[:, 0], np.unique(b4))
+        assert_array_equal(df_result[2].values[:, 0], np.unique(c4))
 
     def test_nunique(self):
         df_result = df4.nunique()
@@ -325,14 +321,14 @@ class TestNonAgg:
 
     def test_diff(self):
         df_result = df42.diff(1)
-        df_answer = pdc.DataFrame({'a': np.array([16, -2]),
-                                   'b': np.array([1.7, -11.1])})
+        df_answer = pdc.DataFrame({'a': np.array([np.nan, 16, -2]),
+                                   'b': np.array([np.nan, 1.7, -11.1])})
         assert_df_equals(df_result, df_answer)
 
     def test_pct_change(self):
         df_result = df42.pct_change(1)
-        df_answer = pdc.DataFrame({'a': np.array([16 / -11, -2 / 5]),
-                                   'b': np.array([1.7 / 3.4, -11.1 / 5.1])})
+        df_answer = pdc.DataFrame({'a': np.array([np.nan, 16 / -11, -2 / 5]),
+                                   'b': np.array([np.nan, 1.7 / 3.4, -11.1 / 5.1])})
         assert_df_equals(df_result, df_answer)
 
 
@@ -488,7 +484,7 @@ class TestGrouping:
                                    'count': np.array([5, 3])})
         assert_df_equals(df_results[0], df_answer)
 
-        df_answer = pdc.DataFrame({'b': np.array(['A', 'B'], dtype=object),
+        df_answer = pdc.DataFrame({'b': np.array(['B', 'A'], dtype=object),
                                    'count': np.array([4, 4])})
         assert_df_equals(df_results[1], df_answer)
 

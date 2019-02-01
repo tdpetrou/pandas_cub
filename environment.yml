@@ -1,0 +1,6 @@
+name: pandas_cub
+dependencies:
+- python=3.6
+- pandas
+- jupyter
+- pytest

@@ -1,5 +1,3 @@
-import operator
-from collections import Counter
 import numpy as np
 
 __version__ = '0.0.1'
@@ -10,11 +8,10 @@ DTYPE_NAME = {'O': 'string', 'i': 'int', 'f': 'float', 'b': 'bool'}
 
 class DataFrame:
 
-    def __init__(self, values):
+    def __init__(self, data):
         """
         A DataFrame holds two dimensional heterogeneous data. Create it by
         passing a dictionary of NumPy arrays to the values parameter
-
         Parameters
         ----------
         values: dict
@@ -22,35 +19,34 @@ class DataFrame:
             become the column name.
         """
 
-        # Check for correct input types
-        if not isinstance(values, dict):
-            raise TypeError("`data` must be a dictionary of 1-D NumPy arrays")
-        else:
-            for col_name, value in values.items():
-                if not isinstance(col_name, str):
-                    raise TypeError('All column names must be a string')
-                if not isinstance(value, np.ndarray):
-                    raise TypeError('All values must be a 1-D NumPy array')
-                else:
-                    if value.ndim != 1:
-                        raise ValueError('Values must be a 1-D NumPy array')
+        # _data will reference our data
+        self._data = data
 
-        # Holds the data
-        self._values = {}
+        # check for correct input types
+        self._check_input_types()
 
-        # maps the column name to its data type kind
-        # b - bool, i - int, f - float, O - object
-        self._column_info = {}
-        # code here
+        # check for equal array lengths
+        self._check_array_lengths()
 
-        # Allow for special methods for strings - ignore these for now
+        # convert unicode arrays to object
+        self._convert_unicode_to_object()
+
+        # Allow for special methods for strings
         self.str = StringMethods(self)
         self._add_docs()
+
+    def _check_input_types(self):
+        pass
+
+    def _check_array_lengths(self):
+        pass
+
+    def _convert_unicode_to_object(self):
+        pass
 
     def __len__(self):
         """
         Make the builtin len function work with our dataframe
-
         Returns
         -------
         int: the number of rows in the dataframe
@@ -63,7 +59,6 @@ class DataFrame:
         _values holds column names mapped to arrays
         take advantage of internal ordering of dictionaries to
         put columns in correct order in list. Only works in 3.6+
-
         Returns
         -------
         list of column names
@@ -75,37 +70,18 @@ class DataFrame:
         """
         Must supply a list of columns as strings the same length
         as the current DataFrame
-
         Parameters
         ----------
         columns: list of strings
-
         Returns
         -------
         Nones
         """
-        if not isinstance(columns, list):
-            raise TypeError('New columns must be a list')
-        if len(columns) != len(self.columns):
-            raise ValueError(f'New column length must be {len(self.columns)}')
-        else:
-            for col in columns:
-                if not isinstance(col, str):
-                    raise TypeError('New column names must be strings')
-        if len(columns) != len(set(columns)):
-            raise ValueError('Column names must be unique')
-
-        new_values = {}
-        new_column_info = {}
-        # code here
-
-        self._values = new_values
-        self._column_info = new_column_info
+        pass
 
     @property
     def shape(self):
         """
-
         Returns
         -------
         two-item tuple of number of rows and columns
@@ -215,49 +191,37 @@ class DataFrame:
         A two-column DataFrame of column names in a column and
         their data type in the other
         """
-        # pass
+        pass
 
     def __getitem__(self, item):
         """
         Use the brackets operator to simultaneously select rows and columns
-
         A single string selects one column -> df['colname']
         A list of strings selects multiple columns -> df[['colname1', 'colname2']]
         A one column DataFrame of booleans that filters rows -> df[df_bool]
-
         Row and column selection simultaneously -> df[rs, cs]
             where cs and rs can be integers, slices, or a list of integers
             rs can also be a one-column boolean DataFrame
-
         Returns
         -------
         A subset of the original DataFrame
         """
         pass
 
-    # def _ipython_key_completions_(self):
-    #     # allows for tab completion when doing df['c
-    #     return self.columns
+    def _ipython_key_completions_(self):
+        # allows for tab completion when doing df['c
+        pass
 
     def __setitem__(self, key, value):
         # adds a new column or a overwrites an old column
-        if not isinstance(key, str):
-            raise NotImplementedError('Only able to set a single column')
-        else:
-            if not isinstance(value, np.ndarray) or value.ndim != 1:
-                raise TypeError('Can only set with a 1D NumPy array')
-            elif len(value) != len(self):
-                raise ValueError('Setting array must be same length as DataFrame')
-            # code here
+        pass
 
     def head(self, n=5):
         """
         Return the first n rows
-
         Parameters
         ----------
         n: int
-
         Returns
         -------
         DataFrame
@@ -267,11 +231,9 @@ class DataFrame:
     def tail(self, n=5):
         """
         Return the last n rows
-
         Parameters
         ----------
         n: int
-
         Returns
         -------
         DataFrame
@@ -317,64 +279,45 @@ class DataFrame:
         """
         Generic aggregation function that applies the
         aggregation to each column
-
         Parameters
         ----------
         aggfunc: str of the aggregation function name in NumPy
-
         Returns
         -------
         A DataFrame
         """
-        new_values = {}
-        func = getattr(np, aggfunc)
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def isna(self):
         """
         Determines whether each value in the DataFrame is missing or not
-
         Returns
         -------
         A DataFrame of booleans the same size as the calling DataFrame
         """
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def count(self):
         """
         Counts the number of non-missing values per column
-
         Returns
         -------
         A DataFrame
         """
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def unique(self):
         """
         Finds the unique values of each column
-
         Returns
         -------
         A list of one-column DataFrames
         """
-        dfs = []
-        # code here
-
-        return dfs
+        pass
 
     def nunique(self):
         """
         Find the number of unique values in each column
-
         Returns
         -------
         A DataFrame
@@ -384,70 +327,46 @@ class DataFrame:
     def value_counts(self, normalize=False):
         """
         Returns the frequency of each unique value for each column
-
         Parameters
         ----------
         normalize: bool
             If True, returns the relative frequencies (percent)
-
         Returns
         -------
         A list of DataFrames or a single DataFrame if one column
         """
-        dfs = []
-        # code here
-
-        return dfs
+        pass
 
     def rename(self, columns):
         """
         Renames columns in the DataFrame
-
         Parameters
         ----------
         columns: dict
             A dictionary mapping the old column name to the new column name
-
         Returns
         -------
         A DataFrame
-
         """
-        if not isinstance(columns, dict):
-            raise TypeError('`columns` must be a dictionary')
-
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def drop(self, columns):
         """
         Drops one or more columns from a DataFrame
-
         Parameters
         ----------
         columns: str or list of strings
-
         Returns
         -------
         A DataFrame
         """
-        if isinstance(columns, str):
-            columns = [columns]
-        elif not isinstance(columns, list):
-            raise TypeError('`columns` must be either a string or a list')
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     ### non-aggregation methods
 
     def abs(self):
         """
         Takes the absolute value of each value in the DataFrame
-
         Returns
         -------
         A DataFrame
@@ -457,18 +376,15 @@ class DataFrame:
     def cummin(self):
         """
         Finds cumulative minimum by column
-
         Returns
         -------
         A DataFrame
         """
-
         return self._non_agg('minimum.accumulate')
 
     def cummax(self):
         """
         Finds cumulative maximum by column
-
         Returns
         -------
         A DataFrame
@@ -478,7 +394,6 @@ class DataFrame:
     def cumsum(self):
         """
         Finds cumulative sum by column
-
         Returns
         -------
         A DataFrame
@@ -489,12 +404,10 @@ class DataFrame:
         """
         All values less than lower will be set to lower
         All values greater than upper will be set to upper
-
         Parameters
         ----------
         lower: number or None
         upper: number or None
-
         Returns
         -------
         A DataFrame
@@ -504,7 +417,6 @@ class DataFrame:
     def round(self, n):
         """
         Rounds values to the nearest n decimals
-
         Returns
         -------
         A DataFrame
@@ -514,7 +426,6 @@ class DataFrame:
     def copy(self):
         """
         Copies the DataFrame
-
         Returns
         -------
         A DataFrame
@@ -525,18 +436,20 @@ class DataFrame:
         """
         Generic non-aggregation function that applies
         each
-
         Parameters
         ----------
         funcname: str of NumPy name
         args: extra arguments for certain functions
-
         Returns
         -------
         A DataFrame
         """
         new_values = {}
-        func = operator.attrgetter(funcname)(np)
+        try:
+            func = getattr(np, funcname)
+        except AttributeError:
+            module, attr = funcname.split('.')
+            func = getattr(getattr(np, module), attr)
         # code here
 
         return DataFrame(new_values)
@@ -546,38 +459,28 @@ class DataFrame:
         Take the difference between the current value and
         the nth value below it. The top n rows of the DataFrame
         are not returned
-
         Parameters
         ----------
         n: int
-
         Returns
         -------
         A DataFrame
         """
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def pct_change(self, n):
         """
         Take the percentage difference between the current value and
         the nth value below it. The top n rows of the DataFrame
         are not returned
-
         Parameters
         ----------
         n: int
-
         Returns
         -------
         A DataFrame
         """
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     #### ARITHMETIC AND COMPARISON OPERATORS ####
 
@@ -638,49 +541,32 @@ class DataFrame:
     def _oper(self, op, other):
         """
         Generic operator function
-
         Parameters
         ----------
         op: str name of special method
         other: the other object being operated on
-
         Returns
         -------
         A DataFrame
         """
-        if isinstance(other, DataFrame):
-            other = other.values
-        new_values = {}
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def sort_values(self, by, asc=True):
         """
         Sort the DataFrame by one or more values
-
         Parameters
         ----------
         by: str or list of column names
         asc: boolean of sorting order
-
         Returns
         -------
         A DataFrame
         """
-        if isinstance(by, str):
-            pass
-        elif isinstance(by, list):
-            pass
-        else:
-            raise TypeError('`by` must be a str or a list')
-
         pass
 
     def sample(self, n=None, frac=None, replace=False, seed=None):
         """
         Randomly samples rows the DataFrame
-
         Parameters
         ----------
         n: int
@@ -689,19 +575,15 @@ class DataFrame:
             Proportion of the data to sample
         replace: bool
             Whether or not to sample with replacement
-
         Returns
         -------
         A DataFrame
         """
-        if seed:
-            np.random.seed(seed)
-        # code here
+        pass
 
     def pivot_table(self, rows=None, columns=None, values=None, aggfunc=None):
         """
         Grouping
-
         Parameters
         ----------
         rows: str of column name to group by
@@ -711,7 +593,6 @@ class DataFrame:
         values: str of column name to aggregate
             Required
         aggfunc: str of aggregation function
-
         Returns
         -------
         A DataFrame
@@ -724,7 +605,6 @@ class DataFrame:
         agg_doc = \
         """
         Find the {} of each column
-
         Returns
         -------
         DataFrame
@@ -821,10 +701,7 @@ class StringMethods:
         return self._str_method(col, encoding, errors)
 
     def _str_method(self, method, col, *args):
-        old_values = self._df._values[col]
-        new_values = []
-        # code here
-        return DataFrame({col: np.array(new_values, dtype='O')})
+        pass
 
 
 def read_csv(fn):

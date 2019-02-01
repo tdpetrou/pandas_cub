@@ -1,4 +1,3 @@
-import operator
 from collections import Counter
 import numpy as np
 
@@ -10,9 +9,9 @@ DTYPE_NAME = {'O': 'string', 'i': 'int', 'f': 'float', 'b': 'bool'}
 
 class DataFrame:
 
-    def __init__(self, values):
+    def __init__(self, data):
         """
-        A DataFrame holds two dimensional heterogeneous data. Create it by
+        A DataFrame holds two-dimensional heterogeneous data. Create it by
         passing a dictionary of NumPy arrays to the values parameter
 
         Parameters
@@ -22,43 +21,46 @@ class DataFrame:
             become the column name.
         """
 
-        # Check for correct input types
-        if not isinstance(values, dict):
-            raise TypeError("`data` must be a dictionary of 1-D NumPy arrays")
-        else:
-            for col_name, value in values.items():
-                if not isinstance(col_name, str):
-                    raise TypeError('All column names must be a string')
-                if not isinstance(value, np.ndarray):
-                    raise TypeError('All values must be a 1-D NumPy array')
-                else:
-                    if value.ndim != 1:
-                        raise ValueError('Values must be a 1-D NumPy array')
-
         # Holds the data
-        self._values = {}
+        self._data = data
 
-        # maps the column name to its data type kind
-        # b - bool, i - int, f - float, O - object
-        self._column_info = {}
+        # check for correct input types
+        self._check_input_types()
 
-        # convert unicode array to object
-        for i, (col_name, col_values) in enumerate(values.items()):
-            if i == 0:
-                length = len(col_values)
-            if length != len(col_values):
-                raise ValueError('All values must be the same length')
+        # check for equal array lengths
+        self._check_array_lengths()
 
-            if col_values.dtype.kind == 'U':
-                col_values = col_values.astype('O')
-            self._values[col_name] = col_values
-
-            # map the column name to its single char 'kind'
-            self._column_info[col_name] = col_values.dtype.kind
+        # convert unicode arrays to object
+        self._convert_unicode_to_object()
 
         # Allow for special methods for strings
         self.str = StringMethods(self)
         self._add_docs()
+
+    def _check_input_types(self):
+        if not isinstance(self._data, dict):
+            raise TypeError("`data` must be a dictionary of 1-D NumPy arrays")
+        else:
+            for col_name, values in self._data.items():
+                if not isinstance(col_name, str):
+                    raise TypeError('All column names must be a string')
+                if not isinstance(values, np.ndarray):
+                    raise TypeError('All values must be a 1-D NumPy array')
+                else:
+                    if values.ndim != 1:
+                        raise ValueError('Each value must be a 1-D NumPy array')
+    
+    def _check_array_lengths(self):
+        for i, values in enumerate(self._data.values()):
+            if i == 0:
+                length = len(values)
+            if length != len(values):
+                raise ValueError('All values must be the same length')
+
+    def _convert_unicode_to_object(self):
+        for col_name, values in self._data.items():
+            if values.dtype.kind == 'U':
+                self._data[col_name] = values.astype('O')
 
     def __len__(self):
         """
@@ -68,13 +70,12 @@ class DataFrame:
         -------
         int: the number of rows in the dataframe
         """
-        for _, values in self._values.items():
-            return len(values)
+        return len(next(iter(self._data.values())))
 
     @property
     def columns(self):
         """
-        _values holds column names mapped to arrays
+        _data holds column names mapped to arrays
         take advantage of internal ordering of dictionaries to
         put columns in correct order in list. Only works in 3.6+
 
@@ -82,7 +83,7 @@ class DataFrame:
         -------
         list of column names
         """
-        return list(self._values)
+        return list(self._data)
 
     @columns.setter
     def columns(self, columns):
@@ -109,15 +110,12 @@ class DataFrame:
         if len(columns) != len(set(columns)):
             raise ValueError('Column names must be unique')
 
-        new_values = {}
-        new_column_info = {}
+        new_data = {}
         # code here
-        for col, col_values in zip(columns, self._values.values()):
-            new_values[col] = col_values
-            new_column_info[col] = col_values.dtype.kind
+        for col, values in zip(columns, self._data.values()):
+            new_data[col] = values
 
-        self._values = new_values
-        self._column_info = new_column_info
+        self._data = new_data
 
     @property
     def shape(self):
@@ -177,12 +175,13 @@ class DataFrame:
 
         for i in range(num_head):
             html += f'<tr><td><strong>{i}</strong></td>'
-            for j, (col, values) in enumerate(self._values.items()):
-                if self._column_info[col] == 'f':
+            for col, values in self._data.items():
+                kind = values.dtype.kind
+                if kind == 'f':
                     html += f'<td>{values[i]:10.3f}</td>'
-                elif self._column_info[col] == 'b':
+                elif kind == 'b':
                     html += f'<td>{values[i]}</td>'
-                elif self._column_info[col] == 'O':
+                elif kind == 'O':
                     v = values[i]
                     if v is None:
                         v = 'None'
@@ -198,12 +197,13 @@ class DataFrame:
             html += '</tr>'
             for i in range(-num_tail, 0):
                 html += f'<tr><td><strong>{len(self) + i}</strong></td>'
-                for j, (col, values) in enumerate(self._values.items()):
-                    if self._column_info[col] == 'f':
+                for col, values in self._data.items():
+                    kind = values.dtype.kind
+                    if kind == 'f':
                         html += f'<td>{values[i]:10.3f}</td>'
-                    elif self._column_info[col] == 'b':
+                    elif kind == 'b':
                         html += f'<td>{values[i]}</td>'
-                    elif self._column_info[col] == 'O':
+                    elif kind == 'O':
                         v = values[i]
                         if v is None:
                             v = 'None'
@@ -220,12 +220,9 @@ class DataFrame:
         """
         Returns
         -------
-        A single 2D NumPy array (or 1D if 1 column) of the underlying data
+        A single 2D NumPy array of the underlying data
         """
-        vals = list(self._values.values())
-        if len(vals) == 1:
-            return vals[0]
-        return np.column_stack(vals)
+        return np.column_stack(self._data.values())
 
     @property
     def dtypes(self):
@@ -236,8 +233,13 @@ class DataFrame:
         their data type in the other
         """
         col_arr = np.array(self.columns)
-        dtypes = np.array([DTYPE_NAME[dtype] for dtype in self._column_info.values()])
-        return DataFrame({'Column Name': col_arr, 'Data Type': dtypes})
+        dtypes = []
+        for values in self._data.values():
+            kind = values.dtype.kind
+            dtype = DTYPE_NAME[kind]
+            dtypes.append(dtype)
+
+        return DataFrame({'Column Name': col_arr, 'Data Type': np.array(dtypes)})
 
     def __getitem__(self, item):
         """
@@ -255,25 +257,27 @@ class DataFrame:
         -------
         A subset of the original DataFrame
         """
+        # select a single column -> df['colname']
         if isinstance(item, str):
-            # select a single column -> df['colname']
-            return DataFrame({item: self._values[item]})
+            return DataFrame({item: self._data[item]})
 
+        # select multiple columns -> df[['colname1', 'colname2']]
         if isinstance(item, list):
-            # select multiple columns -> df[['colname1', 'colname2']]
-            return DataFrame({col: self._values[col] for col in item})
+            return DataFrame({col: self._data[col] for col in item})
 
+        # boolean selection
         if isinstance(item, DataFrame):
             if item.shape[1] != 1:
                 raise ValueError('Can only pass a one column DataFrame for selection')
-            elif item.values.dtype.kind != 'b':
+
+            bool_arr = next(iter(item._data.values()))
+            if bool_arr.dtype.kind != 'b':
                 raise TypeError('DataFrame must be a boolean')
 
-            new_values = {}
-            arr = item.values
-            for col, values in self._values.items():
-                new_values[col] = values[arr]
-            return DataFrame(new_values)
+            new_data = {}
+            for col, values in self._data.items():
+                new_data[col] = values[bool_arr]
+            return DataFrame(new_data)
 
         if isinstance(item, tuple):
             # simultaneous selection of rows and cols -> df[rs, cs]
@@ -287,7 +291,7 @@ class DataFrame:
             if isinstance(row_selection, int):
                 row_selection = [row_selection]
             elif isinstance(row_selection, DataFrame):
-                row_selection = row_selection.values
+                row_selection = row_selection.values[:, 0]
             elif not isinstance(row_selection, (list, slice)):
                 raise TypeError('Row selection must be either an int, slice, list, or DataFrame')
 
@@ -316,12 +320,12 @@ class DataFrame:
             else:
                 raise TypeError('Column selection must be either an int, list, slice, or string')
 
-            new_values = {}
+            new_data = {}
             for col in col_selection:
                 if col not in self.columns:
                     raise KeyError(f'Column {col} does not exist')
-                new_values[col] = self._values[col][row_selection]
-            return DataFrame(new_values)
+                new_data[col] = self._data[col][row_selection]
+            return DataFrame(new_data)
         else:
             raise TypeError('Select with either a string, a list, or a row and column '
                             'simultaneous selection')
@@ -339,8 +343,7 @@ class DataFrame:
                 raise TypeError('Can only set with a 1D NumPy array')
             elif len(value) != len(self):
                 raise ValueError('Setting array must be same length as DataFrame')
-            self._values[key] = value
-            self._column_info[key] = value.dtype.kind
+            self._data[key] = value
 
     def head(self, n=5):
         """
@@ -354,7 +357,6 @@ class DataFrame:
         -------
         DataFrame
         """
-
         return self[:n, :]
 
     def tail(self, n=5):
@@ -419,15 +421,15 @@ class DataFrame:
         -------
         A DataFrame
         """
-        new_values = {}
+        new_data = {}
         func = getattr(np, aggfunc)
-        for col, values in self._values.items():
+        for col, values in self._data.items():
             try:
                 val = func(values)
             except TypeError:
                 continue
-            new_values[col] = np.array([val])
-        return DataFrame(new_values)
+            new_data[col] = np.array([val])
+        return DataFrame(new_data)
 
     def isna(self):
         """
@@ -437,13 +439,14 @@ class DataFrame:
         -------
         A DataFrame of booleans the same size as the calling DataFrame
         """
-        new_values = {}
-        for col, values in self._values.items():
-            if self._column_info[col] == 'O':
-                new_values[col] = values == None
+        new_data = {}
+        for col, values in self._data.items():
+            kind = values.dtype.kind
+            if kind == 'O':
+                new_data[col] = values == None
             else:
-                new_values[col] = np.isnan(values)
-        return DataFrame(new_values)
+                new_data[col] = np.isnan(values)
+        return DataFrame(new_data)
 
     def count(self):
         """
@@ -453,13 +456,13 @@ class DataFrame:
         -------
         A DataFrame
         """
-        new_values = {}
+        new_data = {}
         df = self.isna()
         length = len(self)
-        for col, values in df._values.items():
+        for col, values in df._data.items():
             val = length - values.sum()
-            new_values[col] = np.array([val])
-        return DataFrame(new_values)
+            new_data[col] = np.array([val])
+        return DataFrame(new_data)
 
     def unique(self):
         """
@@ -470,9 +473,9 @@ class DataFrame:
         A list of one-column DataFrames
         """
         dfs = []
-        for col, values in self._values.items():
-            new_values = np.unique(values)
-            dfs.append(DataFrame({col: new_values}))
+        for col, values in self._data.items():
+            new_data = np.unique(values)
+            dfs.append(DataFrame({col: new_data}))
         if len(dfs) == 1:
             return dfs[0]
         return dfs
@@ -487,13 +490,13 @@ class DataFrame:
         """
         dfs = self.unique()
         if isinstance(dfs, DataFrame):
-            return DataFrame({dfs.columns[0]: np.array([len(dfs)])})
-        else:
-            new_values = {}
-            for df, col in zip(dfs, self.columns):
-                new_values[col] = np.array([len(df)])
+            dfs = [dfs]
 
-        return DataFrame(new_values)
+        new_data = {}
+        for df, col in zip(dfs, self.columns):
+            new_data[col] = np.array([len(df)])
+
+        return DataFrame(new_data)
 
     def value_counts(self, normalize=False):
         """
@@ -509,14 +512,18 @@ class DataFrame:
         A list of DataFrames or a single DataFrame if one column
         """
         dfs = []
-        for col, values in self._values.items():
+        for col, values in self._data.items():
             counts = Counter(values)
-
             keys = np.array(list(counts.keys()))
             raw_counts = np.array(list(counts.values()))
+            
+            order = np.argsort(-raw_counts)
+            keys = keys[order]
+            raw_counts = raw_counts[order]
+
             if normalize:
-                raw_counts = raw_counts / raw_counts.sum()
-            df = DataFrame({col: keys, 'count': raw_counts}).sort_values('count', asc=False)
+                raw_counts /= raw_counts.sum()
+            df = DataFrame({col: keys, 'count': raw_counts})
             dfs.append(df)
         if len(dfs) == 1:
             return dfs[0]
@@ -539,13 +546,13 @@ class DataFrame:
         if not isinstance(columns, dict):
             raise TypeError('`columns` must be a dictionary')
 
-        new_values = {}
-        for col, values in self._values.items():
+        new_data = {}
+        for col, values in self._data.items():
             if col in columns:
-                new_values[columns[col]] = values
+                new_data[columns[col]] = values
             else:
-                new_values[col] = values
-        return DataFrame(new_values)
+                new_data[col] = values
+        return DataFrame(new_data)
 
     def drop(self, columns):
         """
@@ -563,11 +570,11 @@ class DataFrame:
             columns = [columns]
         elif not isinstance(columns, list):
             raise TypeError('`columns` must be either a string or a list')
-        new_values = {}
-        for col, values in self._values.items():
+        new_data = {}
+        for col, values in self._data.items():
             if col not in columns:
-                new_values[col] = values
-        return DataFrame(new_values)
+                new_data[col] = values
+        return DataFrame(new_data)
 
     ### non-aggregation methods
 
@@ -589,7 +596,6 @@ class DataFrame:
         -------
         A DataFrame
         """
-
         return self._non_agg('minimum.accumulate')
 
     def cummax(self):
@@ -662,15 +668,19 @@ class DataFrame:
         -------
         A DataFrame
         """
-        new_values = {}
-        func = operator.attrgetter(funcname)(np)
-        for col, values in self._values.items():
+        new_data = {}
+        try:
+            func = getattr(np, funcname)
+        except AttributeError:
+            module, attr = funcname.split('.')
+            func = getattr(getattr(np, module), attr)
+        for col, values in self._data.items():
             try:
                 val = func(values, *args)
             except TypeError:
                 continue
-            new_values[col] = val
-        return DataFrame(new_values)
+            new_data[col] = val
+        return DataFrame(new_data)
 
     def diff(self, n=1):
         """
@@ -686,14 +696,19 @@ class DataFrame:
         -------
         A DataFrame
         """
-        new_values = {}
-        for col, values in self._values.items():
+        new_data = {}
+        for col, values in self._data.items():
             try:
-                val = values[n:] - values[:-n]
+                val = values - np.roll(values, n)
+                val = val.astype('float')
+                if n >= 0:
+                    val[:n] = np.NAN
+                else:
+                    val[n:] = np.NAN
             except TypeError:
                 continue
-            new_values[col] = val
-        return DataFrame(new_values)
+            new_data[col] = val
+        return DataFrame(new_data)
 
     def pct_change(self, n):
         """
@@ -709,14 +724,15 @@ class DataFrame:
         -------
         A DataFrame
         """
-        new_values = {}
-        for col, values in self._values.items():
+        df = self.diff()
+        new_data = {}
+        for col, values in df._data.items():
             try:
-                val = (values[n:] - values[:-n]) / values[:-n]
+                val = values / np.roll(self._data[col], n)
             except TypeError:
                 continue
-            new_values[col] = val
-        return DataFrame(new_values)
+            new_data[col] = val
+        return DataFrame(new_data)
 
     #### ARITHMETIC AND COMPARISON OPERATORS ####
 
@@ -789,10 +805,10 @@ class DataFrame:
         """
         if isinstance(other, DataFrame):
             other = other.values
-        new_values = {}
-        for col, values in self._values.items():
-            new_values[col] = getattr(values, op)(other)
-        return DataFrame(new_values)
+        new_data = {}
+        for col, values in self._data.items():
+            new_data[col] = getattr(values, op)(other)
+        return DataFrame(new_data)
 
     def sort_values(self, by, asc=True):
         """
@@ -808,9 +824,9 @@ class DataFrame:
         A DataFrame
         """
         if isinstance(by, str):
-            order = np.argsort(self._values[by]).tolist()
+            order = np.argsort(self._data[by]).tolist()
         elif isinstance(by, list):
-            cols = [self._values[col] for col in by[::-1]]
+            cols = [self._data[col] for col in by[::-1]]
             order = np.lexsort(cols).tolist()
         else:
             raise TypeError('`by` must be a str or a list')
@@ -840,7 +856,7 @@ class DataFrame:
             np.random.seed(seed)
         if frac is not None:
             if frac <= 0:
-                raise ValueError('frac must be positive')
+                raise ValueError('`frac` must be positive')
             n = int(frac * len(self))
         if n is not None:
             if not isinstance(n, int):
@@ -876,7 +892,7 @@ class DataFrame:
             aggfunc_name = 'size'
 
         def get_groups_one(group_values):
-            group_values = np.sort(self._values[group_values])
+            group_values = np.sort(self._data[group_values])
             diff = group_values != np.roll(group_values, 1)
 
             # always keep first value as a group
@@ -889,8 +905,8 @@ class DataFrame:
             return groups, group_labels
 
         def group_multiple(rows, columns):
-            row_values = self._values[rows]
-            col_values = self._values[columns]
+            row_values = self._data[rows]
+            col_values = self._data[columns]
             order = np.lexsort([col_values, row_values])
             values_sorted = np.column_stack([row_values[order], col_values[order]])
             diff = values_sorted != np.roll(values_sorted, 1, axis=0)
@@ -903,33 +919,33 @@ class DataFrame:
             return groups, group_labels, order
 
         if values:
-            agg_col = self._values[values]
+            agg_col = self._data[values]
         else:
             agg_col = np.empty(len(self))
 
         # group by one variable
         if columns is None:
             groups, group_labels = get_groups_one(rows)
-            new_values = {rows: np.array(groups)}
+            new_data = {rows: np.array(groups)}
             agg_values = []
             for i, group in enumerate(groups):
                 agg_values.append(getattr(agg_col[group_labels == i], aggfunc)())
-            new_values[aggfunc_name] = np.array(agg_values)
+            new_data[aggfunc_name] = np.array(agg_values)
 
         elif rows is None:
             groups, group_labels = get_groups_one(columns)
-            new_values = {}
+            new_data = {}
             for i, group in enumerate(groups):
                 new_val = getattr(agg_col[group_labels == i], aggfunc)()
-                new_values[group] = np.array([new_val])
+                new_data[group] = np.array([new_val])
         else:
             groups, group_labels, order = group_multiple(rows, columns)
             num_groups = len(groups)
             unique_rows = np.unique(groups[:, 0])
             unique_cols = np.unique(groups[:, 1])
-            new_values = {rows: unique_rows}
+            new_data = {rows: unique_rows}
             for col in unique_cols:
-                new_values[columns + '_' + col] = np.full(len(unique_rows), np.nan)
+                new_data[columns + '_' + col] = np.full(len(unique_rows), np.nan)
             row_position = {}
             for i, row in enumerate(unique_rows):
                 row_position[row] = i
@@ -939,9 +955,9 @@ class DataFrame:
                 cur_row, cur_col = groups[i, 0], groups[i, 1]
                 cur_agg = getattr(agg_col[group_labels == i], aggfunc)()
                 cur_row_pos = row_position[cur_row]
-                new_values[columns + '_' + cur_col][cur_row_pos] = cur_agg
+                new_data[columns + '_' + cur_col][cur_row_pos] = cur_agg
 
-        return DataFrame(new_values)
+        return DataFrame(new_data)
 
     def _add_docs(self):
         agg_names = ['min', 'max', 'mean', 'median', 'sum', 'var',
@@ -1046,7 +1062,7 @@ class StringMethods:
         return self._str_method(col, encoding, errors)
 
     def _str_method(self, method, col, *args):
-        old_values = self._df._values[col]
+        old_values = self._df._data[col]
         new_values = []
         for val in old_values:
             if val is None:
@@ -1070,13 +1086,13 @@ def read_csv(fn):
         for line in f.readlines():
             for val, name in zip(line.strip('\n').split(','), column_names):
                 values[name].append(val)
-    new_values = {}
+    new_data = {}
     for col, vals in values.items():
         try:
-            new_values[col] = np.array(vals, dtype='int')
+            new_data[col] = np.array(vals, dtype='int')
         except ValueError:
             try:
-                new_values[col] = np.array(vals, dtype='float')
+                new_data[col] = np.array(vals, dtype='float')
             except ValueError:
-                new_values[col] = np.array(vals, dtype='O')
-    return DataFrame(new_values)
+                new_data[col] = np.array(vals, dtype='O')
+    return DataFrame(new_data)
