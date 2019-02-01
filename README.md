@@ -100,7 +100,7 @@ If you open up one of the test module `test_dataframe.py`, you will see the test
 
 It is possible to run just a single test by appending two more colons followed by the method name. Another concrete example follows:
 
-`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`
+`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
 ## The answer is in pandas_cub_final
 
@@ -135,78 +135,88 @@ Open up this file now. You will see many incomplete methods that have the keywor
 
 Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered section below. Edit the method indicated in each section and then run the test. Once you pass that test, move on to the next section.
 
-### 1. DataFrame of NumPy arrays
+### 1. Check DataFrame constructor input types
 
-Our DataFrame is constructed with a single input parameter, `data`, a
-dictionary of column names as strings mapped to one-dimensional
-NumPy arrays. The DataFrame will hold four different data types
-with their single character **kind**:
+Our DataFrame class is constructed with a single parameter, `data`. We are going to force our users to set this value as a dictionary that has strings as the keys and one-dimensional NumPy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
 
-* bool (b)
-* int (i)
-* float (f)
-* string (O) (represented by NumPy object)
+In this step, we will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter. Notice that this `data` is already assigned to the `_data` instance variable, meaning you will access to within the method with `self._data`.
 
-Retrieve the `kind` of a NumPy array with `a.dype.kind`
+Specifically, `_check_input_types` must do the following:
 
-Steps
+* raise a `TypeError` if `data` is not a dictionary
+* raise a `TypeError` if the keys of `data` are not strings
+* raise a `TypeError` if the values of `data` are not NumPy arrays
+* raise a `ValueError` if the values of `data` are not 1-dimensional
 
-* modify the `__init__` method
-* Verify that `values` is a dict
-* Verify that each key is a string
-* Verify that each value is a 1D NumPy array
-* Verify that each NumPy array is the same length
-* If the array kind is 'U' change it to 'O'
-* Create an instance variable `_values` to store the data as a dictionary
-* Create another instance variable `_column_info`, a dictionary that maps the column name to the data type `kind` character.
+Run the following command to test this section:
 
-Verify results with:  
-`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_df_mix`  
-`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_column_info`
+`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
-### 2. Implement `__len__`
+### 2. Check array lengths
 
-The special method `__len__` is used to make an object work with the builtin
-`len` function. Have it return the number of rows in your DataFrame.
+We are now guaranteed that `data` is a dictionary of strings mapped to one-dimensional arrays. Each column of data in our DataFrame must have the same number of elements. In this step, you must ensure that this is the case. Edit the `_check_array_lengths` method and raise a `ValueError` if any of the arrays are differ in length.
 
-`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_len`
+Run the following test:
 
-### 3. Return columns as a list
+`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_array_length`
 
-Use the property decorator to make a `columns` attribute that returns the 
-names of the columns as a list.
+### 3. Change unicode arrays to object
 
-`$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_columns`
+By default, whenever you create a NumPy array of Python strings, it will default the data type of that array to unicode. Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will cover it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. This type allows any Python objects within the array.
 
-### 4. Set new column names
+In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. Use the `astype` array method to change its type.
 
-Use the property decorator `columns.setter` to set new columns. Assign it a list of strings.
+Edit the `_convert_unicode_to_object` method and verify with the `test_unicode_to_object` test.
 
-Keep running tests. They should come in order.
+### 4. Find the number of rows in the DataFrame with the `len` function
 
-### 5. The `shape` attribute
+The number of rows are returned when passing a Pandas DataFrame to the builtin `len` function. We will make pandas_cub behave the same exact way.
 
-Use the property decorator to create a `shape` attribute that 
-returns a two-item tuple of ints (rows, columns)
+To do so we need to implement the special method `__len__`. This is what Python call whenever an object is passed to the `len` function. 
+
+Edit the `__len__` method and have it return the number of rows. Test with `test_len`.
+
+### 5. Return columns as a list
+
+In pandas, calling `df.columns` returns a sequence of the column names. Our column names are currently the keys in our `_data` dictionary. Python provides the `property` decorator which allows us to execute code on something that appears to be just an instance variable.
+
+Edit the `columns` 'method' (really a property) to return a list of the columns in order. Since we are working with Python 3.6, the dictionary keys are internally ordered. Take advantage of this. Validate with the `test_columns` test.
+
+### 6. Set new column names
+
+In this step, we will be assigning all new columns to our DataFrame by setting the columns property equal to a list. This is the exact same syntax as it is with Pandas. A concrete example below shows how you would set new coulmns for a 3-column DataFrame.
+
+Complete the following tasks:
+* Raise a `TypeError` if the object used to set new columns is not a list
+* Raise a `ValueError` if the number of column names in the list does not match the current DataFrame
+* Raise a `TypeError` if any of the columns are not strings
+* Raise a `ValueError` if any of the column names are duplicated in the list
+* Reassign the `_data` variable so that all the keys have been updated
+
+```python
+df.columns = ['state', 'age', 'fruit']
+```
+
+Python allows you to set columns by using the decorator `columns.setter`. The value on the right hand side of the assignment statement is passed to the method. Edit the 'column' method decorated by `columns.setter` and test with `test_set_columns`.
+
+### 7. The `shape` property
+
+The `shape` property in Pandas returns a tuple of the number of rows and columns. The property decorator is used again here. Edit it to have our DataFrame do the same as Pandas. Test with `test_shape`
 
 ### 6. Uncomment `_repr_html_` method
 
 This is a method specifically used by IPython to represent your object
-in the Jupyter Notebook. You must return a string from this method.
-This is already implemented. Just uncomment it and test the output in the
-notebook and move on.
+in the Jupyter Notebook. This method must return a string of html. This method is fairly complex and you must know some basic html to complete. I decided to implement this method for you. Uncomment it and test the output in the notebook. You should now see a nicely formatted representation of your DataFrame.
 
-### 7. The `values` attribute
+### 7. The `values` property
 
-This is a public attribute that returns a single 2D NumPy array 
-of all the columns. If there is just a single column, return a 
-one dimensional array. The NumPy `column_stack` function can be helpful here.
+In Pandas, `values` is a property that returns a single array of all the columns of data. Our DataFrame will do the same. Edit the `values` property and concatenate all the column arrays into a single NumPy array. Return this array. The NumPy `column_stack` function can be helpful here. Test with `test_values.
 
-### 8. The `dtypes` attribute
+### 8. The `dtypes` property
 
-Return a two-column DataFrame. Put the column names under the 'Column Name'
-column and the data type (bool, int, string, or float) under the 
-column name 'Data Type'.
+In Pandas, the `dtypes` property returns a Series containing the data type of each column with the column names in the index. Our DataFrame doesn't have an index. Instead, return a two-column DataFrame. Put the column names under the 'Column Name' column and the data type (bool, int, string, or float) under the column name 'Data Type'.
+
+At the top of the `__init__.py` module there exists a `DTYPE_NAME` dictionary. Use it to convert from array `kind` to the string name of the data type. Test with `test_dtypes`.
 
 ### 9. Subset selection with `__getitem__`
 

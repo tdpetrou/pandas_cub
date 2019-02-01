@@ -40,15 +40,15 @@ class DataFrame:
     def _check_input_types(self):
         if not isinstance(self._data, dict):
             raise TypeError("`data` must be a dictionary of 1-D NumPy arrays")
-        else:
-            for col_name, values in self._data.items():
-                if not isinstance(col_name, str):
-                    raise TypeError('All column names must be a string')
-                if not isinstance(values, np.ndarray):
-                    raise TypeError('All values must be a 1-D NumPy array')
-                else:
-                    if values.ndim != 1:
-                        raise ValueError('Each value must be a 1-D NumPy array')
+
+        for col_name, values in self._data.items():
+            if not isinstance(col_name, str):
+                raise TypeError('All column names must be a string')
+            if not isinstance(values, np.ndarray):
+                raise TypeError('All values must be a 1-D NumPy array')
+            else:
+                if values.ndim != 1:
+                    raise ValueError('Each value must be a 1-D NumPy array')
     
     def _check_array_lengths(self):
         for i, values in enumerate(self._data.values()):
