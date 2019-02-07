@@ -203,37 +203,167 @@ Python allows you to set columns by using the decorator `columns.setter`. The va
 
 The `shape` property in Pandas returns a tuple of the number of rows and columns. The property decorator is used again here. Edit it to have our DataFrame do the same as Pandas. Test with `test_shape`
 
-### 6. Uncomment `_repr_html_` method
+### 8. Uncomment `_repr_html_` method
 
 This is a method specifically used by IPython to represent your object
 in the Jupyter Notebook. This method must return a string of html. This method is fairly complex and you must know some basic html to complete. I decided to implement this method for you. Uncomment it and test the output in the notebook. You should now see a nicely formatted representation of your DataFrame.
 
-### 7. The `values` property
+### 9. The `values` property
 
-In Pandas, `values` is a property that returns a single array of all the columns of data. Our DataFrame will do the same. Edit the `values` property and concatenate all the column arrays into a single NumPy array. Return this array. The NumPy `column_stack` function can be helpful here. Test with `test_values.
+In Pandas, `values` is a property that returns a single array of all the columns of data. Our DataFrame will do the same. Edit the `values` property and concatenate all the column arrays into a single two-dimensional NumPy array. Return this array. The NumPy `column_stack` function can be helpful here. Test with `test_values`.
 
-### 8. The `dtypes` property
+### Hint on returning a DataFrame from a property/method
+
+Many of the next steps require you to return a DataFrame as the result of the property/method. To do so, you will use the DataFrame constructor like this.
+
+```python
+return DataFrame(new_data)
+```
+
+Where `new_data` is a dictionary mapping the column names to a one-dimensional numpy array. It is your job to create the `new_data` dictionary correctly.
+
+### 10. The `dtypes` property
 
 In Pandas, the `dtypes` property returns a Series containing the data type of each column with the column names in the index. Our DataFrame doesn't have an index. Instead, return a two-column DataFrame. Put the column names under the 'Column Name' column and the data type (bool, int, string, or float) under the column name 'Data Type'.
 
 At the top of the `__init__.py` module there exists a `DTYPE_NAME` dictionary. Use it to convert from array `kind` to the string name of the data type. Test with `test_dtypes`.
 
-### 9. Subset selection with `__getitem__`
+### 11. Select a single column with the brackets
 
-Python provides the `__getitem__` special method so that your object can
-work with the brackets operator. This method gets passed a single
-argument when it is called. Depending on the type of object passed
-to it, use the following rules to determine what to do:
+In Pandas, you can select a single with `df['colname']`. Our DataFrame will do the same. To make an object work with the brackets, you must implement the `__getitem__` special method. This method is passed a single parameter, the value within the brackets.
 
-* A single string selects one column -> `df['colname']`
-* A list of strings selects multiple columns -> `df[['colname1', 'colname2']]`
-* A one column DataFrame of booleans that filters rows -> `df[df_bool]`
-* Row and column selection simultaneously -> `df[rs, cs]`
-* cs and rs can be integers, slices, or a list of integers
-* rs can also be a one-column boolean DataFrame
+In this step, use `isinstance` to check whether `item` is a string. If it is, return a one column DataFrame of that column. You will need to use the `DataFrame` constructor to return a DataFrame.
 
-Implement the first two items in the list and then copy and paste all
-the code from pandas_cub_final.
+These tests are under a the `TestSelection` class. Run the `test_one_column` test.
+
+### 12. Select multiple columns with a list
+
+Our DataFrame will also be able to select multiple columns if given a list within the brackets. For example, `df[['colname1', 'colname2']]` will return a two column DataFrame.
+
+Continue editing the `__getitem__` method. If `item` is a list, return a DataFrame of just those columns. Run the `test_multiple_columns`
+
+### 13. Boolean Selection with a DataFrame
+
+In Pandas, you can filter for specific rows of a DataFrame by passing in a boolean Series/array to the brackets. For instance, the following will select all rows such that `a` is greater than 10.
+
+```python
+>>> s = df['a'] > 10
+>>> df[s]
+```
+
+This is called boolean selection. We will make our DataFrame work similarly. Edit the `__getitem__` method and check whether `item` is a DataFrame. If it is then do the following:
+
+* If it is more than one column, raise a `ValueError`
+* Extract the underlying array from the single column
+* If the underlying array kind is not boolean ('b') raise a `ValueError`
+* Use the boolean array to return a new DataFrame with just the rows where the boolean array is `True` along with all the columns.
+
+Run `test_simple_boolean` to test
+
+### (Optional) Simultaneous selection of rows and column
+
+The steps 14-18 are optional and fairly difficult. The outcome of these steps is to simultaneous select both rows and columns in the DataFrame. The syntax uses the brackets operator like the previous three steps and looks like this:
+
+```python
+df[rs, cs]
+```
+
+where `rs` is the row selection and `cs` is the column selection.
+
+### 14. (Optional) Check for simultaneous selection of rows and columns
+
+ When you pass the brackets operator a sequence of comma separated values with `df[rs, cs]`, Python calls the `__getitem__` special method a tuple of all the values.
+
+To get started coding, within the `__getitem__` special method check whether `item` is a tuple instance. If is not, raise a `TypeError` and inform the user that they need to pass in either a string (step 11), a list of strings (step 12), a one column boolean DataFrame (step 13) or both a row and column selection (step 14).
+
+If `item` is a tuple, return the result of a call to the `_getitem_tuple` method.
+
+**Edit the `_getitem_tuple` method from now through step 18.**
+
+Within the `_getitem_tuple` method, raise a `ValueError` if it is not exactly two items in length.
+
+Run `test_simultaneous_tuple` to test.
+
+### 15. (Optional) Select a single cell of data
+
+In this step, we will select a single cell of data with `df[rs, cs]`. We will assume `rs` is an integer and `cs` is either an integer or a string.
+
+To get started, assign the first element of `item` to the variable `row_selection` and the second element of `item` to `col_selection`. From step 14, we know that `item` must be a two-item tuple.
+
+If `row_selection` is an integer, reassign it as one-element list of that integer.
+
+Check whether `col_selection` is an integer. If it is, reassign to a one-element list of the string column name it represents.
+
+If `col_selection` is a string, assign it to a one-element list of that string.
+
+Now both `row_selection` and `col_selection` are lists.
+
+You will return a single-row single-column DataFrame. This is different than Pandas, which just returns a scalar value. 
+
+Write a for loop to iterate through each column in the `col_selection` list to create the `new_data` dictionary. Make sure to select just the row that is needed.
+
+This for-loop will be used for the steps through 18 to return the desired DataFrame.
+
+Run `test_single_element` to test.
+
+### 16. (Optional) Simultaneously select rows as booleans, lists, or slices
+
+In this step, we will again be selecting rows and columns simultaneously with `df[rs, cs]`. We will allow `rs` to be either a single-column boolean DataFrame, a list of integers, or a slice. For now, `cs` will remain either an integer or a string. The following selections will be possible after this step.
+
+```python
+df[df['a'] < 10, 'b']
+df[[2, 4, 1], 'e']
+df[2:5, 3]
+```
+
+If `row_selection` is a DataFrame, raise a `ValueError` if it is not one column. Reassign `row_selection` to the values (numpy array) of its column. Raise a `TypeError` if it is not a boolean data type.
+
+If `row_selection` is not a list or a slice raise a `TypeError` and inform the user that the row selection must be either an integer, list, slice, or DataFrame. You will not need to reassign `row_selection` for this case as it will select properly from a numpy array.
+
+Your for-loop from step 15 should return the DataFrame.
+
+Run `test_all_row_selections` to test.
+
+### 17. (Optional) Simultaneous selection with multiple columns as a list
+
+The `row_selection` variable is now fully implemented. It can be either an integer, list of integers, a slice, or a one-column boolean DataFrame.
+
+As of now, the `col_selection` can only be an integer or a string. In this step, we will handle the case when it is a list.
+
+If `col_selection` is a list, create an empty list named `new_col_selection`. Iterate through each element of `col_selection` and check it is an integer. If it is, append the string column name to `new_col_selection`. If not, assume it is a string and append it as it is to `new_col_selection`.
+
+`new_col_selection` will now be a list of string column names. Reassign `col_selection` to it.
+
+Again, your for-loop from step 15 will return the DataFrame.
+
+Run `test_list_columns` to test.
+
+### 18. (Optional) Simultaneous selection with column slices
+
+In this step, we will allow our columns to be sliced with either strings or integers. The following selections will be acceptable.
+
+```python
+df[rs, :3]
+df[rs, 1:10:2]
+df[rs, 'a':'f':2]
+```
+
+Where `rs` is any of the previously acceptable row selections.
+
+Check if `col_selection` is a slice. Slice objects have `start`, `stop`, and `step` attributes. Define new variables with the same name to hold those attributes of the slice object.
+
+If `col_selection` is not a slice raise a `TypeError` informing the user that the column selection must be an integer, string, list, or slice.
+
+If `start` is a string, reassign it to its integer index amongst the columns.
+
+If `stop` is a string, reassign it to its integer index amongst the columns **plus 1**. We add one here so that we include the last column.
+
+`start`, `stop`, and `step` should now be integers. Use them to reassign `col_selection` to a list of all the column names that are to be selected. You'll use slice notation to do this.
+
+The for-loop from 15 will still work to return the desired DataFrame.
+
+Run `test_col_slice` to test.
+
 
 ### 10. Tab Completion
 
