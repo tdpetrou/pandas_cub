@@ -19,28 +19,24 @@ class DataFrame:
             A dictionary of strings mapped to NumPy arrays. The key will
             become the column name.
         """
-
-        # Holds the data
-        self._data = data
-
         # check for correct input types
-        self._check_input_types()
+        self._check_input_types(data)
 
         # check for equal array lengths
-        self._check_array_lengths()
+        self._check_array_lengths(data)
 
         # convert unicode arrays to object
-        self._convert_unicode_to_object()
+        self._data = self._convert_unicode_to_object(data)
 
         # Allow for special methods for strings
         self.str = StringMethods(self)
         self._add_docs()
 
-    def _check_input_types(self):
-        if not isinstance(self._data, dict):
+    def _check_input_types(self, data):
+        if not isinstance(data, dict):
             raise TypeError("`data` must be a dictionary of 1-D NumPy arrays")
 
-        for col_name, values in self._data.items():
+        for col_name, values in data.items():
             if not isinstance(col_name, str):
                 raise TypeError('All column names must be a string')
             if not isinstance(values, np.ndarray):
@@ -49,17 +45,21 @@ class DataFrame:
                 if values.ndim != 1:
                     raise ValueError('Each value must be a 1-D NumPy array')
     
-    def _check_array_lengths(self):
-        for i, values in enumerate(self._data.values()):
+    def _check_array_lengths(self, data):
+        for i, values in enumerate(data.values()):
             if i == 0:
                 length = len(values)
             if length != len(values):
                 raise ValueError('All values must be the same length')
 
-    def _convert_unicode_to_object(self):
-        for col_name, values in self._data.items():
+    def _convert_unicode_to_object(self, data):
+        new_data = {}
+        for col_name, values in data.items():
             if values.dtype.kind == 'U':
-                self._data[col_name] = values.astype('O')
+                new_data[col_name] = values.astype('O')
+            else:
+                new_data[col_name] = values
+        return new_data
 
     def __len__(self):
         """
@@ -812,10 +812,13 @@ class DataFrame:
         A DataFrame
         """
         if isinstance(other, DataFrame):
-            other = other.values
+            if other.shape[1] != 1:
+                raise ValueError('`other` must be a one-column DataFrame')
+            other = next(iter(other._data.values()))
         new_data = {}
         for col, values in self._data.items():
-            new_data[col] = getattr(values, op)(other)
+            func = getattr(values, op)
+            new_data[col] = func(other)
         return DataFrame(new_data)
 
     def sort_values(self, by, asc=True):
@@ -832,16 +835,16 @@ class DataFrame:
         A DataFrame
         """
         if isinstance(by, str):
-            order = np.argsort(self._data[by]).tolist()
+            order = np.argsort(self._data[by])
         elif isinstance(by, list):
             cols = [self._data[col] for col in by[::-1]]
-            order = np.lexsort(cols).tolist()
+            order = np.lexsort(cols)
         else:
             raise TypeError('`by` must be a str or a list')
 
         if not asc:
             order = order[::-1]
-        return self[order, :]
+        return self[order.tolist(), :]
 
     def sample(self, n=None, frac=None, replace=False, seed=None):
         """
@@ -890,81 +893,66 @@ class DataFrame:
         -------
         A DataFrame
         """
-        if values is None:
-            aggfunc = 'size'
         if rows is None and columns is None:
-            raise ValueError('At least one of `rows` or `columns` must not be None')
-        aggfunc_name = aggfunc
-        if aggfunc in [None, 'size']:
-            aggfunc = '__len__'
-            aggfunc_name = 'size'
+            raise ValueError('`rows` or `columns` cannot both be `None`')
+        
+        if values is not None:
+            val_data = self._data[values]
 
-        def get_groups_one(group_values):
-            group_values = np.sort(self._data[group_values])
-            diff = group_values != np.roll(group_values, 1)
+        if rows is not None:
+            row_data = self._data[rows]
 
-            # always keep first value as a group
-            diff[0] = True
-            groups = group_values[diff]
+        if columns is not None:
+            col_data = self._data[columns]
 
-            # Use the diff variable as the group number, so the first value is always 0
-            diff[0] = False
-            group_labels = diff.cumsum()
-            return groups, group_labels
-
-        def group_multiple(rows, columns):
-            row_values = self._data[rows]
-            col_values = self._data[columns]
-            order = np.lexsort([col_values, row_values])
-            values_sorted = np.column_stack([row_values[order], col_values[order]])
-            diff = values_sorted != np.roll(values_sorted, 1, axis=0)
-            diff_final = np.any(diff, axis=1)
-            diff_final[0] = True
-            groups = values_sorted[diff_final]
-
-            diff_final[0] = False
-            group_labels = diff_final.cumsum()
-            return groups, group_labels, order
-
-        if values:
-            agg_col = self._data[values]
+        if rows is None:
+            pivot_type = 'columns'
+        elif columns is None:
+            pivot_type = 'rows'
         else:
-            agg_col = np.empty(len(self))
+            pivot_type = 'all'
+        
+        from collections import defaultdict
+        d = defaultdict(list)
+        if pivot_type == 'columns':
+            for group, val in zip(col_data, val_data):
+                d[group].append(val)
+        elif pivot_type == 'rows':
+            for group, val in zip(row_data, val_data):
+                d[group].append(val)
+        else:
+            for group1, group2, val in zip(row_data, col_data, val_data):
+                d[(group1, group2)].append(val)
 
-        # group by one variable
-        if columns is None:
-            groups, group_labels = get_groups_one(rows)
-            new_data = {rows: np.array(groups)}
-            agg_values = []
-            for i, group in enumerate(groups):
-                agg_values.append(getattr(agg_col[group_labels == i], aggfunc)())
-            new_data[aggfunc_name] = np.array(agg_values)
+        agg_dict = {}
+        for group, vals in d.items():
+            arr = np.array(vals)
+            func = getattr(arr, aggfunc)
+            agg_dict[group] = func()
 
-        elif rows is None:
-            groups, group_labels = get_groups_one(columns)
+        new_data = {}
+        if pivot_type == 'columns':
+            for col_name, value in agg_dict.items():
+                new_data[col_name] = np.array([value])
+        elif pivot_type == 'rows':
+            new_data[rows] = np.array(list(agg_dict.keys()))
+            new_data[aggfunc] = np.array(list(agg_dict.values()))
+        else:
+            row_set = set()
+            col_set = set()
+            for group in agg_dict:
+                row_set.add(group[0])
+                col_set.add(group[1])
+            row_list = sorted(row_set)
+            col_list = sorted(col_set)
             new_data = {}
-            for i, group in enumerate(groups):
-                new_val = getattr(agg_col[group_labels == i], aggfunc)()
-                new_data[group] = np.array([new_val])
-        else:
-            groups, group_labels, order = group_multiple(rows, columns)
-            num_groups = len(groups)
-            unique_rows = np.unique(groups[:, 0])
-            unique_cols = np.unique(groups[:, 1])
-            new_data = {rows: unique_rows}
-            for col in unique_cols:
-                new_data[columns + '_' + col] = np.full(len(unique_rows), np.nan)
-            row_position = {}
-            for i, row in enumerate(unique_rows):
-                row_position[row] = i
-
-            agg_col = agg_col[order]
-            for i in range(num_groups):
-                cur_row, cur_col = groups[i, 0], groups[i, 1]
-                cur_agg = getattr(agg_col[group_labels == i], aggfunc)()
-                cur_row_pos = row_position[cur_row]
-                new_data[columns + '_' + cur_col][cur_row_pos] = cur_agg
-
+            new_data[rows] = np.array(row_list)
+            for col in col_list:
+                new_vals = []
+                for row in row_list:
+                    new_val = agg_dict.get((row, col), np.nan)
+                    new_vals.append(new_val)
+                new_data[col] = np.array(new_vals)
         return DataFrame(new_data)
 
     def _add_docs(self):
@@ -988,99 +976,99 @@ class StringMethods:
         self._df = df
 
     def capitalize(self, col):
-        return self._str_method('capitalize', col)
+        return self._str_method(str.capitalize, col)
 
     def center(self, col, width, fillchar=None):
         if fillchar is None:
             fillchar = ' '
-        return self._str_method('center', col, width, fillchar)
+        return self._str_method(str.center, col, width, fillchar)
 
     def count(self, col, sub, start=None, stop=None):
-        return self._str_method('count', col, sub, start, stop)
+        return self._str_method(str.count, col, sub, start, stop)
 
     def endswith(self, col, suffix, start=None, stop=None):
-        return self._str_method('endswith', col, suffix, start, stop)
+        return self._str_method(str.endswith, col, suffix, start, stop)
 
     def startswith(self, col, suffix, start=None, stop=None):
-        return self._str_method('startswith', col, suffix, start, stop)
+        return self._str_method(str.startswith, col, suffix, start, stop)
 
     def find(self, col, sub, start=None, stop=None):
-        return self._str_method('find', col, sub, start, stop)
+        return self._str_method(str.find, col, sub, start, stop)
 
     def len(self, col):
-        return self._str_method('__len__', col)
+        return self._str_method(str.__len__, col)
 
     def get(self, col, item):
-        return self._str_method('__getitem__', col, item)
+        return self._str_method(str.__getitem__, col, item)
 
     def index(self, col, sub, start=None, stop=None):
-        return self._str_method('index', col, sub, start, stop)
+        return self._str_method(str.index, col, sub, start, stop)
 
     def isalnum(self, col):
-        return self._str_method('isalnum', col)
+        return self._str_method(str.isalnum, col)
 
     def isalpha(self, col):
-        return self._str_method('isalpha', col)
+        return self._str_method(str.isalpha, col)
 
     def isdecimal(self, col):
-        return self._str_method('isdecimal', col)
+        return self._str_method(str.isdecimal, col)
 
     def islower(self, col):
-        return self._str_method('islower', col)
+        return self._str_method(str.islower, col)
 
     def isnumeric(self, col):
-        return self._str_method('isnumeric', col)
+        return self._str_method(str.isnumeric, col)
 
     def isspace(self, col):
-        return self._str_method('isspace', col)
+        return self._str_method(str.isspace, col)
 
     def istitle(self, col):
-        return self._str_method('istitle', col)
+        return self._str_method(str.istitle, col)
 
     def isupper(self, col):
-        return self._str_method('isupper', col)
+        return self._str_method(str.isupper, col)
 
     def lstrip(self, col, chars):
-        return self._str_method('lstrip', col, chars)
+        return self._str_method(str.lstrip, col, chars)
 
     def rstrip(self, col, chars):
-        return self._str_method('rstrip', col, chars)
+        return self._str_method(str.rstrip, col, chars)
 
     def strip(self, col, chars):
-        return self._str_method('strip', col, chars)
+        return self._str_method(str.strip, col, chars)
 
     def replace(self, col, old, new, count=None):
         if count is None:
             count = -1
-        return self._str_method('replace', col, old, new, count)
+        return self._str_method(str.replace, col, old, new, count)
 
     def swapcase(self, col):
-        return self._str_method('swapcase', col)
+        return self._str_method(str.swapcase, col)
 
     def title(self, col):
-        return self._str_method('title', col)
+        return self._str_method(str.title, col)
 
     def upper(self, col):
-        return self._str_method('upper', col)
+        return self._str_method(str.upper, col)
 
     def zfill(self, col, width):
-        return self._str_method('zfill', col, width)
+        return self._str_method(str.zfill, col, width)
 
     def encode(self, col, encoding='utf-8', errors='strict'):
-        return self._str_method(col, encoding, errors)
+        return self._str_method(str.encode, col, encoding, errors)
 
     def _str_method(self, method, col, *args):
         old_values = self._df._data[col]
+        if old_values.dtype.kind != 'O':
+            raise TypeError('The `str` accessor only works with string columns')
         new_values = []
         for val in old_values:
             if val is None:
                 new_values.append(val)
             else:
-                new_val = getattr(val, method)(*args)
+                new_val = method(val, *args)
                 new_values.append(new_val)
         arr = np.array(new_values)
-        if arr.dtype.kind == 'U':
-            arr = arr.astype('O')
         return DataFrame({col: arr})
 
 

@@ -18,31 +18,28 @@ class DataFrame:
             A dictionary of strings mapped to NumPy arrays. The key will
             become the column name.
         """
-
-        # _data will reference our data
-        self._data = data
-
         # check for correct input types
-        self._check_input_types()
+        self._check_input_types(data)
 
         # check for equal array lengths
-        self._check_array_lengths()
+        self._check_array_lengths(data)
 
         # convert unicode arrays to object
-        self._convert_unicode_to_object()
+        self._data = self._convert_unicode_to_object(data)
 
         # Allow for special methods for strings
         self.str = StringMethods(self)
         self._add_docs()
 
-    def _check_input_types(self):
+    def _check_input_types(self, data):
         pass
 
-    def _check_array_lengths(self):
+    def _check_array_lengths(self, data):
         pass
 
-    def _convert_unicode_to_object(self):
-        pass
+    def _convert_unicode_to_object(self, data):
+        new_data = {}
+        return new_data
 
     def __len__(self):
         """

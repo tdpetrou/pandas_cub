@@ -139,7 +139,7 @@ Keep the `__init__.py` file open at all times. This is the only file that you wi
 
 Our DataFrame class is constructed with a single parameter, `data`. We are going to force our users to set this value as a dictionary that has strings as the keys and one-dimensional NumPy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
 
-In this step, we will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter. Notice that this `data` is already assigned to the `_data` instance variable, meaning you will access to within the method with `self._data`.
+In this step, we will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter.
 
 Specifically, `_check_input_types` must do the following:
 
@@ -154,7 +154,7 @@ Run the following command to test this section:
 
 ### 2. Check array lengths
 
-We are now guaranteed that `data` is a dictionary of strings mapped to one-dimensional arrays. Each column of data in our DataFrame must have the same number of elements. In this step, you must ensure that this is the case. Edit the `_check_array_lengths` method and raise a `ValueError` if any of the arrays are differ in length.
+We are now guaranteed that `data` is a dictionary of strings mapped to one-dimensional arrays. Each column of data in our DataFrame must have the same number of elements. In this step, you must ensure that this is the case. Edit the `_check_array_lengths` method and raise a `ValueError` if any of the arrays differ in length.
 
 Run the following test:
 
@@ -162,11 +162,15 @@ Run the following test:
 
 ### 3. Change unicode arrays to object
 
-By default, whenever you create a NumPy array of Python strings, it will default the data type of that array to unicode. Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will cover it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. This type allows any Python objects within the array.
+By default, whenever you create a NumPy array of Python strings, it will default the data type of that array to unicode. Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will convert it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. This type allows any Python objects within the array.
 
 In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. Use the `astype` array method to change its type.
 
-Edit the `_convert_unicode_to_object` method and verify with the `test_unicode_to_object` test.
+A new dictionary, `new_data` is defined within this method. Fill this dictionary with the new converted array and return it.
+
+Edit the `_convert_unicode_to_object` method and fill the dictionary `new_data` with the converted arrays. The result of this method will be returned and assigned as the `_data` instance variable.
+
+Run `test_unicode_to_object` to test.
 
 ### 4. Find the number of rows in the DataFrame with the `len` function
 
@@ -516,45 +520,118 @@ The `diff` method accepts a single parameter `n` and takes the difference betwee
 
 This method will only be possible with numeric columns. String columns will raise a `TypeError`. Except this error and skip the column.
 
-Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to float first as integer arrays cannot contains missing values.
+Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to float first as integer arrays cannot contains missing values. Use `np.roll` to help shift the data in the arrays.
 
 Test with `test_diff`
 
 ### 33. `pct_change` method
 
-The `pct_change` method is nearly identical to the `diff` method. The only difference is that this method return the percentage change between the values and not the raw distance.
+The `pct_change` method is nearly identical to the `diff` method. The only difference is that this method returns the percentage change between the values and not the raw difference.
 
 Test with `test_pct_change`
- 
-### 23. Arithmetic and Comparison Operators
-All the arithmetic and comparison operators have special methods available. For instance `__add__` is used for the plus sign, and `__le__` is used for less than or equal to. Each of these methods accepts a single other parameter.
- 
- Write a generic method, `_oper` that works with each of these methods.
- 
-### 24. `sort_values` method
-This method takes two parameters. The sorting column or columns (as a string or list) and a boolean for the direction to sort. You will need to use NumPy's `argsort` to get the order of the sort for a single column and `lexsort` to sort multiple columns.
- 
-### 25. `sample` method
-This method randomly samples the rows of the DataFrame. You can either choose an exact
-number to sample with `n` or a fraction with `frac`. Sample with replacement by using
-the boolean `replace`. You can also set the random number seed.
 
-### 26. `str` accessor
-In the `__init__` method, there was a line that created `str` as an instance variable with the `StringMethods` type.
+### 34. Arithmetic and Comparison Operators
 
-All the string methods use the generic `_str_method` method which accepts the name of the method, the column name and any method-specific parameters.
+All the common arithmetic and comparison operators will be made available to our DataFrame. For example, `df + 5` uses the plus operatorr to add 5 to each element of the DataFrame. Take a look at some of the following examples:
 
-Modify the generic `_str_method` to make all the other string methods work.
+```python
+df + 5
+df - 5
+df > 5
+df != 5
+5 + df
+5 < df
+```
 
-### 27. `pivot_table` method
-This is by far the most complex method to implement. Allow `rows` and `columns` to be column names who's unique values form the groups. Aggregate the column passed to the `values` parameter with the `aggfunc` string.
+All the arithmetic and comparison operators have corresponding special methods that are called whenever the operator is used. For instance `__add__` is called when the plus operator is used, and `__le__` is called whenever the less than or equal to operator is used.
 
-Allow either `rows` or `columns` to be `None`. If `values` or `aggfunc` is `None` then find the frequency (like in `value_counts`).
+Each of these methods accepts a single parameter, which we have named `other`. All of these methods call a more generic `_oper` method which you will complete.
 
-### 28. Automatically add documentation
+Within the `_oper` method check if `other` is a DataFrame. We will allow operations if `other` is a one-column DataFrame. Raise a `ValueError` if `other` is not a one-column DataFrame. Otherwise, reassign `other` to be a 1D array of the values of its only column.
+
+We won't check for any other types and instead assume that `other` is compatible with the numpy array of each column.
+
+Iterate through all the columns of your DataFrame and apply the operation to each array. You will need to use the `getattr` function along with the `op` string to retrieve the underlying array method. For instance, `getattr(values, '__add__')` returns the method that uses the plus operator for that numpy array `values`. Return a new DataFrame with the operation applied to each column.
+
+Run all the tests in class `TestOperators`
+
+### 35. `sort_values` method
+
+This method takes two parameters. Allow the parameter `by` to be a single column as a string or a list of columns. This will be the sorting column 
+or columns. The second parameter, `asc` will be a boolean controlling the direction of the sort. It is defaulted to `True` meaning that sorting will be ascending  (lowest to greatest). Raise a `TypeError` if `by` is not a string or list.
+
+You will need to use NumPy's `argsort` to get the order of the sort for a single column and `lexsort` to sort multiple columns.
+
+Run the following tests in the `TestMoreMethods` class.
+
+* `test_sort_values`
+* `test_sort_values_desc`
+* `test_sort_values_two`
+* `test_sort_values_two_desc`
+
+### 36. `sample` method
+
+This method randomly samples the rows of the DataFrame. You can either choose an exact number to sample with `n` or a fraction with `frac`. Sample with replacement by using the boolean `replace`. You can also set the random number seed. Raise a `ValueError` if `frac` is not positive and a `TypeError` if `n` is not an integer.
+
+Use the `seed` function from numpy's `random` module to set the seed. Use the `choice` function from numpy's `random` module to randomly choose new rows. This function has a `replace` parameter. Return a new DataFrame.
+
+### 37. `str` accessor
+
+Look back up at the `__init__` method. One of the last lines defines `str` as an instance variable assigned to a new instance of `StringMethods`. Pandas has the same variable for its DataFrames and gives it the name 'string accessor'. We will also refer to it as an 'accessor' as it gives us access to string-only methods.
+
+Scroll down below the definition of the `DataFrame` class. You will see the `StringMethods` class defined there. During initialization it stores a reference to the underlying DataFrame with `_df`.
+
+There are many string methods defined in this class. The first parameter to each string method is the name of the column you would like to apply the string method to. We will only allow our accessor to work on a single column DataFrame.
+
+You will only be modifying the `_str_method` which accepts the string method, the name of the column, and any extra arguments.
+
+Within `_str_method` select the underlying numpy array of the given `col`. Raise a `TypeError` if it does not have kind 'O'.
+
+Iterate over each value in the array and pass it to `method`. It will look like this: `method(val, *args)`. Return a one-column DataFrame with the new data.
+
+Test with class `TestStrings`
+
+### 38. `pivot_table` method
+
+This is a complex method to implement. This method allows you to create a [pivot table][5] from your DataFrame. The following image shows the final result of calling the pivot table on a DataFrame. It summarizes the mean salary of each gender for each race.
+
+![pt][6]
+
+A typical pivot table uses two columns as the **grouping columns** from your original DataFrame. The unique values of one of the grouping columns form a new column in the new DataFrame. In the example above, the race column had five unique values.
+
+The unique values of the other grouping column now form the columns of the new DataFrame. In the above example, there were two unique values of gender.
+
+In addition to the grouping columns is the **aggregating column**. This is typically a numeric column that will get summarized. In the above pivot table, the salary column was aggregated.
+
+The last component of a pivot table is the **aggregating function**. This determines how the aggregating columns get aggregated. Here, we used the `mean` function.
+
+The syntax used to produce the pivot table above is as follows:
+
+```python
+df.pivot_table(rows='race', columns='gender', values='salary', aggfunc='mean')
+```
+
+`rows` and `columns` will be assigned the grouping columns. `values` will be assigned the aggregating column and `aggfunc` will be assigned the aggregating function. All four parameters will be strings.
+
+There are several approaches that you can take to implement this. One approach involves using a dictionary to store the unique combinations of the grouping columns as the keys and a list to store the values of the aggregative column. You could iterate over every single row and then use a two-item tuple to hold the values of the two grouping columns. A `defaultdict` from the collections module can help make this easier. Your dictionary would look something like this after you have iterated through the data.
+
+```python
+{('black', 'male'): [50000, 90000, 40000],
+ ('black', 'female'): [100000, 40000, 30000]}
+ ```
+
+Once you have mapped the groups to their respective values, you would need to iterate through this dictionary and apply the aggregation function to the values. Create a new dictionary for this.
+
+From here, you need to figure out how to turn this dictionary into the final DataFrame. You have all the values, you just need to create a dictionary of columns mapped to values. Use the first column as the unique values of the rows column.
+
+Make your pivot table work when passed just one of `rows` or `columns`.
+
+### 39. Automatically add documentation
+
 This method is already completed and automatically adds documentation to the aggregation methods by setting the `__doc__` attribute.
 
-### 29. Reading simple CSVs
+### 40. Reading simple CSVs
+
 Implement the `read_csv` function by reading through each line. Assume the first line has the column names. Use the second line to assign the data types of each column.
 
 [0]: https://www.anaconda.com/distribution/
@@ -562,3 +639,5 @@ Implement the `read_csv` function by reading through each line. Assume the first
 [2]: https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 [3]: https://en.wikipedia.org/wiki/Test-driven_development
 [4]: https://docs.pytest.org/en/latest/goodpractices.html#conventions-for-python-test-discovery
+[5]: https://en.wikipedia.org/wiki/Pivot_table
+[6]: images/pivot.png

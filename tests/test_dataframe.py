@@ -552,7 +552,7 @@ class TestMoreMethods:
     def test_sort_values_desc(self):
         df_result = df6.sort_values('a', asc=False)
         a = np.array(['c', 'b', 'b', 'a', 'a'])
-        b = np.array([5.1, 6, 3.4, 1, 2])
+        b = np.array([5.1, 6, 3.4, 1,2])
         df_answer = pdc.DataFrame({'a': a, 'b': b})
         assert_df_equals(df_result, df_answer)
 
@@ -580,6 +580,12 @@ class TestMoreMethods:
         df_answer = pdc.DataFrame({'a': np.array(['a', 'a', 'b'], dtype=object),
                                    'b': np.array([2., 5.1, 6.])})
         assert_df_equals(df_result, df_answer)
+
+        with pytest.raises(TypeError):
+            df7.sample(2.5)
+
+        with pytest.raises(ValueError):
+            df7.sample(frac=-2)
 
 
 a8 = np.array(['b', 'a', 'a', 'a', 'b', 'a', 'a', 'b'])
