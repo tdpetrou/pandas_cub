@@ -1,4 +1,3 @@
-from collections import Counter
 import numpy as np
 
 __version__ = '0.0.1'
@@ -396,37 +395,37 @@ class DataFrame:
     #### AGGREGATION FUNCTIONS ####
 
     def min(self):
-        return self._agg('min')
+        return self._agg(np.min)
 
     def max(self):
-        return self._agg('max')
+        return self._agg(np.max)
 
     def mean(self):
-        return self._agg('mean')
+        return self._agg(np.mean)
 
     def median(self):
-        return self._agg('median')
+        return self._agg(np.median)
 
     def sum(self):
-        return self._agg('sum')
+        return self._agg(np.sum)
 
     def var(self):
-        return self._agg('var')
+        return self._agg(np.var)
 
     def std(self):
-        return self._agg('std')
+        return self._agg(np.std)
 
     def all(self):
-        return self._agg('all')
+        return self._agg(np.all)
 
     def any(self):
-        return self._agg('any')
+        return self._agg(np.any)
 
     def argmax(self):
-        return self._agg('argmax')
+        return self._agg(np.argmax)
 
     def argmin(self):
-        return self._agg('argmin')
+        return self._agg(np.argmin)
 
     def _agg(self, aggfunc):
         """
@@ -442,10 +441,9 @@ class DataFrame:
         A DataFrame
         """
         new_data = {}
-        func = getattr(np, aggfunc)
         for col, values in self._data.items():
             try:
-                val = func(values)
+                val = aggfunc(values)
             except TypeError:
                 continue
             new_data[col] = np.array([val])
@@ -494,8 +492,8 @@ class DataFrame:
         """
         dfs = []
         for col, values in self._data.items():
-            new_data = np.unique(values)
-            dfs.append(DataFrame({col: new_data}))
+            uniques = np.unique(values)
+            dfs.append(DataFrame({col: uniques}))
         if len(dfs) == 1:
             return dfs[0]
         return dfs
@@ -533,16 +531,14 @@ class DataFrame:
         """
         dfs = []
         for col, values in self._data.items():
-            counts = Counter(values)
-            keys = np.array(list(counts.keys()))
-            raw_counts = np.array(list(counts.values()))
+            keys, raw_counts = np.unique(values, return_counts=True)
             
             order = np.argsort(-raw_counts)
             keys = keys[order]
             raw_counts = raw_counts[order]
 
             if normalize:
-                raw_counts /= raw_counts.sum()
+                raw_counts = raw_counts / raw_counts.sum()
             df = DataFrame({col: keys, 'count': raw_counts})
             dfs.append(df)
         if len(dfs) == 1:
@@ -568,10 +564,7 @@ class DataFrame:
 
         new_data = {}
         for col, values in self._data.items():
-            if col in columns:
-                new_data[columns[col]] = values
-            else:
-                new_data[col] = values
+            new_data[columns.get(col, col)] = values
         return DataFrame(new_data)
 
     def drop(self, columns):
@@ -606,7 +599,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('abs')
+        return self._non_agg(np.abs)
 
     def cummin(self):
         """
@@ -616,7 +609,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('minimum.accumulate')
+        return self._non_agg(np.minimum.accumulate)
 
     def cummax(self):
         """
@@ -626,7 +619,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('maximum.accumulate')
+        return self._non_agg(np.maximum.accumulate)
 
     def cumsum(self):
         """
@@ -636,7 +629,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('cumsum')
+        return self._non_agg(np.cumsum)
 
     def clip(self, lower=None, upper=None):
         """
@@ -652,7 +645,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('clip', lower, upper)
+        return self._non_agg(np.clip, a_min=lower, a_max=upper)
 
     def round(self, n):
         """
@@ -662,7 +655,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('round', n)
+        return self._non_agg(np.round, decimals=n)
 
     def copy(self):
         """
@@ -672,9 +665,9 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg('copy')
+        return self._non_agg(np.copy)
 
-    def _non_agg(self, funcname, *args):
+    def _non_agg(self, func, **kwargs):
         """
         Generic non-aggregation function that applies
         each
@@ -689,14 +682,9 @@ class DataFrame:
         A DataFrame
         """
         new_data = {}
-        try:
-            func = getattr(np, funcname)
-        except AttributeError:
-            module, attr = funcname.split('.')
-            func = getattr(getattr(np, module), attr)
         for col, values in self._data.items():
             try:
-                val = func(values, *args)
+                val = func(values, **kwargs)
             except TypeError:
                 continue
             new_data[col] = val

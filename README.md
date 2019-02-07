@@ -426,9 +426,9 @@ We will now implement several methods that perform an aggregation. These methods
 
 We will only be performing these aggregations column-wise and not row-wise. Pandas enables users to perform both row and column aggregations.
 
-If you look at our source code, you will see all of the aggregation methods already defined. You will not have to modify any of these methods individually. Instead, they all call the underlying `_agg` method passing it the name of itself as a string.
+If you look at our source code, you will see all of the aggregation methods already defined. You will not have to modify any of these methods individually. Instead, they all call the underlying `_agg` method passing it the numpy function.
 
-Complete the generic method `_agg` that accepts an aggregation function as a string. Use the  `getattr` function to get the actual NumPy function.
+Complete the generic method `_agg` that accepts an aggregation function.
 
 Iterate through each column of your DataFrame and pass the underlying array to the aggregation function. Return a new DataFrame with the same number of columns, but with just a single row, the value of the aggregation.
 
@@ -450,36 +450,49 @@ The `count` method returns a single-row DataFrame with the number of non-missing
 
 Test with `test_count`
 
-### 16. `unique` method
-Return a list of one-column dataframes of unique values in 
-each column. If there is a single column. Return just the DataFrame
+### 25. `unique` method
 
-### 17. `nunique` method
-Return the number of unique values for each column
+This method will return the unique values for each column in the DataFrame. Specifically, it will return a list of one-column DataFrames of unique values in each column. If there is a single column, just return the DataFrame.
 
-### 18. `value_counts` method
-Return a list of two-column DataFrames with the first column name
-as the name of the original column and the second column name 'count'
-containing the number of occurrences for each value. 
+The reason we use a list of DataFrames is that each column may contain a different number of unique values. Use the `unique` numpy function.
 
-Use the `Counter` method of the `collections` module. Return the DataFrames
-with sorted values from greatest to least. You hold off on sorting
-until you have defined the `sort_values` method.
+Test with `test_unique`
 
-Accept a boolean parameter `normalize` that returns relative 
-frequencies when `True`.
+### 26. `nunique` method
 
-If the calling DataFrame has a single column, return a single DataFrame.
+Return a single-row DataFrame with the number of unique values for each column.
 
-### 19. `rename` method
-Accept a dictionary of old column names mapped to new column names. Return a new DataFrame
+Test with `test_nunique`
 
-### 20. `drop` method
-Accept a list of column names and return a DataFrame without those columns
+### 27. `value_counts` method
 
-### 21. Non-aggregation methods
-There are several non-aggregation methods that function similarly. Create a
-generic method `_non_agg` that can implement:
+Return a list of DataFrames. Each DataFrame will be two columns. The first column name will be the name of the original column. The second column name will be 'count'. The first column will contain the unique values in the original DataFrame column. The 'count' column will hold the frequency of each of those unique values.
+
+Use the numpy `unique` function with `return_counts` set to `True`. Return the DataFrames with sorted values from greatest to least. Use the numpy `argsort` to help with this.
+
+Use the `test_value_counts` test within the `TestGrouping` class.
+
+### 28. Normalize options for `value_counts`
+
+We will modify the `value_counts` method to return relative frequencies. The `value_counts` method also accepts a boolean parameter `normalize` that by default is set to `False`. If it is `True`, that return the relative frequencies of each value instead.
+
+Test with `test_value_counts_normalize`
+
+### 29. `rename` method
+
+The `rename` method renames one or more column names. Accept a dictionary of old column names mapped to new column names. Return a DataFrame. Raise a `TypeError` if `columns` is not a dictionary.
+
+Test with`test_rename` within the `TestOtherMethods` class
+
+### 30. `drop` method
+
+Accept a single string or a list of column names a strings and return a DataFrame without those columns. Raise a `TypeError` if a string or list is not provided.
+
+Test with `test_drop`
+
+### 31. Non-aggregation methods
+
+There are several non-aggregation methods that function similarly. All of the following non-aggregation methods return a DataFrame that is the same shape as the origin.
 
 * `abs`
 * `cummin`
@@ -489,13 +502,29 @@ generic method `_non_agg` that can implement:
 * `round`
 * `copy`
 
-The `cummin` and `cummax` functions in NumPy necessitate dot notation to reach. We cannot use `getattr` for this and instead have to use the more specialized
-`attrgetter` from the `operator` library.
+ All of the above methods will be implemented with the generic `_non_agg` method. This method is sent the numpy function name of the non-aggregating method. 
 
- Notice that some of these have parameters. Collect them with `*args`.
- 
-### 22. `diff` and `pct_change` methods
-Return the raw difference or percentage change between rows given a distance `n`. You can drop the first n rows.
+ Pass each column to this non-aggregating method. If a particular column raises a `TypeError`, except it and move on processing the other columns.
+
+ Notice that some of these non-aggregating methods have extra keyword arguments. These are passed to `_non_agg` and collected with `*kwargs`. Make sure to pass them to the numpy function as well.
+
+ There is a different test for each method in the `TestNonAgg` class.
+
+### 32. `diff` method
+
+The `diff` method accepts a single parameter `n` and takes the difference between the current row and the `n`th preceding row. For instance, if a column has the values [5, 10, 2] and `n=1` the `diff` method would return [NaN, 5, -8]. The first value is missing because there is no value preceding it.
+
+This method will only be possible with numeric columns. String columns will raise a `TypeError`. Except this error and skip the column.
+
+Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to float first as integer arrays cannot contains missing values.
+
+Test with `test_diff`
+
+### 33. `pct_change` method
+
+The `pct_change` method is nearly identical to the `diff` method. The only difference is that this method return the percentage change between the values and not the raw distance.
+
+Test with `test_pct_change`
  
 ### 23. Arithmetic and Comparison Operators
 All the arithmetic and comparison operators have special methods available. For instance `__add__` is used for the plus sign, and `__le__` is used for less than or equal to. Each of these methods accepts a single other parameter.
