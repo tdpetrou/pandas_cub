@@ -364,39 +364,91 @@ The for-loop from 15 will still work to return the desired DataFrame.
 
 Run `test_col_slice` to test.
 
+### 19. Tab Completion for column names
 
-### 10. Tab Completion
+It is possible to get help completing column names when doing selections. For instance, let's say had a column name called 'state' and began making a column selection with `df['s]`. iPython provides us a way to press tab here and get a list of all the column names beginning with 's'.
 
-IPython helps us again by providing us with the `_ipython_key_completions_`
-method. Return a list of the tab completions you would like to have 
-available when inside the brackets operator.
+We do this by returning the list of values we want to see from the `_ipython_key_completions_` method.
 
-### 11. Create or overwrite a column
+Complete that method now.
 
-To make an assignment with the brackets operator, Python makes the `__setitem__` method which accepts two values, the `key` and the `value`. We will only implement the simple case of adding a new column or overwriting an old one.
+Run `test_tab_complete` to test.
 
-### 12. `head` and `tail` methods
-Have these methods accept a single parameter `n` and return 
-the first/last n rows.
+### 20. Create a new column or overwrite an old column
 
-### 13. Generic aggregation methods
-Aggregation methods return a single value for each column. We will only 
-implement column-wise aggregations and not row-wise.
+We will now have our DataFrame create a single new column or overwrite an existing one. Pandas allows for setting multiple columns at once, and even setting rows and columns simultaneously. Doing such is fairly complex and we will not implement those cases and instead focus on just single-column setting.
 
-Write a generic method `_agg` that accepts an aggregation function as a 
-string. Use the  `getattr` function to get the actual NumPy function.
+Python allows setting via the brackets with the `__setitem__` special method. It receives two values when called, the `key` and the `value`. For instance, if we set a new column like this:
 
-String columns with missing values will not work. Except this error and don't return columns where the aggregation cannot be found.
+```python
+df['new col'] = np.array([10, 4, 99])
+```
 
-Defining the `_agg` method will make all the other aggregation methods work.
+the `key` would be 'new col' and the `value` would be the numpy array.
 
-### 14. `isna` method
-Return a DataFrame of the same shape that has a boolean for every 
-single value in the DataFrame. Use `np.isnan` except in the case 
-for strings which you can use a vectorized equality expression to `None`
+If the `key` is not a string, raise a `NotImplementedError` stating that the DataFrame can only set a single column.
 
-### 15. `count` method
-Return the number of non-missing values for each column
+If `value` is a numpy array, raise a `ValueError` if it is not 1D. Raise a different `ValueError` if the length is different than the calling DataFrame.
+
+If `value` is a DataFrame, raise a `ValueError` if it is not a single column. Raise a different `ValueError` if the length is different than the calling DataFrame. Reassign `value` to the underlying numpy array of the column.
+
+If `value` is an integer, string, float, or boolean, use the numpy `repeat` function to reassign `value` to be an array the same length as the DataFrame with all values the same.
+
+Raise a `TypeError` if `value` is not one of the above types.
+
+After completing the above, `value` will be a one-dimensional array. If it's data type has its `kind` attribute as the string 'U', change it to object.
+
+Finally, assign a new column by modifying the `_data` dictionary.
+
+Run `test_new_column` to test.
+
+### 21. `head` and `tail` methods
+
+The `head` and `tail` methods each accept a single parameter `n` which is defaulted to 5. Have them return the first/last n rows.
+
+A new testing class named `TestBasics` is used for the new several tests. Run `test_head_tail` to complete this.
+
+### 22. Generic aggregation methods
+
+We will now implement several methods that perform an aggregation. These methods all return a single value. The following aggregation methods are defined.
+
+* min
+* max
+* mean
+* median
+* sum
+* var
+* std
+* all
+* any
+* argmax - index of the maximum
+* argmin - index of the minimum
+
+We will only be performing these aggregations column-wise and not row-wise. Pandas enables users to perform both row and column aggregations.
+
+If you look at our source code, you will see all of the aggregation methods already defined. You will not have to modify any of these methods individually. Instead, they all call the underlying `_agg` method passing it the name of itself as a string.
+
+Complete the generic method `_agg` that accepts an aggregation function as a string. Use the  `getattr` function to get the actual NumPy function.
+
+Iterate through each column of your DataFrame and pass the underlying array to the aggregation function. Return a new DataFrame with the same number of columns, but with just a single row, the value of the aggregation.
+
+String columns with missing values raise a `TypeError`. Except this error and don't return columns where the aggregation cannot be found.
+
+Defining just the `_agg` method will make all the other aggregation methods work.
+
+All the aggregation methods have their own test. They are all named similarly with 'test_' preceding the name of the aggregation. Run all 11 tests.
+
+### 23. `isna` method
+
+The `isna` method will return a DataFrame the same shape as the original but with boolean values for every single value. Each value will be tested whether they are missing or not. Use `np.isnan` except in the case for strings which you can use a vectorized equality expression to `None`.
+
+Test with `test_isna` found in the `TestOtherMethods` class.
+
+### 24. `count` method
+
+The `count` method returns a single-row DataFrame with the number of non-missing values for each column. You will want to use the result of `isna`.
+
+Test with `test_count`
 
 ### 16. `unique` method
 Return a list of one-column dataframes of unique values in 

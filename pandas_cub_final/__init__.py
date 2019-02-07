@@ -342,12 +342,28 @@ class DataFrame:
         # adds a new column or a overwrites an old column
         if not isinstance(key, str):
             raise NotImplementedError('Only able to set a single column')
-        else:
-            if not isinstance(value, np.ndarray) or value.ndim != 1:
-                raise TypeError('Can only set with a 1D NumPy array')
-            elif len(value) != len(self):
+
+        if isinstance(value, np.ndarray):
+            if value.ndim != 1:
+                raise ValueError('Setting array must be 1D')
+            if len(value) != len(self):
                 raise ValueError('Setting array must be same length as DataFrame')
-            self._data[key] = value
+        elif isinstance(value, DataFrame):
+            if value.shape[1] != 1:
+                raise ValueError('Setting DataFrame must be one column')
+            if len(value) != len(self):
+                raise ValueError('Setting and Calling DataFrames must be the same length')
+            value = next(iter(value._values))
+        elif isinstance(value, (int, str, float, bool)):
+            value = np.repeat(value, len(self))
+        else:
+            raise TypeError('Setting value must either be a numpy array, '
+                            'DataFrame, integer, string, float, or boolean')
+
+        if value.dtype.kind == 'U':
+            value = value.astype('O')
+
+        self._data[key] = value
 
     def head(self, n=5):
         """
