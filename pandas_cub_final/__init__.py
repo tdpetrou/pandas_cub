@@ -101,7 +101,7 @@ class DataFrame:
         if not isinstance(columns, list):
             raise TypeError('New columns must be a list')
         if len(columns) != len(self.columns):
-            raise ValueError(f'New column length must be {len(self.columns)}')
+            raise ValueError(f'New column length must be {len(self._data)}')
         else:
             for col in columns:
                 if not isinstance(col, str):
@@ -109,17 +109,12 @@ class DataFrame:
         if len(columns) != len(set(columns)):
             raise ValueError('Column names must be unique')
 
-        new_data = {}
-        # code here
-        for col, values in zip(columns, self._data.values()):
-            new_data[col] = values
-
+        new_data = dict(zip(columns, self._data.values()))
         self._data = new_data
 
     @property
     def shape(self):
         """
-
         Returns
         -------
         two-item tuple of number of rows and columns
@@ -392,7 +387,7 @@ class DataFrame:
         """
         return self[-n:, :]
 
-    #### AGGREGATION FUNCTIONS ####
+    #### Aggregation Methods ####
 
     def min(self):
         return self._agg(np.min)
@@ -557,7 +552,6 @@ class DataFrame:
         Returns
         -------
         A DataFrame
-
         """
         if not isinstance(columns, dict):
             raise TypeError('`columns` must be a dictionary')
@@ -589,7 +583,7 @@ class DataFrame:
                 new_data[col] = values
         return DataFrame(new_data)
 
-    ### non-aggregation methods
+    #### Non-Aggregation Methods ####
 
     def abs(self):
         """
@@ -669,8 +663,7 @@ class DataFrame:
 
     def _non_agg(self, func, **kwargs):
         """
-        Generic non-aggregation function that applies
-        each
+        Generic non-aggregation function
 
         Parameters
         ----------
@@ -742,7 +735,7 @@ class DataFrame:
             new_data[col] = val
         return DataFrame(new_data)
 
-    #### ARITHMETIC AND COMPARISON OPERATORS ####
+    #### Arithmetic and Comparison Operators ####
 
     def __add__(self, other):
         return self._oper('__add__', other)
@@ -800,7 +793,7 @@ class DataFrame:
 
     def _oper(self, op, other):
         """
-        Generic operator function
+        Generic operator method
 
         Parameters
         ----------
@@ -877,7 +870,7 @@ class DataFrame:
 
     def pivot_table(self, rows=None, columns=None, values=None, aggfunc=None):
         """
-        Grouping
+        Creates a pivot table from one or two 'grouping' columns.
 
         Parameters
         ----------
@@ -898,6 +891,12 @@ class DataFrame:
         
         if values is not None:
             val_data = self._data[values]
+            if aggfunc is None:
+                raise ValueError('You must provide `aggfunc` when `values` is provided.')
+        else:
+            if aggfunc is None:
+                aggfunc = 'size'
+                val_data = np.empty(len(self))
 
         if rows is not None:
             row_data = self._data[rows]
@@ -927,16 +926,21 @@ class DataFrame:
         agg_dict = {}
         for group, vals in d.items():
             arr = np.array(vals)
-            func = getattr(arr, aggfunc)
-            agg_dict[group] = func()
+            func = getattr(np, aggfunc)
+            agg_dict[group] = func(arr)
 
         new_data = {}
         if pivot_type == 'columns':
-            for col_name, value in agg_dict.items():
+            for col_name in sorted(agg_dict):
+                value = agg_dict[col_name]
                 new_data[col_name] = np.array([value])
         elif pivot_type == 'rows':
-            new_data[rows] = np.array(list(agg_dict.keys()))
-            new_data[aggfunc] = np.array(list(agg_dict.values()))
+            row_array = np.array(list(agg_dict.keys()))
+            val_array = np.array(list(agg_dict.values()))
+
+            order = np.argsort(row_array)
+            new_data[rows] = row_array[order]
+            new_data[aggfunc] = val_array[order]
         else:
             row_set = set()
             col_set = set()
@@ -1073,6 +1077,13 @@ class StringMethods:
 
 
 def read_csv(fn):
+    """
+    Read in a comma-separated value file as a DataFrame
+
+    Returns
+    -------
+    A DataFrame
+    """
     values = {}
     with open(fn) as f:
         header = f.readline()

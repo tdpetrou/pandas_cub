@@ -129,7 +129,11 @@ A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pa
 You will be editing a single file for this project - the `__init__.py` file
 found in the `pandas_cub` directory. It contains skeleton code for the entire project. You won't be defining your own classes or methods, but you will be filling out the method bodies.
 
-Open up this file now. You will see many incomplete methods that have the keyword `pass` as their last line. Some methods have code with a comment that says 'your code here'. These are the methods that you will be editing. Other methods are complete and won't need editing.
+Open up this file now. You will see many incomplete methods that have the keyword `pass` as their last line. These are the methods that you will be editing. A few methods are complete and won't need editing.
+
+### Docstrings
+
+You'll notice that all the methods have triple quoted strings directly beneath them. These strings are the documentation or 'docstrings'. There is a short summary followed by the a description of the parameters and a section that says what is returned. There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. They will help you understand how to complete each method.
 
 ### How to complete the project
 
@@ -137,9 +141,11 @@ Keep the `__init__.py` file open at all times. This is the only file that you wi
 
 ### 1. Check DataFrame constructor input types
 
-Our DataFrame class is constructed with a single parameter, `data`. We are going to force our users to set this value as a dictionary that has strings as the keys and one-dimensional NumPy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
+Our DataFrame class is constructed with a single parameter, `data`. Python will call the special `__init__` method when first constructing our DataFrame. You will not need to edit this method.
 
-In this step, we will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter.
+We are going to force our users to set `data` as a dictionary that has strings as the keys and one-dimensional NumPy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
+
+In this step, you will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter.
 
 Specifically, `_check_input_types` must do the following:
 
@@ -510,7 +516,7 @@ There are several non-aggregation methods that function similarly. All of the fo
 
  Pass each column to this non-aggregating method. If a particular column raises a `TypeError`, except it and move on processing the other columns.
 
- Notice that some of these non-aggregating methods have extra keyword arguments. These are passed to `_non_agg` and collected with `*kwargs`. Make sure to pass them to the numpy function as well.
+ Notice that some of these non-aggregating methods have extra keyword arguments. These are passed to `_non_agg` and collected with `**kwargs`. Make sure to pass them to the numpy function as well.
 
  There is a different test for each method in the `TestNonAgg` class.
 
@@ -624,7 +630,14 @@ Once you have mapped the groups to their respective values, you would need to it
 
 From here, you need to figure out how to turn this dictionary into the final DataFrame. You have all the values, you just need to create a dictionary of columns mapped to values. Use the first column as the unique values of the rows column.
 
-Make your pivot table work when passed just one of `rows` or `columns`.
+Other features:
+
+* Return a DataFrame that has the rows and columns sorted
+* You must make your pivot table work when passed just one of `rows` or `columns`. If just `rows` is passed return a two-column DataFrame with the first column containing the unique values of the rows and the second column containing the aggregations. Title the second column the same name as `aggfunc`.
+* If `aggfunc` is `None` and `values` is not None then raise a `ValueError`.
+* If `aggfunc` and `values` are both `None` then set `aggfunc` equal to the string 'size'. This will produce a contingency table.
+
+Run `test_pivot_table_rows_or_cols` and `test_pivot_table_both` in the `TestGrouping` class.
 
 ### 39. Automatically add documentation
 
@@ -632,7 +645,11 @@ This method is already completed and automatically adds documentation to the agg
 
 ### 40. Reading simple CSVs
 
-Implement the `read_csv` function by reading through each line. Assume the first line has the column names. Use the second line to assign the data types of each column.
+We will implement a simple function to read in data on disk into our DataFrame. The `read_csv` function accepts a single parameter, `fn`, which is a string of the file name containing the data. Read through each line of the file. Assume the values in each line are separated by commas. Also assume the first line contains the column names.
+
+Create a dictionary to hold the data and return a new DataFrame. Use the file `employee.csv` in the `data` directory to test your function manually.
+
+Run all the tests in the `TestReadCSV` class.
 
 [0]: https://www.anaconda.com/distribution/
 [1]: https://docs.pytest.org/en/latest/getting-started.html
@@ -641,3 +658,4 @@ Implement the `read_csv` function by reading through each line. Assume the first
 [4]: https://docs.pytest.org/en/latest/goodpractices.html#conventions-for-python-test-discovery
 [5]: https://en.wikipedia.org/wiki/Pivot_table
 [6]: images/pivot.png
+[7]: https://numpydoc.readthedocs.io/en/latest/format.html

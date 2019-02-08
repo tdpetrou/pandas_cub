@@ -631,7 +631,7 @@ class TestGrouping:
 
         df_result = df8.pivot_table(rows='a', values='c', aggfunc='sum')
         df_answer = pdc.DataFrame({'a': np.array(['a', 'b'], dtype=object),
-                                   'sum': np.array([15, 21])})
+                                   'sum': np.array([22, 14])})
         assert_df_equals(df_result, df_answer)
 
         df_result = df8.pivot_table(columns='b')
@@ -640,14 +640,14 @@ class TestGrouping:
         assert_df_equals(df_result, df_answer)
 
         df_result = df8.pivot_table(columns='a', values='c', aggfunc='sum')
-        df_answer = pdc.DataFrame({'a': np.array([15]), 'b': np.array([21])})
+        df_answer = pdc.DataFrame({'a': np.array([22]), 'b': np.array([14])})
         assert_df_equals(df_result, df_answer)
 
     def test_pivot_table_both(self):
         df_result = df8.pivot_table(rows='a', columns='b', values='c', aggfunc='sum')
         df_answer = pdc.DataFrame({'a': np.array(['a', 'b'], dtype=object),
-                                   'b_A': np.array([9., 8.]),
-                                   'b_B': np.array([13., 6.])})
+                                   'A': np.array([9., 8.]),
+                                   'B': np.array([13., 6.])})
         assert_df_equals(df_result, df_answer)
 
 

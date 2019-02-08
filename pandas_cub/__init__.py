@@ -12,6 +12,7 @@ class DataFrame:
         """
         A DataFrame holds two dimensional heterogeneous data. Create it by
         passing a dictionary of NumPy arrays to the values parameter
+
         Parameters
         ----------
         values: dict
@@ -44,6 +45,7 @@ class DataFrame:
     def __len__(self):
         """
         Make the builtin len function work with our dataframe
+
         Returns
         -------
         int: the number of rows in the dataframe
@@ -56,6 +58,7 @@ class DataFrame:
         _values holds column names mapped to arrays
         take advantage of internal ordering of dictionaries to
         put columns in correct order in list. Only works in 3.6+
+
         Returns
         -------
         list of column names
@@ -67,12 +70,14 @@ class DataFrame:
         """
         Must supply a list of columns as strings the same length
         as the current DataFrame
+
         Parameters
         ----------
         columns: list of strings
+
         Returns
         -------
-        Nones
+        None
         """
         pass
 
@@ -199,6 +204,7 @@ class DataFrame:
         Row and column selection simultaneously -> df[rs, cs]
             where cs and rs can be integers, slices, or a list of integers
             rs can also be a one-column boolean DataFrame
+
         Returns
         -------
         A subset of the original DataFrame
@@ -216,9 +222,11 @@ class DataFrame:
     def head(self, n=5):
         """
         Return the first n rows
+
         Parameters
         ----------
         n: int
+
         Returns
         -------
         DataFrame
@@ -228,57 +236,61 @@ class DataFrame:
     def tail(self, n=5):
         """
         Return the last n rows
+
         Parameters
         ----------
         n: int
+        
         Returns
         -------
         DataFrame
         """
         pass
 
-    #### AGGREGATION FUNCTIONS ####
+    #### Aggregation Methods ####
 
     def min(self):
-        return self._agg('min')
+        return self._agg(np.min)
 
     def max(self):
-        return self._agg('max')
+        return self._agg(np.max)
 
     def mean(self):
-        return self._agg('mean')
+        return self._agg(np.mean)
 
     def median(self):
-        return self._agg('median')
+        return self._agg(np.median)
 
     def sum(self):
-        return self._agg('sum')
+        return self._agg(np.sum)
 
     def var(self):
-        return self._agg('var')
+        return self._agg(np.var)
 
     def std(self):
-        return self._agg('std')
+        return self._agg(np.std)
 
     def all(self):
-        return self._agg('all')
+        return self._agg(np.all)
 
     def any(self):
-        return self._agg('any')
+        return self._agg(np.any)
 
     def argmax(self):
-        return self._agg('argmax')
+        return self._agg(np.argmax)
 
     def argmin(self):
-        return self._agg('argmin')
+        return self._agg(np.argmin)
 
     def _agg(self, aggfunc):
         """
         Generic aggregation function that applies the
         aggregation to each column
+
         Parameters
         ----------
         aggfunc: str of the aggregation function name in NumPy
+        
         Returns
         -------
         A DataFrame
@@ -288,6 +300,7 @@ class DataFrame:
     def isna(self):
         """
         Determines whether each value in the DataFrame is missing or not
+
         Returns
         -------
         A DataFrame of booleans the same size as the calling DataFrame
@@ -297,6 +310,7 @@ class DataFrame:
     def count(self):
         """
         Counts the number of non-missing values per column
+
         Returns
         -------
         A DataFrame
@@ -306,6 +320,7 @@ class DataFrame:
     def unique(self):
         """
         Finds the unique values of each column
+
         Returns
         -------
         A list of one-column DataFrames
@@ -315,6 +330,7 @@ class DataFrame:
     def nunique(self):
         """
         Find the number of unique values in each column
+
         Returns
         -------
         A DataFrame
@@ -324,10 +340,12 @@ class DataFrame:
     def value_counts(self, normalize=False):
         """
         Returns the frequency of each unique value for each column
+
         Parameters
         ----------
         normalize: bool
             If True, returns the relative frequencies (percent)
+
         Returns
         -------
         A list of DataFrames or a single DataFrame if one column
@@ -337,10 +355,12 @@ class DataFrame:
     def rename(self, columns):
         """
         Renames columns in the DataFrame
+
         Parameters
         ----------
         columns: dict
             A dictionary mapping the old column name to the new column name
+        
         Returns
         -------
         A DataFrame
@@ -350,115 +370,120 @@ class DataFrame:
     def drop(self, columns):
         """
         Drops one or more columns from a DataFrame
+
         Parameters
         ----------
         columns: str or list of strings
+
         Returns
         -------
         A DataFrame
         """
         pass
 
-    ### non-aggregation methods
+    #### Non-Aggregation Methods ####
 
     def abs(self):
         """
         Takes the absolute value of each value in the DataFrame
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('abs')
+        return self._non_agg(np.abs)
 
     def cummin(self):
         """
         Finds cumulative minimum by column
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('minimum.accumulate')
+        return self._non_agg(np.minimum.accumulate)
 
     def cummax(self):
         """
         Finds cumulative maximum by column
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('maximum.accumulate')
+        return self._non_agg(np.maximum.accumulate)
 
     def cumsum(self):
         """
         Finds cumulative sum by column
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('cumsum')
+        return self._non_agg(np.cumsum)
 
     def clip(self, lower=None, upper=None):
         """
         All values less than lower will be set to lower
         All values greater than upper will be set to upper
+
         Parameters
         ----------
         lower: number or None
         upper: number or None
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('clip', lower, upper)
+        return self._non_agg(np.clip, a_min=lower, a_max=upper)
 
     def round(self, n):
         """
         Rounds values to the nearest n decimals
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('round', n)
+        return self._non_agg(np.round, decimals=n)
 
     def copy(self):
         """
         Copies the DataFrame
+
         Returns
         -------
         A DataFrame
         """
-        return self._non_agg('copy')
+        return self._non_agg(np.copy)
 
-    def _non_agg(self, funcname, *args):
+    def _non_agg(self, funcname, **kwargs):
         """
-        Generic non-aggregation function that applies
-        each
+        Generic non-aggregation function
+    
         Parameters
         ----------
         funcname: str of NumPy name
-        args: extra arguments for certain functions
+        kwargs: extra keyword arguments for certain functions
+
         Returns
         -------
         A DataFrame
         """
-        new_values = {}
-        try:
-            func = getattr(np, funcname)
-        except AttributeError:
-            module, attr = funcname.split('.')
-            func = getattr(getattr(np, module), attr)
-        # code here
-
-        return DataFrame(new_values)
+        pass
 
     def diff(self, n=1):
         """
         Take the difference between the current value and
         the nth value below it. The top n rows of the DataFrame
         are not returned
+
         Parameters
         ----------
         n: int
+
         Returns
         -------
         A DataFrame
@@ -470,16 +495,18 @@ class DataFrame:
         Take the percentage difference between the current value and
         the nth value below it. The top n rows of the DataFrame
         are not returned
+
         Parameters
         ----------
         n: int
+
         Returns
         -------
         A DataFrame
         """
         pass
 
-    #### ARITHMETIC AND COMPARISON OPERATORS ####
+    #### Arithmetic and Comparison Operators ####
 
     def __add__(self, other):
         return self._oper('__add__', other)
@@ -538,10 +565,12 @@ class DataFrame:
     def _oper(self, op, other):
         """
         Generic operator function
+
         Parameters
         ----------
         op: str name of special method
         other: the other object being operated on
+
         Returns
         -------
         A DataFrame
@@ -551,10 +580,12 @@ class DataFrame:
     def sort_values(self, by, asc=True):
         """
         Sort the DataFrame by one or more values
+
         Parameters
         ----------
         by: str or list of column names
         asc: boolean of sorting order
+
         Returns
         -------
         A DataFrame
@@ -564,6 +595,7 @@ class DataFrame:
     def sample(self, n=None, frac=None, replace=False, seed=None):
         """
         Randomly samples rows the DataFrame
+
         Parameters
         ----------
         n: int
@@ -572,6 +604,7 @@ class DataFrame:
             Proportion of the data to sample
         replace: bool
             Whether or not to sample with replacement
+
         Returns
         -------
         A DataFrame
@@ -580,7 +613,8 @@ class DataFrame:
 
     def pivot_table(self, rows=None, columns=None, values=None, aggfunc=None):
         """
-        Grouping
+        Creates a pivot table from one or two 'grouping' columns.
+
         Parameters
         ----------
         rows: str of column name to group by
@@ -590,6 +624,7 @@ class DataFrame:
         values: str of column name to aggregate
             Required
         aggfunc: str of aggregation function
+
         Returns
         -------
         A DataFrame
@@ -602,6 +637,7 @@ class DataFrame:
         agg_doc = \
         """
         Find the {} of each column
+        
         Returns
         -------
         DataFrame
@@ -616,108 +652,97 @@ class StringMethods:
         self._df = df
 
     def capitalize(self, col):
-        return self._str_method('capitalize', col)
+        return self._str_method(str.capitalize, col)
 
     def center(self, col, width, fillchar=None):
         if fillchar is None:
             fillchar = ' '
-        return self._str_method('center', col, width, fillchar)
+        return self._str_method(str.center, col, width, fillchar)
 
     def count(self, col, sub, start=None, stop=None):
-        return self._str_method('count', col, sub, start, stop)
+        return self._str_method(str.count, col, sub, start, stop)
 
     def endswith(self, col, suffix, start=None, stop=None):
-        return self._str_method('endswith', col, suffix, start, stop)
+        return self._str_method(str.endswith, col, suffix, start, stop)
 
     def startswith(self, col, suffix, start=None, stop=None):
-        return self._str_method('startswith', col, suffix, start, stop)
+        return self._str_method(str.startswith, col, suffix, start, stop)
 
     def find(self, col, sub, start=None, stop=None):
-        return self._str_method('find', col, sub, start, stop)
+        return self._str_method(str.find, col, sub, start, stop)
 
     def len(self, col):
-        return self._str_method('__len__', col)
+        return self._str_method(str.__len__, col)
 
     def get(self, col, item):
-        return self._str_method('__getitem__', col, item)
+        return self._str_method(str.__getitem__, col, item)
 
     def index(self, col, sub, start=None, stop=None):
-        return self._str_method('index', col, sub, start, stop)
+        return self._str_method(str.index, col, sub, start, stop)
 
     def isalnum(self, col):
-        return self._str_method('isalnum', col)
+        return self._str_method(str.isalnum, col)
 
     def isalpha(self, col):
-        return self._str_method('isalpha', col)
+        return self._str_method(str.isalpha, col)
 
     def isdecimal(self, col):
-        return self._str_method('isdecimal', col)
+        return self._str_method(str.isdecimal, col)
 
     def islower(self, col):
-        return self._str_method('islower', col)
+        return self._str_method(str.islower, col)
 
     def isnumeric(self, col):
-        return self._str_method('isnumeric', col)
+        return self._str_method(str.isnumeric, col)
 
     def isspace(self, col):
-        return self._str_method('isspace', col)
+        return self._str_method(str.isspace, col)
 
     def istitle(self, col):
-        return self._str_method('istitle', col)
+        return self._str_method(str.istitle, col)
 
     def isupper(self, col):
-        return self._str_method('isupper', col)
+        return self._str_method(str.isupper, col)
 
     def lstrip(self, col, chars):
-        return self._str_method('lstrip', col, chars)
+        return self._str_method(str.lstrip, col, chars)
 
     def rstrip(self, col, chars):
-        return self._str_method('rstrip', col, chars)
+        return self._str_method(str.rstrip, col, chars)
 
     def strip(self, col, chars):
-        return self._str_method('strip', col, chars)
+        return self._str_method(str.strip, col, chars)
 
     def replace(self, col, old, new, count=None):
         if count is None:
             count = -1
-        return self._str_method('replace', col, old, new, count)
+        return self._str_method(str.replace, col, old, new, count)
 
     def swapcase(self, col):
-        return self._str_method('swapcase', col)
+        return self._str_method(str.swapcase, col)
 
     def title(self, col):
-        return self._str_method('title', col)
+        return self._str_method(str.title, col)
 
     def upper(self, col):
-        return self._str_method('upper', col)
+        return self._str_method(str.upper, col)
 
     def zfill(self, col, width):
-        return self._str_method('zfill', col, width)
+        return self._str_method(str.zfill, col, width)
 
     def encode(self, col, encoding='utf-8', errors='strict'):
-        return self._str_method(col, encoding, errors)
+        return self._str_method(str.encode, col, encoding, errors)
 
     def _str_method(self, method, col, *args):
         pass
 
 
 def read_csv(fn):
-    values = {}
-    with open(fn) as f:
-        header = f.readline()
-        column_names = header.split(',')
-        for name in column_names:
-            values[name] = []
-        for line in f.readlines():
-            for val, name in zip(line.split(','), column_names):
-                values[name].append(val)
-    new_values = {}
-    for col, vals in values.items():
-        try:
-            new_values[col] = np.array(vals, dtype='int')
-        except ValueError:
-            try:
-                new_values[col] = np.array(vals, dtype='float')
-            except ValueError:
-                new_values[col] = np.array(vals, dtype='O')
-    return DataFrame(new_values)
+    """
+    Read in a comma-separated value file as a DataFrame
+
+    Returns
+    -------
+    A DataFrame
+    """
+    pass
