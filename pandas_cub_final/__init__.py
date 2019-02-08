@@ -347,7 +347,7 @@ class DataFrame:
                 raise ValueError('Setting DataFrame must be one column')
             if len(value) != len(self):
                 raise ValueError('Setting and Calling DataFrames must be the same length')
-            value = next(iter(value._values))
+            value = next(iter(value._data.values()))
         elif isinstance(value, (int, str, float, bool)):
             value = np.repeat(value, len(self))
         else:
@@ -725,7 +725,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        df = self.diff()
+        df = self.diff(n)
         new_data = {}
         for col, values in df._data.items():
             try:
@@ -1051,6 +1051,9 @@ class StringMethods:
 
     def title(self, col):
         return self._str_method(str.title, col)
+
+    def lower(self, col):
+        return self._str_method(str.lower, col)
 
     def upper(self, col):
         return self._str_method(str.upper, col)

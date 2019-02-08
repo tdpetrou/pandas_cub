@@ -2,7 +2,7 @@ import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
 
-import pandas_cub_final as pdc
+import pandas_cub as pdc
 from tests import assert_df_equals
 
 pytestmark = pytest.mark.filterwarnings("ignore")
