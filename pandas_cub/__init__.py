@@ -488,7 +488,9 @@ class DataFrame:
         -------
         A DataFrame
         """
-        pass
+        def func():
+            pass
+        return self._non_agg(func)
 
     def pct_change(self, n):
         """
@@ -504,7 +506,9 @@ class DataFrame:
         -------
         A DataFrame
         """
-        pass
+        def func():
+            pass
+        return self._non_agg(func)
 
     #### Arithmetic and Comparison Operators ####
 

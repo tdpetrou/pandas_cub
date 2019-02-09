@@ -516,7 +516,9 @@ There are several non-aggregation methods that function similarly. All of the fo
 
  All of the above methods will be implemented with the generic `_non_agg` method. This method is sent the numpy function name of the non-aggregating method.
 
- Pass each column to this non-aggregating method. If a particular column raises a `TypeError`, except it and move on processing the other columns.
+ Pass only the boolean, integer, and float columns to this non-aggregating numpy function.
+
+ Keep the string columns (only other data type) in your returned DataFrame. Use the `copy` array method to make an independent copy of them.
 
  Notice that some of these non-aggregating methods have extra keyword arguments. These are passed to `_non_agg` and collected with `**kwargs`. Make sure to pass them to the numpy function as well.
 
@@ -524,9 +526,11 @@ There are several non-aggregation methods that function similarly. All of the fo
 
 ### 32. `diff` method
 
-The `diff` method accepts a single parameter `n` and takes the difference between the current row and the `n` previous row. For instance, if a column has the values [5, 10, 2] and `n=1` the `diff` method would return [NaN, 5, -8]. The first value is missing because there is no value preceding it.
+The `diff` method accepts a single parameter `n` and takes the difference between the current row and the `n` previous row. For instance, if a column has the values [5, 10, 2] and `n=1`, the `diff` method would return [NaN, 5, -8]. The first value is missing because there is no value preceding it.
 
-This method will only be possible with numeric columns. String columns will raise a `TypeError`. Except this error and skip the column.
+The `diff` method is a non-aggregating method as well, but there is no direct numpy function that computes it. Instead, we will define a function within this method that computes this difference.
+
+Complete the body of the `func` function.
 
 Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to float first as integer arrays cannot contains missing values. Use `np.roll` to help shift the data in the arrays.
 
@@ -534,7 +538,7 @@ Test with `test_diff`
 
 ### 33. `pct_change` method
 
-The `pct_change` method is nearly identical to the `diff` method. The only difference is that this method returns the percentage change between the values and not the raw difference.
+The `pct_change` method is nearly identical to the `diff` method. The only difference is that this method returns the percentage change between the values and not the raw difference. Again, complete the body of the `func` function.
 
 Test with `test_pct_change`
 
