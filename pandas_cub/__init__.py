@@ -95,7 +95,7 @@ class DataFrame:
     #     Used to create a string of HTML to nicely display the DataFrame
     #     in a Jupyter Notebook. Different string formatting is used for
     #     different data types.
-    #
+
     #     The structure of the HTML is as follows:
     #     <table>
     #         <thead>
@@ -120,30 +120,31 @@ class DataFrame:
     #                 <td>data</td>
     #             </tr>
     #         </tbody>
-    #     <table>
+    #     </table>
     #     """
     #     html = '<table><thead><tr><th></th>'
     #     for col in self.columns:
     #         html += f"<th>{col:10}</th>"
-    #
+
     #     html += '</tr></thead>'
     #     html += "<tbody>"
-    #
+
     #     only_head = False
     #     num_head = 10
     #     num_tail = 10
     #     if len(self) <= 20:
     #         only_head = True
     #         num_head = len(self)
-    #
+
     #     for i in range(num_head):
     #         html += f'<tr><td><strong>{i}</strong></td>'
-    #         for j, (col, values) in enumerate(self._values.items()):
-    #             if self._column_info[col] == 'f':
+    #         for col, values in self._data.items():
+    #             kind = values.dtype.kind
+    #             if kind == 'f':
     #                 html += f'<td>{values[i]:10.3f}</td>'
-    #             elif self._column_info[col] == 'b':
+    #             elif kind == 'b':
     #                 html += f'<td>{values[i]}</td>'
-    #             elif self._column_info[col] == 'O':
+    #             elif kind == 'O':
     #                 v = values[i]
     #                 if v is None:
     #                     v = 'None'
@@ -151,7 +152,7 @@ class DataFrame:
     #             else:
     #                 html += f'<td>{values[i]:10}</td>'
     #         html += '</tr>'
-    #
+
     #     if not only_head:
     #         html += '<tr><strong><td>...</td></strong>'
     #         for i in range(len(self.columns)):
@@ -159,12 +160,13 @@ class DataFrame:
     #         html += '</tr>'
     #         for i in range(-num_tail, 0):
     #             html += f'<tr><td><strong>{len(self) + i}</strong></td>'
-    #             for j, (col, values) in enumerate(self._values.items()):
-    #                 if self._column_info[col] == 'f':
+    #             for col, values in self._data.items():
+    #                 kind = values.dtype.kind
+    #                 if kind == 'f':
     #                     html += f'<td>{values[i]:10.3f}</td>'
-    #                 elif self._column_info[col] == 'b':
+    #                 elif kind == 'b':
     #                     html += f'<td>{values[i]}</td>'
-    #                 elif self._column_info[col] == 'O':
+    #                 elif kind == 'O':
     #                     v = values[i]
     #                     if v is None:
     #                         v = 'None'
@@ -172,8 +174,8 @@ class DataFrame:
     #                 else:
     #                     html += f'<td>{values[i]:10}</td>'
     #             html += '</tr>'
-    #
-    #         html += '</tbody></table>'
+
+    #     html += '</tbody></table>'
     #     return html
 
     @property
