@@ -11,14 +11,14 @@ of Python and would like to immerse themselves into a larger, highly structured 
 
 This is not a project suitable for beginning Python users. At a minimum you will need to have a solid understanding of the fundamentals such as:
 
-* Vasic types and common data structures (lists, tuples, sets, and dictionaries)
+* Basic types and common data structures (lists, tuples, sets, and dictionaries)
 * Control flow with if/else statements and for loops (especially when iterating through lists or dictionaries)
 * Raising and handling exceptions
 * You will need to have covered the basics of classes and object-oriented programming. If you have never defined a class before, I strongly recommend going through an introductory tutorial on them first. [This one][15] from Corey Shafer is good.
 
 In addition to those Python basics, the main workhorse is the numpy library. The project will be difficult to complete without prior exposure to numpy. This [quickstart guide][16] might be beneficial for those needing to catch up quickly.
 
-We will not be using the pandas library within our code, but will be implenting many of the same method names with similar parameters and functionality. It will be very beneficial to have some exposure to pandas before beginning.
+We will not be using the pandas library within our code, but will be implementing many of the same method names with similar parameters and functionality. It will be very beneficial to have some exposure to pandas before beginning.
 
 ## Objectives
 
@@ -193,7 +193,7 @@ dtype('<U5')
 
 Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will convert it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. Technically, this data type allows any Python objects within the array.
 
-In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. See the [numpy docs][8] for a list of all the available kinds. Let's retreive the kind of our array from above.
+In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. See the [numpy docs][8] for a list of all the available kinds. Let's retrieve the kind of our array from above.
 
 ```python
 >>> a.dtype.kind
@@ -362,7 +362,7 @@ If `item` is a tuple, return the result of a call to the `_getitem_tuple` method
 
 **Edit the `_getitem_tuple` method from now through step 18.**
 
-Within the `_getitem_tuple` method, raise a `ValueError` if it is not exactly two items in length. 
+Within the `_getitem_tuple` method, raise a `ValueError` if it is not exactly two items in length.
 
 Run `test_simultaneous_tuple` to test.
 
@@ -372,7 +372,7 @@ In this step, we will select a single cell of data with `df[rs, cs]`. We will as
 
 To get started, assign the first element of `item` to the variable `row_selection` and the second element of `item` to `col_selection`. From step 14, we know that `item` must be a two-item tuple.
 
-If `row_selection` is an integer, reassign it as one-element list of that integer.
+If `row_selection` is an integer, reassign it as a one-element list of that integer.
 
 Check whether `col_selection` is an integer. If it is, reassign to a one-element list of the string column name it represents.
 
@@ -410,7 +410,7 @@ The `row_selection` variable is now fully implemented. It can be either an integ
 
 As of now, the `col_selection` can only be an integer or a string. In this step, we will handle the case when it is a list.
 
-If `col_selection` is a list, create an empty list named `new_col_selection`. Iterate through each element of `col_selection` and check it is an integer. If it is, append the string column name to `new_col_selection`. If not, assume it is a string and append it as it is to `new_col_selection`.
+If `col_selection` is a list, create an empty list named `new_col_selection`. Iterate through each element of `col_selection` and check if it is an integer. If it is, append the string column name to `new_col_selection`. If not, assume it is a string and append it as it is to `new_col_selection`.
 
 `new_col_selection` will now be a list of string column names. Reassign `col_selection` to it.
 
@@ -446,9 +446,9 @@ Run `test_col_slice` to test.
 
 ### 19. Tab Completion for column names
 
-It is possible to get help completing column names when doing single-column selections. For instance, let's say had a column name called 'state' and began making a column selection with `df['s]`. iPython provides us a way to press tab here and get a dropdown list of all the column names beginning with 's'.
+It is possible to get help completing column names when doing single-column selections. For instance, let's say we had a column name called 'state' and began making a column selection with `df['s]`. If we press tab right here iPython can show us a dropdown list of all the column names beginning with 's'.
 
-We do this by returning the list of values we want to see from the `_ipython_key_completions_` method. Complete that method now.
+We do this by returning the list of possible values we want to see from the `_ipython_key_completions_` method. Complete that method now.
 
 Run `test_tab_complete` to test.
 
@@ -486,7 +486,7 @@ Run `test_new_column` to test.
 
 ### 21. `head` and `tail` methods
 
-The `head` and `tail` methods each accept a single parameter `n` which is defaulted to 5. Have them return the first/last n rows.
+The `head` and `tail` methods each accept a single integer parameter `n` which is defaulted to 5. Have them return the first/last n rows.
 
 Run `test_head_tail` to complete this.
 
@@ -639,7 +639,7 @@ Run all the tests in class `TestOperators`
 
 ### 35. `sort_values` method
 
-This method will sort the rows of the DataFrame by one or more columns. Allow the parameter `by` to be either a single column name as a string or a list of column names as strings. The DataFrame will be sorted by this column or columns. 
+This method will sort the rows of the DataFrame by one or more columns. Allow the parameter `by` to be either a single column name as a string or a list of column names as strings. The DataFrame will be sorted by this column or columns.
 
 The second parameter, `asc`, will be a boolean controlling the direction of the sort. It is defaulted to `True` indicating that sorting will be ascending  (lowest to greatest). Raise a `TypeError` if `by` is not a string or list.
 
