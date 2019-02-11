@@ -1,23 +1,30 @@
-# Build your own Pandas Cub
+# Build a Data Analysis Library from Scratch
 
-This repository contains a detailed project that teaches you how to build your own Python data analysis library.
+This repository contains a detailed project that teaches you how to build your own Python data analysis library, pandas_cub, from scratch. The end result will be a fully-functioning library similar to pandas.
 
 ## Target Student
 
 This project is targeted towards those who understand the fundamentals
-of Python and wish to build their own data analysis library similar to Pandas from scratch.
+of Python and would like to immerse themselves into a larger, highly structured project that covers some advanced topics. It also touches upon a few crucial areas of software development.
 
 ## Pre-Requisites
 
-* Intermediate knowledge of Python
-* Helpful to have heard about special methods
-* Helpful to have used NumPy and Pandas before
+This is not a project suitable for beginning Python users. At a minimum you will need to have a solid understanding of the fundamentals such as:
+
+* Vasic types and common data structures (lists, tuples, sets, and dictionaries)
+* Control flow with if/else statements and for loops (especially when iterating through lists or dictionaries)
+* Raising and handling exceptions
+* You will need to have covered the basics of classes and object-oriented programming. If you have never defined a class before, I strongly recommend going through an introductory tutorial on them first. [This one][15] from Corey Shafer is good.
+
+In addition to those Python basics, the main workhorse is the numpy library. The project will be difficult to complete without prior exposure to numpy. This [quickstart guide][16] might be beneficial for those needing to catch up quickly.
+
+We will not be using the pandas library within our code, but will be implenting many of the same method names with similar parameters and functionality. It will be very beneficial to have some exposure to pandas before beginning.
 
 ## Objectives
 
-Most data scientists who use Python rely on Pandas. In this assignment, we will build Pandas Cub, a library that implements many of the most common and useful methods found in Pandas. Pandas Cub will:
+Most data scientists who use Python rely on pandas. In this assignment, we will build pandas cub, a library that implements many of the most common and useful methods found in pandas. Pandas Cub will:
 
-* Have a DataFrame class with data stored in NumPy arrays
+* Have a DataFrame class with data stored in numpy arrays
 * Select subsets of data with the brackets operator
 * Use special methods defined in the Python data model
 * Have a nicely formatted display of the DataFrame in the notebook
@@ -26,6 +33,11 @@ Most data scientists who use Python rely on Pandas. In this assignment, we will 
 * Group by one or two columns
 * Have methods specific to string columns
 * Read in data from a comma-separated value file
+
+In addition to these items specific to data analysis, you will also learn about:
+
+* Creating a development environment
+* Test-Driven Development
 
 ## Setting up the Development Environment
 
@@ -44,11 +56,11 @@ dependencies:
 - pytest
 ```
 
-This file will be used to create a new environment named `pandas_cub`. It will install Python 3.6 in a completely separate folder in your file system along with pandas, jupyter, and pytest. There will actually be many more packages installed as those libraries have dependencies of their own. Visit [this page][2] for more information on conda environments.
+This file will be used to create a new environment named `pandas_cub`. It will install Python 3.6 in a completely separate directory in your file system along with pandas, jupyter, and pytest. There will actually be many more packages installed as those libraries have dependencies of their own. Visit [this page][2] for more information on conda environments.
 
 ### Command to create new environment
 
-In the top level directory of this repository, where the `environment.yml` file is located, run the following command from your command line.
+In the top level directory of this repository, where the `environment.yml` file is located, run the following from your command line.
 
 `conda env create -f environment.yml`
 
@@ -77,15 +89,15 @@ tests written in the `test_dataframe.py` module inside the `tests` folder.
 
 We will rely upon the [pytest library][1] to test our code. We installed it along with a command line tool with the same name during our environment creation.
 
-[Test-Driven development][3] is a popular approach for development. It involves writing tests first and then writing code that passes the tests.
+[Test-Driven development][3] is a popular approach for developing software. It involves writing tests first and then writing code that passes the tests.
 
 ### Testing
 
-All the tests are located in the `test_dataframe.py` module found in the `tests` directory. To run all the tests in this file run the following on the command line.
+All the tests have already been written and are located in the `test_dataframe.py` module found in the `tests` directory. There are about 100 tests that you will need to pass to complete the project. To run all the tests in this file run the following on the command line.
 
 `$ pytest tests/test_dataframe.py`
 
-If you run this command right now, all the tests will fail. As you complete the steps in the project, you will start passing the tests. Once all the tests are passed, the project will be complete.
+If you run this command right now, all the tests will fail. You should see a line of red capital 'F's. As you complete the steps in the project, you will start passing the tests. There are about 100 total tests. Once all the tests are passed, the project will be complete.
 
 ### Automated test discovery
 
@@ -103,7 +115,7 @@ It is possible to run just a single test by appending two more colons followed b
 
 ## The answer is in pandas_cub_final
 
-The `pandas_cub_final` directory contains the completed `__init__.py` file with the code that passes all the tests. Only look at this file after you have attempted to complete the section on your own.
+The `pandas_cub_final` directory contains the completed `__init__.py` file with the code that passes all the tests. Only look at this file after you have attempted to complete each step on your own.
 
 ## Manually test in a Jupyter Notebook
 
@@ -121,7 +133,7 @@ This notebook is at the same level as the inner `pandas_cub` directory. This mea
 
 ### A test DataFrame
 
-A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pandas`. The output for all three DataFrames are produced in the notebook. There currently is no nice representation for `pandas_cub` DataFrames.
+A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pandas`. The output for all three DataFrames are produced in the notebook. There currently is no nice visual representation for `pandas_cub` DataFrames.
 
 ## Starting Pandas Cub
 
@@ -132,28 +144,32 @@ Open up this file now. You will see many incomplete methods that have the keywor
 
 ### Docstrings
 
-You'll notice that all the methods have triple quoted strings directly beneath them. These strings are the documentation or 'docstrings'. There is a short summary followed by the a description of the parameters and a section that says what is returned. There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. They will help you understand how to complete each method.
+You'll notice that all the methods have triple quoted strings directly beneath them. These strings are the documentation or 'docstrings'. All docstrings begin with a short summary of what the method does. A Parameters section follows thats lists each parameter, its type, and a description of how its used. The docstrings end with a Returns section that informs the user of what type of object is returned. It's important to read them as they contain information on how to complete the methods.
+
+There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. There are many other sections you may add to them as well.
 
 ### How to complete the project
 
-Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered section below. Edit the method indicated in each section and then run the test. Once you pass that test, move on to the next section.
+Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered step below. Edit the method indicated in each step and then run the test. Once you pass that test, move on to the next step.
 
 ### 1. Check DataFrame constructor input types
 
-Our DataFrame class is constructed with a single parameter, `data`. Python will call the special `__init__` method when first constructing our DataFrame. You will not need to edit this method.
+Our DataFrame class is constructed with a single parameter, `data`. Python will call the special `__init__` method when first constructing our DataFrame. This method has already been completed for you and you will not need to edit it. Within the `__init__` method, several more methods are called that check to see if the user has passed it valid data. You will be editing these methods during the next few steps.
 
-We are going to force our users to set `data` as a dictionary that has strings as the keys and one-dimensional NumPy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
+In this step, you will only be editing the `_check_input_types` method. This is the first method called within the `__init__` method. It will ensure that our users have passed us a valid `data` parameter.
 
-In this step, you will fill out the `_check_input_types` method. This method will ensure that our users have passed us a valid `data` parameter.
+We are going to force our users to set `data` as a dictionary that has strings as the keys and one-dimensional numpy arrays as the values. The keys will eventually become the column names and the arrays will be the values of those columns.
 
 Specifically, `_check_input_types` must do the following:
 
 * raise a `TypeError` if `data` is not a dictionary
 * raise a `TypeError` if the keys of `data` are not strings
-* raise a `TypeError` if the values of `data` are not NumPy arrays
+* raise a `TypeError` if the values of `data` are not numpy arrays
 * raise a `ValueError` if the values of `data` are not 1-dimensional
 
-Run the following command to test this section:
+Edit this method now. Use the `isinstance` function to help you determine the type of an object.
+
+Run the following command to test this step. Once you have passed this test move on to the next step.
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
@@ -167,35 +183,79 @@ Run the following test:
 
 ### 3. Change unicode arrays to object
 
-By default, whenever you create a NumPy array of Python strings, it will default the data type of that array to unicode. Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will convert it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. This type allows any Python objects within the array.
+Whenever you create a numpy array of Python strings, it will default the data type of that array to unicode. Take a look at the following simple numpy array created from strings. Its data type, found in the `dtype` attribute is shown to be 'U' plus the length of the longest string.
 
-In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. Use the `astype` array method to change its type.
+```python
+>>> a = np.array(['cat', 'dog', 'snake'])
+>>> a.dtype
+dtype('<U5')
+```
 
-A new dictionary, `new_data` is defined within this method. Fill this dictionary with the new converted array and return it.
+Unicode arrays are more difficult to manipulate and don't have the flexibility that we desire. So, if our user passes us a Unicode array, we will convert it to a data type called 'object'. This is a flexible type and will help us later when creating methods just for string columns. Technically, this data type allows any Python objects within the array.
+
+In this step, you will change the data type of Unicode arrays to object. You will do this by checking each arrays data type `kind`. The data type `kind` is a single-character value available by doing `array.dtype.kind`. See the [numpy docs][8] for a list of all the available kinds. Let's retreive the kind of our array from above.
+
+```python
+>>> a.dtype.kind
+'U'
+```
+
+ Pass the `astype` array method the correct kind character to change its type.
 
 Edit the `_convert_unicode_to_object` method and fill the dictionary `new_data` with the converted arrays. The result of this method will be returned and assigned as the `_data` instance variable.
 
 Run `test_unicode_to_object` to test.
 
+### A note on names that begin with a single underscore
+
+So far we have seen a few examples of attribute and method names within our DataFrame class that begin with a single underscore. These names are intended to be 'private' and not directly accessed by our users. This doesn't prevent our users from accessing these names as nothing is technically private in Python, but it is common convention and discussed in [this section of the PEP8 style guide][9].
+
+Most IDEs will not show these private methods as choices to the users which is a good thing. They are not at all meant to be accessed by them.
+
 ### 4. Find the number of rows in the DataFrame with the `len` function
 
-The number of rows are returned when passing a Pandas DataFrame to the builtin `len` function. We will make pandas_cub behave the same exact way.
+The number of rows are returned when passing a pandas DataFrame to the builtin `len` function. We will make pandas_cub behave the same exact way.
 
-To do so we need to implement the special method `__len__`. This is what Python call whenever an object is passed to the `len` function.
+To do so we need to implement the special method `__len__`. This is what Python calls whenever an object is passed to the `len` function.
 
 Edit the `__len__` method and have it return the number of rows. Test with `test_len`.
 
+### Special Methods
+
+Step 4 introduced us to the `__len__` 'special method'. Python has over 100 special methods that allow you to define how your class behaves when it interacts with a builtin functions or operator. In the above example, if `df` is a DataFrame and a user calls `len(df)` then internally, the `__len__` method will be called. All special methods begin and end with two underscores.
+
+Let's see a few more examples:
+
+* `df + 5` calls the `__add__` special method
+* `df > 5` calls the `__lt__` special method
+* `-df` calls the `__neg__` special method
+* `round(df)` calls the `__round__` special method
+
+We've actually already seen the special method `__init__` which is used to initialize your object and called when our use calls `DataFrame(data)`.
+
+The [Python documentation][10] has good (though complex) coverage of all the special methods. We will be implementing many more special methods. I strongly recommend to reference the documentation to learn more.
+
 ### 5. Return columns as a list
 
-In pandas, calling `df.columns` returns a sequence of the column names. Our column names are currently the keys in our `_data` dictionary. Python provides the `property` decorator which allows us to execute code on something that appears to be just an instance variable.
+In this step you will make `df.columns` return a list of the column names. Notice that `columns` is not a method here. There will be no parentheses that follow it.
 
-Edit the `columns` 'method' (really a property) to return a list of the columns in order. Since we are working with Python 3.6, the dictionary keys are internally ordered. Take advantage of this. Validate with the `test_columns` test.
+Looking at the source code, you will see that `columns` appears to be defined as if it is a method. But, directly above it is the property decorator. The `property` decorator will make `df.columns` work just like a method.
+
+Currently the keys in our `_data` dictionary refer to the columns in our DataFrame. Edit the `columns` 'method' (really a property) to return a list of the columns in order. Since we are working with Python 3.6, the dictionary keys are internally ordered. Take advantage of this. Validate with the `test_columns` test.
+
+### The property decorator
+
+There is quite a bit more to the property decorator, including how its used to set attributes as is done in the next step. [This Stack Overflow question][11] contains a good examples that will explain more.
 
 ### 6. Set new column names
 
-In this step, we will be assigning all new columns to our DataFrame by setting the columns property equal to a list. This is the exact same syntax as it is with Pandas. A concrete example below shows how you would set new columns for a 3-column DataFrame.
+In this step, we will be assigning all new columns to our DataFrame by setting the columns property equal to a list. A concrete example below shows how you would set new columns for a 3-column DataFrame.
 
-Complete the following tasks:
+```python
+df.columns = ['state', 'age', 'fruit']
+```
+
+There are three parts to properties in Python; the getter, setter, and deleter. In the previous step, we defined the getter. In this step we will define the setter with another decorator. The value on the right hand side of the assignment statement is passed to the method decorated by `columns.setter`. Edit this 'column' method and complete the following tasks:
 
 * Raise a `TypeError` if the object used to set new columns is not a list
 * Raise a `ValueError` if the number of column names in the list does not match the current DataFrame
@@ -203,24 +263,32 @@ Complete the following tasks:
 * Raise a `ValueError` if any of the column names are duplicated in the list
 * Reassign the `_data` variable so that all the keys have been updated
 
-```python
-df.columns = ['state', 'age', 'fruit']
-```
-
-Python allows you to set columns by using the decorator `columns.setter`. The value on the right hand side of the assignment statement is passed to the method. Edit the 'column' method decorated by `columns.setter` and test with `test_set_columns`.
+Test with `test_set_columns`.
 
 ### 7. The `shape` property
 
-The `shape` property in Pandas returns a tuple of the number of rows and columns. The property decorator is used again here. Edit it to have our DataFrame do the same as Pandas. Test with `test_shape`
+The `shape` property will return a two-item tuple of the number of rows and columns. The property decorator is used again here so that `df.shape` can execute code like a method. We could just make it a normal method and invoke it with `df.shape()` but we are following pandas lead and keeping `shape` as a property.
 
-### 8. Uncomment `_repr_html_` method
+Test with `test_shape`.
 
-This is a method specifically used by iPython to represent your object
-in the Jupyter Notebook. This method must return a string of html. This method is fairly complex and you must know some basic html to complete. I decided to implement this method for you. Uncomment it and test the output in the notebook. You should now see a nicely formatted representation of your DataFrame. There are no tests for this method.
+### 8. Visual HTML representation in the notebook with the `_repr_html_` method
+
+Currently we have no representation of our DataFrame. If you try and output your DataFrame, you'll just get its location in memory and it will look something like this:
+
+```python
+>>> df
+<pandas_cub.DataFrame at 0x116d405c0>
+```
+
+The `_repr_html_` method is made available to developers by iPython so that your objects can have nicely formatted displays within Jupyter Notebooks. Read more on this method [here in the iPython documentation][12] along with other similar methods for different representations.
+
+This method must return a string of html. This method is fairly complex and you must know some basic html to complete it. I recommend copying and pasting the implementation from pandas_cub_final instead of doing it yourself.
+
+If you do know HTML and are seeking a greater challenger use the docstrings to give you an idea of how the HTML may be formatted. There are no tests for this method.
 
 ### 9. The `values` property
 
-In Pandas, `values` is a property that returns a single array of all the columns of data. Our DataFrame will do the same. Edit the `values` property and concatenate all the column arrays into a single two-dimensional NumPy array. Return this array. The NumPy `column_stack` function can be helpful here.
+In pandas, `values` is a property that returns a single array of all the columns of data. Our DataFrame will do the same. Edit the `values` property and concatenate all the column arrays into a single two-dimensional numpy array. Return this array. The numpy `column_stack` function can be helpful here.
 
 Test with `test_values`.
 
@@ -236,27 +304,29 @@ where `new_data` is a dictionary mapping the column names to a one-dimensional n
 
 ### 10. The `dtypes` property
 
-In Pandas, the `dtypes` property returns a Series containing the data type of each column with the column names in the index. Our DataFrame doesn't have an index. Instead, return a two-column DataFrame. Put the column names under the 'Column Name' column and the data type (bool, int, string, or float) under the column name 'Data Type'.
+The `dtypes` property will return a two-column DataFrame with the column names in the first column and their data type as a string in the other. Use 'Column Name' and 'Data Type' as column names.
 
-At the top of the `__init__.py` module there exists a `DTYPE_NAME` dictionary. Use it to convert from array `kind` to the string name of the data type. Test with `test_dtypes`.
+Use the `DTYPE_NAME` dictionary to convert from array `kind` to the string name of the data type. Test with `test_dtypes`.
 
 ### 11. Select a single column with the brackets
 
-In Pandas, you can select a single with `df['colname']`. Our DataFrame will do the same. To make an object work with the brackets, you must implement the `__getitem__` special method. This method is passed a single parameter, the value within the brackets.
+In pandas, you can select a single column with `df['colname']`. Our DataFrame will do the same. To make an object work with the brackets, you must implement the `__getitem__` special method. See the [official documentation][13] for more. 
+
+This special method is always passed a single parameter, the value within the brackets. We use `item` as the parameter name.
 
 In this step, use `isinstance` to check whether `item` is a string. If it is, return a one column DataFrame of that column. You will need to use the `DataFrame` constructor to return a DataFrame.
 
-These tests are under a the `TestSelection` class. Run the `test_one_column` test.
+These tests are under the `TestSelection` class. Run the `test_one_column` test.
 
 ### 12. Select multiple columns with a list
 
 Our DataFrame will also be able to select multiple columns if given a list within the brackets. For example, `df[['colname1', 'colname2']]` will return a two column DataFrame.
 
-Continue editing the `__getitem__` method. If `item` is a list, return a DataFrame of just those columns. Run the `test_multiple_columns`
+Continue editing the `__getitem__` method. If `item` is a list, return a DataFrame of just those columns. Run `test_multiple_columns` to test.
 
 ### 13. Boolean Selection with a DataFrame
 
-In Pandas, you can filter for specific rows of a DataFrame by passing in a boolean Series/array to the brackets. For instance, the following will select all rows such that `a` is greater than 10.
+In pandas, you can filter for specific rows of a DataFrame by passing in a boolean Series/array to the brackets. For instance, the following will select all rows such that `a` is greater than 10.
 
 ```python
 >>> s = df['a'] > 10
@@ -274,7 +344,7 @@ Run `test_simple_boolean` to test
 
 ### (Optional) Simultaneous selection of rows and column
 
-The steps 14-18 are optional and fairly difficult. The outcome of these steps is to simultaneous select both rows and columns in the DataFrame. The syntax uses the brackets operator like the previous three steps and looks like this:
+Steps 14-18 are optional and fairly difficult. The outcome of these steps is to simultaneous select both rows and columns in the DataFrame. The syntax uses the brackets operator like the previous three steps and looks like this:
 
 ```python
 df[rs, cs]
@@ -292,7 +362,7 @@ If `item` is a tuple, return the result of a call to the `_getitem_tuple` method
 
 **Edit the `_getitem_tuple` method from now through step 18.**
 
-Within the `_getitem_tuple` method, raise a `ValueError` if it is not exactly two items in length.
+Within the `_getitem_tuple` method, raise a `ValueError` if it is not exactly two items in length. 
 
 Run `test_simultaneous_tuple` to test.
 
@@ -308,9 +378,7 @@ Check whether `col_selection` is an integer. If it is, reassign to a one-element
 
 If `col_selection` is a string, assign it to a one-element list of that string.
 
-Now both `row_selection` and `col_selection` are lists.
-
-You will return a single-row single-column DataFrame. This is different than Pandas, which just returns a scalar value.
+Now both `row_selection` and `col_selection` are lists. You will return a single-row, single-column DataFrame. This is different than pandas, which just returns a scalar value.
 
 Write a for loop to iterate through each column in the `col_selection` list to create the `new_data` dictionary. Make sure to select just the row that is needed.
 
@@ -378,11 +446,9 @@ Run `test_col_slice` to test.
 
 ### 19. Tab Completion for column names
 
-It is possible to get help completing column names when doing selections. For instance, let's say had a column name called 'state' and began making a column selection with `df['s]`. iPython provides us a way to press tab here and get a list of all the column names beginning with 's'.
+It is possible to get help completing column names when doing single-column selections. For instance, let's say had a column name called 'state' and began making a column selection with `df['s]`. iPython provides us a way to press tab here and get a dropdown list of all the column names beginning with 's'.
 
-We do this by returning the list of values we want to see from the `_ipython_key_completions_` method.
-
-Complete that method now.
+We do this by returning the list of values we want to see from the `_ipython_key_completions_` method. Complete that method now.
 
 Run `test_tab_complete` to test.
 
@@ -404,11 +470,15 @@ If `value` is a numpy array, raise a `ValueError` if it is not 1D. Raise a diffe
 
 If `value` is a DataFrame, raise a `ValueError` if it is not a single column. Raise a different `ValueError` if the length is different than the calling DataFrame. Reassign `value` to the underlying numpy array of the column.
 
-If `value` is an integer, string, float, or boolean, use the numpy `repeat` function to reassign `value` to be an array the same length as the DataFrame with all values the same.
+If `value` is a single integer, string, float, or boolean, use the numpy `repeat` function to reassign `value` to be an array the same length as the DataFrame with all values the same. For instance, the following should work.
+
+```python
+>>> df['new col'] = 85
+```
 
 Raise a `TypeError` if `value` is not one of the above types.
 
-After completing the above, `value` will be a one-dimensional array. If it's data type has its `kind` attribute as the string 'U', change it to object.
+After completing the above, `value` will be a one-dimensional array. If it's data type `kind` is the string 'U', change its type to object.
 
 Finally, assign a new column by modifying the `_data` dictionary.
 
@@ -418,11 +488,11 @@ Run `test_new_column` to test.
 
 The `head` and `tail` methods each accept a single parameter `n` which is defaulted to 5. Have them return the first/last n rows.
 
-A new testing class named `TestBasics` is used for the next several tests. Run `test_head_tail` to complete this.
+Run `test_head_tail` to complete this.
 
 ### 22. Generic aggregation methods
 
-We will now implement several methods that perform an aggregation. These methods all return a single value. The following aggregation methods are defined.
+We will now implement several methods that perform an aggregation. These methods all return a single value for each column. The following aggregation methods are defined.
 
 * min
 * max
@@ -448,11 +518,11 @@ String columns with missing values raise a `TypeError`. Except this error and do
 
 Defining just the `_agg` method will make all the other aggregation methods work.
 
-All the aggregation methods have their own test. They are all named similarly with 'test_' preceding the name of the aggregation. Run all 11 tests.
+All the aggregation methods have their own tests in a separate class named `TestAggregation`. They are all named similarly with 'test_' preceding the name of the aggregation. Run all the tests at once.
 
 ### 23. `isna` method
 
-The `isna` method will return a DataFrame the same shape as the original but with boolean values for every single value. Each value will be tested whether they are missing or not. Use `np.isnan` except in the case for strings which you can use a vectorized equality expression to `None`.
+The `isna` method will return a DataFrame the same shape as the original but with boolean values for every single value. Each value will be tested whether it is missing or not. Use `np.isnan` except in the case for strings which you can use a vectorized equality expression to `None`.
 
 Test with `test_isna` found in the `TestOtherMethods` class.
 
@@ -480,13 +550,13 @@ Test with `test_nunique`
 
 Return a list of DataFrames. Each DataFrame will be two columns. The first column name will be the name of the original column. The second column name will be 'count'. The first column will contain the unique values in the original DataFrame column. The 'count' column will hold the frequency of each of those unique values.
 
-Use the numpy `unique` function with `return_counts` set to `True`. Return the DataFrames with sorted values from greatest to least. Use the numpy `argsort` to help with this.
+Use the numpy `unique` function with `return_counts` set to `True`. Return the DataFrames with sorted counts from greatest to least. Use the numpy `argsort` to help with this.
 
 Use the `test_value_counts` test within the `TestGrouping` class.
 
 ### 28. Normalize options for `value_counts`
 
-We will modify the `value_counts` method to return relative frequencies. The `value_counts` method also accepts a boolean parameter `normalize` that by default is set to `False`. If it is `True`, that return the relative frequencies of each value instead.
+We will modify the `value_counts` method to return relative frequencies. The `value_counts` method also accepts a boolean parameter `normalize` that by default is set to `False`. If it is `True`, then return the relative frequencies of each value instead.
 
 Test with `test_value_counts_normalize`
 
@@ -498,7 +568,7 @@ Test with`test_rename` within the `TestOtherMethods` class
 
 ### 30. `drop` method
 
-Accept a single string or a list of column names a strings and return a DataFrame without those columns. Raise a `TypeError` if a string or list is not provided.
+Accept a single string or a list of column names as strings. Return a DataFrame without those columns. Raise a `TypeError` if a string or list is not provided.
 
 Test with `test_drop`
 
@@ -532,7 +602,7 @@ The `diff` method is a non-aggregating method as well, but there is no direct nu
 
 Complete the body of the `func` function.
 
-Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to float first as integer arrays cannot contains missing values. Use `np.roll` to help shift the data in the arrays.
+Allow `n` to be either a negative or positive integer. You will have to set the first or last n values to `np.nan`. If you are doing this on an integer column, you will have to convert it to a float first as integer arrays cannot contain missing values. Use `np.roll` to help shift the data in the arrays.
 
 Test with `test_diff`
 
@@ -555,23 +625,25 @@ df != 5
 5 < df
 ```
 
-All the arithmetic and comparison operators have corresponding special methods that are called whenever the operator is used. For instance `__add__` is called when the plus operator is used, and `__le__` is called whenever the less than or equal to operator is used.
+All the arithmetic and comparison operators have corresponding special methods that are called whenever the operator is used. For instance `__add__` is called when the plus operator is used, and `__le__` is called whenever the less than or equal to operator is used. See [the full list][14] in the documentation.
 
 Each of these methods accepts a single parameter, which we have named `other`. All of these methods call a more generic `_oper` method which you will complete.
 
-Within the `_oper` method check if `other` is a DataFrame. We will allow operations if `other` is a one-column DataFrame. Raise a `ValueError` if `other` is not a one-column DataFrame. Otherwise, reassign `other` to be a 1D array of the values of its only column.
+Within the `_oper` method check if `other` is a DataFrame. Raise a `ValueError` if this DataFrame not one column. Otherwise, reassign `other` to be a 1D array of the values of its only column.
 
-We won't check for any other types and instead assume that `other` is compatible with the numpy array of each column.
+If `other` is not a DataFrame do nothing and continue executing the rest of the method. We will not check directly if the types are compatible. Instead we will pass this task onto numpy. So, `df + 5` should work if all the columns in `df` are booleans, integers, or floats.
 
-Iterate through all the columns of your DataFrame and apply the operation to each array. You will need to use the `getattr` function along with the `op` string to retrieve the underlying array method. For instance, `getattr(values, '__add__')` returns the method that uses the plus operator for that numpy array `values`. Return a new DataFrame with the operation applied to each column.
+Iterate through all the columns of your DataFrame and apply the operation to each array. You will need to use the `getattr` function along with the `op` string to retrieve the underlying numpy array method. For instance, `getattr(values, '__add__')` returns the method that uses the plus operator for the numpy array `values`. Return a new DataFrame with the operation applied to each column.
 
 Run all the tests in class `TestOperators`
 
 ### 35. `sort_values` method
 
-This method takes two parameters. Allow the parameter `by` to be a single column as a string or a list of columns. This will be the sorting column or columns. The second parameter, `asc` will be a boolean controlling the direction of the sort. It is defaulted to `True` meaning that sorting will be ascending  (lowest to greatest). Raise a `TypeError` if `by` is not a string or list.
+This method will sort the rows of the DataFrame by one or more columns. Allow the parameter `by` to be either a single column name as a string or a list of column names as strings. The DataFrame will be sorted by this column or columns. 
 
-You will need to use NumPy's `argsort` to get the order of the sort for a single column and `lexsort` to sort multiple columns.
+The second parameter, `asc`, will be a boolean controlling the direction of the sort. It is defaulted to `True` indicating that sorting will be ascending  (lowest to greatest). Raise a `TypeError` if `by` is not a string or list.
+
+You will need to use numpy's `argsort` to get the order of the sort for a single column and `lexsort` to sort multiple columns.
 
 Run the following tests in the `TestMoreMethods` class.
 
@@ -582,17 +654,21 @@ Run the following tests in the `TestMoreMethods` class.
 
 ### 36. `sample` method
 
-This method randomly samples the rows of the DataFrame. You can either choose an exact number to sample with `n` or a fraction with `frac`. Sample with replacement by using the boolean `replace`. You can also set the random number seed. Raise a `ValueError` if `frac` is not positive and a `TypeError` if `n` is not an integer.
+This method randomly samples the rows of the DataFrame. You can either choose an exact number to sample with `n` or a fraction with `frac`. Sample with replacement by using the boolean `replace`. The `seed` parameter will be used to set the random number seed.
 
-Use the `seed` function from numpy's `random` module to set the seed. Use the `choice` function from numpy's `random` module to randomly choose new rows. This function has a `replace` parameter. Return a new DataFrame.
+Raise a `ValueError` if `frac` is not positive and a `TypeError` if `n` is not an integer.
 
-### 37. `str` accessor
+You will be using numpy's random module to complete this method. Within it are the `seed` and `choice` functions. The latter function has a `replace` parameter that you will need to use. Return a new DataFrame with the new random rows.
 
-Look back up at the `__init__` method. One of the last lines defines `str` as an instance variable assigned to a new instance of `StringMethods`. Pandas has the same variable for its DataFrames and gives it the name 'string accessor'. We will also refer to it as an 'accessor' as it gives us access to string-only methods.
+Run `test_sample` to test.
+
+### 37. String-only methods with the `str` accessor
+
+Look back up at the `__init__` method. One of the last lines defines `str` as an instance variable assigned to a new instance of `StringMethods`. Pandas uses the same variable name for its DataFrames and calls it a string 'accessor'. We will also refer to it as an accessor as it gives us access to string-only methods.
 
 Scroll down below the definition of the `DataFrame` class. You will see the `StringMethods` class defined there. During initialization it stores a reference to the underlying DataFrame with `_df`.
 
-There are many string methods defined in this class. The first parameter to each string method is the name of the column you would like to apply the string method to. We will only allow our accessor to work on a single column DataFrame.
+There are many string methods defined in this class. The first parameter to each string method is the name of the column you would like to apply the string method to. We will only allow our accessor to work on a single column of the DataFrame.
 
 You will only be modifying the `_str_method` which accepts the string method, the name of the column, and any extra arguments.
 
@@ -622,7 +698,7 @@ The syntax used to produce the pivot table above is as follows:
 df.pivot_table(rows='race', columns='gender', values='salary', aggfunc='mean')
 ```
 
-`rows` and `columns` will be assigned the grouping columns. `values` will be assigned the aggregating column and `aggfunc` will be assigned the aggregating function. All four parameters will be strings.
+`rows` and `columns` will be assigned the grouping columns. `values` will be assigned the aggregating column and `aggfunc` will be assigned the aggregating function. All four parameters will be strings. Since `aggfunc` is a string, you will need to use the builtin `getattr` function to get the correct numpy function.
 
 There are several approaches that you can take to implement this. One approach involves using a dictionary to store the unique combinations of the grouping columns as the keys and a list to store the values of the aggregative column. You could iterate over every single row and then use a two-item tuple to hold the values of the two grouping columns. A `defaultdict` from the collections module can help make this easier. Your dictionary would look something like this after you have iterated through the data.
 
@@ -640,17 +716,21 @@ Other features:
 * Return a DataFrame that has the rows and columns sorted
 * You must make your pivot table work when passed just one of `rows` or `columns`. If just `rows` is passed return a two-column DataFrame with the first column containing the unique values of the rows and the second column containing the aggregations. Title the second column the same name as `aggfunc`.
 * If `aggfunc` is `None` and `values` is not None then raise a `ValueError`.
-* If `aggfunc` and `values` are both `None` then set `aggfunc` equal to the string 'size'. This will produce a contingency table.
+* If `aggfunc` and `values` are both `None` then set `aggfunc` equal to the string 'size'. This will produce a contingency table (the raw frequency of occurrence).
 
 Run `test_pivot_table_rows_or_cols` and `test_pivot_table_both` in the `TestGrouping` class.
 
 ### 39. Automatically add documentation
 
-This method is already completed and automatically adds documentation to the aggregation methods by setting the `__doc__` attribute.
+All docstrings can be retrieved programmitcally with the `__doc__` special attribute. Docstrings can also be dynamically set by assigning this same special attribute a string.
+
+This method is already completed and automatically adds documentation to the aggregation methods by setting the `__doc__` special attribute.
 
 ### 40. Reading simple CSVs
 
-We will implement a simple function to read in data on disk into our DataFrame. The `read_csv` function accepts a single parameter, `fn`, which is a string of the file name containing the data. Read through each line of the file. Assume the values in each line are separated by commas. Also assume the first line contains the column names.
+It is important that our library be able to turn data in files into DataFrames. The `read_csv` function, at the very end of our module, will read in simple comma-separated value files (CSVs) and return a DataFrame.
+
+The `read_csv` function accepts a single parameter, `fn`, which is a string of the file name containing the data. Read through each line of the file. Assume the values in each line are separated by commas. Also assume the first line contains the column names.
 
 Create a dictionary to hold the data and return a new DataFrame. Use the file `employee.csv` in the `data` directory to test your function manually.
 
@@ -664,3 +744,12 @@ Run all the tests in the `TestReadCSV` class.
 [5]: https://en.wikipedia.org/wiki/Pivot_table
 [6]: images/pivot.png
 [7]: https://numpydoc.readthedocs.io/en/latest/format.html
+[8]: https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.kind.html#numpy.dtype.kind
+[9]: https://www.python.org/dev/peps/pep-0008/#id47
+[10]: https://docs.python.org/3/reference/datamodel.html#specialnames
+[11]: https://stackoverflow.com/questions/17330160/how-does-the-property-decorator-work
+[12]: https://ipython.readthedocs.io/en/stable/config/integrating.html
+[13]: https://docs.python.org/3/reference/datamodel.html
+[14]: https://docs.python.org/3/reference/datamodel.html#emulating-numeric-type
+[15]: https://www.youtube.com/watch?v=ZDa-Z5JzLYM
+[16]: https://docs.scipy.org/doc/numpy/user/quickstart.html
