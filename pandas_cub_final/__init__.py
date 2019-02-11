@@ -3,9 +3,6 @@ import numpy as np
 __version__ = '0.0.1'
 
 
-DTYPE_NAME = {'O': 'string', 'i': 'int', 'f': 'float', 'b': 'bool'}
-
-
 class DataFrame:
 
     def __init__(self, data):
@@ -226,6 +223,7 @@ class DataFrame:
         A two-column DataFrame of column names in a column and
         their data type in the other
         """
+        DTYPE_NAME = {'O': 'string', 'i': 'int', 'f': 'float', 'b': 'bool'}
         col_arr = np.array(self.columns)
         dtypes = []
         for values in self._data.values():
@@ -1079,6 +1077,10 @@ class StringMethods:
 def read_csv(fn):
     """
     Read in a comma-separated value file as a DataFrame
+
+    Parameters
+    ----------
+    fn: string of file location
 
     Returns
     -------
