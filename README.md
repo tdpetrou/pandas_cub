@@ -222,7 +222,7 @@ Edit the `__len__` method and have it return the number of rows. Test with `test
 
 ### Special Methods
 
-Step 4 introduced us to the `__len__` 'special method'. Python has over 100 special methods that allow you to define how your class behaves when it interacts with a builtin functions or operator. In the above example, if `df` is a DataFrame and a user calls `len(df)` then internally, the `__len__` method will be called. All special methods begin and end with two underscores.
+Step 4 introduced us to the `__len__` 'special method'. Python has over 100 special methods that allow you to define how your class behaves when it interacts with a builtin function or operator. In the above example, if `df` is a DataFrame and a user calls `len(df)` then internally the `__len__` method will be called. All special methods begin and end with two underscores.
 
 Let's see a few more examples:
 
@@ -231,7 +231,7 @@ Let's see a few more examples:
 * `-df` calls the `__neg__` special method
 * `round(df)` calls the `__round__` special method
 
-We've actually already seen the special method `__init__` which is used to initialize your object and called when our use calls `DataFrame(data)`.
+We've actually already seen the special method `__init__` which is used to initialize an object and called when a user calls `DataFrame(data)`.
 
 The [Python documentation][10] has good (though complex) coverage of all the special methods. We will be implementing many more special methods. I strongly recommend to reference the documentation to learn more.
 
