@@ -237,7 +237,7 @@ The [Python documentation][10] has good (though complex) coverage of all the spe
 
 ### 5. Return columns as a list
 
-In this step you will make `df.columns` return a list of the column names. Notice that `columns` is not a method here. There will be no parentheses that follow it.
+In this step you will make `df.columns` return a list of the column names. Notice that `df.columns` is not a method here. There will be no parentheses that follow it.
 
 Looking at the source code, you will see that `columns` appears to be defined as if it is a method. But, directly above it is the property decorator. The `property` decorator will make `df.columns` work just like a method.
 
@@ -255,7 +255,7 @@ In this step, we will be assigning all new columns to our DataFrame by setting t
 df.columns = ['state', 'age', 'fruit']
 ```
 
-There are three parts to properties in Python; the getter, setter, and deleter. In the previous step, we defined the getter. In this step we will define the setter with another decorator. The value on the right hand side of the assignment statement is passed to the method decorated by `columns.setter`. Edit this 'column' method and complete the following tasks:
+There are three parts to properties in Python; the getter, setter, and deleter. In the previous step, we defined the getter. In this step we will define the setter with the `columns.setter` decorator. The value on the right hand side of the assignment statement is passed to the method decorated by `columns.setter`. Edit this method and complete the following tasks:
 
 * Raise a `TypeError` if the object used to set new columns is not a list
 * Raise a `ValueError` if the number of column names in the list does not match the current DataFrame
@@ -280,7 +280,7 @@ Currently we have no representation of our DataFrame. If you try and output your
 <pandas_cub.DataFrame at 0x116d405c0>
 ```
 
-The `_repr_html_` method is made available to developers by iPython so that your objects can have nicely formatted displays within Jupyter Notebooks. Read more on this method [here in the iPython documentation][12] along with other similar methods for different representations.
+The `_repr_html_` method is made available to developers by iPython so that your objects can have nicely formatted HTML displays within Jupyter Notebooks. Read more on this method [here in the iPython documentation][12] along with other similar methods for different representations.
 
 This method must return a string of html. This method is fairly complex and you must know some basic html to complete it. I recommend copying and pasting the implementation from pandas_cub_final instead of doing it yourself.
 
@@ -310,7 +310,7 @@ Use the `DTYPE_NAME` dictionary to convert from array `kind` to the string name 
 
 ### 11. Select a single column with the brackets
 
-In pandas, you can select a single column with `df['colname']`. Our DataFrame will do the same. To make an object work with the brackets, you must implement the `__getitem__` special method. See the [official documentation][13] for more. 
+In pandas, you can select a single column with `df['colname']`. Our DataFrame will do the same. To make an object work with the brackets, you must implement the `__getitem__` special method. See the [official documentation][13] for more.
 
 This special method is always passed a single parameter, the value within the brackets. We use `item` as the parameter name.
 
@@ -326,7 +326,7 @@ Continue editing the `__getitem__` method. If `item` is a list, return a DataFra
 
 ### 13. Boolean Selection with a DataFrame
 
-In pandas, you can filter for specific rows of a DataFrame by passing in a boolean Series/array to the brackets. For instance, the following will select all rows such that `a` is greater than 10.
+In pandas, you can filter for specific rows of a DataFrame by passing in a boolean Series/array to the brackets. For instance, the following will select only the rows such that `a` is greater than 10.
 
 ```python
 >>> s = df['a'] > 10
@@ -344,7 +344,7 @@ Run `test_simple_boolean` to test
 
 ### (Optional) Simultaneous selection of rows and column
 
-Steps 14-18 are optional and fairly difficult. The outcome of these steps is to simultaneous select both rows and columns in the DataFrame. The syntax uses the brackets operator like the previous three steps and looks like this:
+Steps 14-18 are optional and fairly difficult. The outcome of these steps is to simultaneously select both rows and columns in the DataFrame. The syntax uses the brackets operator like the previous three steps and looks like this:
 
 ```python
 df[rs, cs]
