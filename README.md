@@ -166,6 +166,19 @@ You don't have to do this procedure again or this notebook. From now on, it will
 
 If you start a new notebook, you will have the option to decide which Kernel you would like to run it with.
 
+## Inspecting the `__init__.py` File
+
+You will be editing a single file for this project - the `__init__.py` file
+found in the `pandas_cub` directory. It contains skeleton code for the entire project. You won't be defining your own classes or methods, but you will be filling out the method bodies.
+
+Open up this file now. You will see many incomplete methods that have the keyword `pass` as their last line. These are the methods that you will be editing. A few methods are complete and won't need editing.
+
+### Docstrings
+
+You'll notice that all the methods have triple quoted strings directly beneath them. These strings are the documentation or 'docstrings'. All docstrings begin with a short summary of what the method does. A Parameters section follows thats lists each parameter, its type, and a description of how its used. The docstrings end with a Returns section that informs the user of what type of object is returned. It's important to read them as they contain information on how to complete the methods.
+
+There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. There are many other sections you may add to them as well.
+
 ## Manually Test in a Jupyter Notebook
 
 During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing.
@@ -184,24 +197,11 @@ This notebook is at the same level as the inner `pandas_cub` directory. This mea
 
 A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pandas`. The output for all three DataFrames are produced in the notebook. There currently is no nice visual representation for `pandas_cub` DataFrames.
 
-## Starting Pandas Cub
-
-You will be editing a single file for this project - the `__init__.py` file
-found in the `pandas_cub` directory. It contains skeleton code for the entire project. You won't be defining your own classes or methods, but you will be filling out the method bodies.
-
-Open up this file now. You will see many incomplete methods that have the keyword `pass` as their last line. These are the methods that you will be editing. A few methods are complete and won't need editing.
-
-### Docstrings
-
-You'll notice that all the methods have triple quoted strings directly beneath them. These strings are the documentation or 'docstrings'. All docstrings begin with a short summary of what the method does. A Parameters section follows thats lists each parameter, its type, and a description of how its used. The docstrings end with a Returns section that informs the user of what type of object is returned. It's important to read them as they contain information on how to complete the methods.
-
-There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. There are many other sections you may add to them as well.
-
-### How to complete the project
+## Completing Pandas Cub
 
 Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered step below. Edit the method indicated in each step and then run the test. Once you pass that test, move on to the next step.
 
-## The answer is in pandas_cub_final
+### The answer is in pandas_cub_final
 
 The `pandas_cub_final` directory contains the completed `__init__.py` file with the code that passes all the tests. Only look at this file after you have attempted to complete each step on your own.
 
