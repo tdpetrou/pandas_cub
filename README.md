@@ -2,6 +2,10 @@
 
 This repository contains a detailed project that teaches you how to build your own Python data analysis library, pandas_cub, from scratch. The end result will be a fully-functioning library similar to pandas.
 
+## YouTube Video Series
+
+A detailed video series is available at the [Dunder Data YouTube channel][22] that walks you through the entire project.
+
 ## Target Student
 
 This project is targeted towards those who understand the fundamentals
@@ -807,3 +811,4 @@ Run all the tests in the `TestReadCSV` class.
 [19]: https://ipython.readthedocs.io/en/stable/install/kernel_install.html
 [20]: images/change_kernel.png
 [21]: images/exec_location2.png
+[22]: https://www.youtube.com/playlist?list=PLVyhfExBT1XDTu-oocI3ttl_OPhulAJOp
