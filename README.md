@@ -118,7 +118,7 @@ It is possible to run just a single test by appending two more colons followed b
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
-## Installing the IPython Kernel for Jupyter
+## Installing an IPython Kernel for Jupyter
 
 Although we have set up our development environment to work on the command line, we need to make a few more steps to hook it up with Jupyter Notebooks correctly.
 
