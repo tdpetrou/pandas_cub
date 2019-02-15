@@ -12,7 +12,7 @@ class DataFrame:
 
         Parameters
         ----------
-        values: dict
+        data: dict
             A dictionary of strings mapped to NumPy arrays. The key will
             become the column name.
         """
