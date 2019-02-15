@@ -54,6 +54,7 @@ dependencies:
 - pandas
 - jupyter
 - pytest
+- nb_conda_kernels
 ```
 
 This file will be used to create a new environment named `pandas_cub`. It will install Python 3.6 in a completely separate directory in your file system along with pandas, jupyter, and pytest. There will actually be many more packages installed as those libraries have dependencies of their own. Visit [this page][2] for more information on conda environments.
@@ -113,13 +114,57 @@ It is possible to run just a single test by appending two more colons followed b
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
-## The answer is in pandas_cub_final
+## Setting up the Kernel for Jupyter Notebooks
 
-The `pandas_cub_final` directory contains the completed `__init__.py` file with the code that passes all the tests. Only look at this file after you have attempted to complete each step on your own.
+Although we have set up our development environment to work on the command line, we need to make a few more steps to hook it up with Jupyter Notebooks correctly.
 
-## Manually test in a Jupyter Notebook
+This is important, because Jupyter Notebooks are good for manually testing code as you will see below.
 
-During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing. Within the `pandas_cub` environment, launch a Jupyter Notebook and open up the `Test Notebook.ipynb` notebook.
+### Launch a Jupyter Notebook
+
+Within the `pandas_cub` environment, launch a Jupyter Notebook with the command `jupyter ntoebook`. When the home page finishes loading in your browser open up the `Test Notebook.ipynb` notebook.
+
+### Changing the environment within Jupyter
+
+Although we launched our Jupyter Notebook within the `pandas_cub` environment, our code will be executed within the base environment at first.
+
+If you run the first cell of the notebook (shown below) you can verify the location in your file system where Python is getting executed. This is not where the `pandas_cub` environment was installed.
+
+![][17]
+
+Exit out of Jupyter and return to the command line. We need to create a new [Kernel][18], a program that "runs and introspects the user’s code"
+
+Thankfully there is a command we can run with the `ipykernel` package to automatically create a new kernel. The `ipykernel` package should get installed during environment creation.
+
+The following command creates the Kernel. Make sure you have activated the `pandas_cub` environment first. You can read more about this command [in the documentation][19].
+
+```bash
+python -m ipykernel install --user --name pandas_cub --display-name "Python (pandas_cub)"
+```
+
+You may verify that the `pandas_cub` Kernel was created with the following command:
+
+```bash
+jupyter kernelspec list
+```
+
+### Launch Jupyter Again
+
+Launch Jupyter again and open up the `Test Notebook.ipynb` notebook. You will still NOT be in the `pandas_cub` environment. You need to navigate inside the 'Kernel' menu above and into 'Change kernel'. Finally, you can select the 'Python (pandas_cub)' Kernel which will place you in the right environment. The kernel will restart once you choose this option.
+
+![][20]
+
+Run the first cell of the notebook again and you should see that the Python executable is coming from the `pandas_cub` environment directory.
+
+![][21]
+
+You don't have to do this procedure again or this notebook. From now on, it will open up using the `pandas_cub` Kernel that was created. You can of course change the Kernel again but this is its new default. To verify this, shutdown the notebook and restart it.
+
+If you start a new notebook, you will have the option to decide which Kernel you would like to run it with.
+
+## Manually Test in a Jupyter Notebook
+
+During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing.
 
 ### Autoreloading
 
@@ -151,6 +196,10 @@ There are many ways you can write docstrings, but these follow the [numpy docstr
 ### How to complete the project
 
 Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered step below. Edit the method indicated in each step and then run the test. Once you pass that test, move on to the next step.
+
+## The answer is in pandas_cub_final
+
+The `pandas_cub_final` directory contains the completed `__init__.py` file with the code that passes all the tests. Only look at this file after you have attempted to complete each step on your own.
 
 ### 1. Check DataFrame constructor input types
 
@@ -753,3 +802,8 @@ Run all the tests in the `TestReadCSV` class.
 [14]: https://docs.python.org/3/reference/datamodel.html#emulating-numeric-type
 [15]: https://www.youtube.com/watch?v=ZDa-Z5JzLYM
 [16]: https://docs.scipy.org/doc/numpy/user/quickstart.html
+[17]: images/exec_location.png
+[18]: https://jupyter-client.readthedocs.io/en/latest/kernels.html#making-kernels-for-jupyter
+[19]: https://ipython.readthedocs.io/en/stable/install/kernel_install.html
+[20]: images/change_kernel.png
+[21]: images/exec_location.png
