@@ -201,7 +201,7 @@ We import the `pandas` library so that you can compare and contrast its function
 
 A simple test DataFrame is created for `pandas_cub`, `pandas_cub_final`, and `pandas`. The output for all three DataFrames are produced in the notebook. There currently is no nice visual representation for `pandas_cub` DataFrames.
 
-## Completing Pandas Cub
+## Starting Pandas Cub
 
 Keep the `__init__.py` file open at all times. This is the only file that you will be editing. Read and complete each numbered step below. Edit the method indicated in each step and then run the test. Once you pass that test, move on to the next step.
 
