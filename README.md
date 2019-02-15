@@ -172,7 +172,7 @@ During development, it's good to have a place to manually experiment with your n
 
 ### Autoreloading
 
-The first cell loads a notebook magic extension which automatically reloads code from files that have changed. Normally, we would have to restart the kernel if we made changes to our code to see it reflect its current state. This magic command saves us from doing this.
+The second cell loads a notebook magic extension which automatically reloads code from files that have changed. Normally, we would have to restart the kernel if we made changes to our code to see it reflect its current state. This magic command saves us from doing this.
 
 ### Importing pandas_cub
 
