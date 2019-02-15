@@ -806,4 +806,4 @@ Run all the tests in the `TestReadCSV` class.
 [18]: https://jupyter-client.readthedocs.io/en/latest/kernels.html#making-kernels-for-jupyter
 [19]: https://ipython.readthedocs.io/en/stable/install/kernel_install.html
 [20]: images/change_kernel.png
-[21]: images/exec_location.png
+[21]: images/exec_location2.png
