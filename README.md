@@ -114,7 +114,7 @@ It is possible to run just a single test by appending two more colons followed b
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_input_types`
 
-## Setting up the Kernel for Jupyter Notebooks
+## Installing the IPython Kernel for Jupyter
 
 Although we have set up our development environment to work on the command line, we need to make a few more steps to hook it up with Jupyter Notebooks correctly.
 
@@ -122,7 +122,7 @@ This is important, because Jupyter Notebooks are good for manually testing code 
 
 ### Launch a Jupyter Notebook
 
-Within the `pandas_cub` environment, launch a Jupyter Notebook with the command `jupyter ntoebook`. When the home page finishes loading in your browser open up the `Test Notebook.ipynb` notebook.
+Within the `pandas_cub` environment, launch a Jupyter Notebook with the command `jupyter notebook`. When the home page finishes loading in your browser open up the `Test Notebook.ipynb` notebook.
 
 ### Changing the environment within Jupyter
 
