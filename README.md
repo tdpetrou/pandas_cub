@@ -179,6 +179,10 @@ You'll notice that all the methods have triple quoted strings directly beneath t
 
 There are many ways you can write docstrings, but these follow the [numpy docstring guide][7]. There are many other sections you may add to them as well.
 
+## Importing pandas_cub
+
+Return back to the Jupyter notebook, which should already be open. This notebook is at the same level as the inner `pandas_cub` directory. This means that we can import `pandas_cub` directly into our namespace without changing directories. Technically, `pandas_cub` is a Python **package**, which is a directory containing a `__init__.py` file. It is this initialization file that gets run when we write `import pandas_cub as pdc`.
+
 ## Manually Test in a Jupyter Notebook
 
 During development, it's good to have a place to manually experiment with your new code so you can see it in action. We will be using the Jupyter Notebook to quickly see how our DataFrame is changing.
@@ -187,11 +191,11 @@ During development, it's good to have a place to manually experiment with your n
 
 The second cell loads a notebook magic extension which automatically reloads code from files that have changed. Normally, we would have to restart the kernel if we made changes to our code to see it reflect its current state. This magic command saves us from doing this.
 
-### Importing pandas_cub
+### Imports
 
-This notebook is at the same level as the inner `pandas_cub` directory. This means that we can import `pandas_cub` directly into our namespace without changing directories. Technically, `pandas_cub` is a Python **package**, which is a directory containing a `__init__.py` file. It is this initialization file that gets run when we write `import pandas_cub as pdc`.
+Along with `pandas_cub` `pandas_cub_final` is also imported so you can see how the completed object is supposed to behave.
 
-`pandas_cub_final` is also imported so you can see how the completed object is supposed to behave.
+We import the `pandas` library so that you can compare and contrast its functionality.
 
 ### A test DataFrame
 
