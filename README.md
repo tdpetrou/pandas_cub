@@ -238,7 +238,7 @@ Run the following test:
 
 `$ pytest tests/test_dataframe.py::TestDataFrameCreation::test_array_length`
 
-### 3. Change unicode arrays to object
+### 3. Convert unicode arrays to object
 
 Whenever you create a numpy array of Python strings, it will default the data type of that array to unicode. Take a look at the following simple numpy array created from strings. Its data type, found in the `dtype` attribute is shown to be 'U' plus the length of the longest string.
 
