@@ -52,7 +52,7 @@ class DataFrame:
     @property
     def columns(self):
         """
-        _values holds column names mapped to arrays
+        _data holds column names mapped to arrays
         take advantage of internal ordering of dictionaries to
         put columns in correct order in list. Only works in 3.6+
 
