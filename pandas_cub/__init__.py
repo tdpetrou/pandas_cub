@@ -157,6 +157,10 @@ class DataFrame:
         """
         pass
 
+    def _getitem_tuple(self, item):
+        # simultaneous selection of rows and cols -> df[rs, cs]
+        pass
+
     def _ipython_key_completions_(self):
         # allows for tab completion when doing df['c
         pass
