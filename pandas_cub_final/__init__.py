@@ -498,14 +498,9 @@ class DataFrame:
         -------
         A DataFrame
         """
-        dfs = self.unique()
-        if isinstance(dfs, DataFrame):
-            dfs = [dfs]
-
         new_data = {}
-        for df, col in zip(dfs, self.columns):
-            new_data[col] = np.array([len(df)])
-
+        for col, value in self._data.items():
+            new_data[col] = np.array([len(np.unique(value))])
         return DataFrame(new_data)
 
     def value_counts(self, normalize=False):
