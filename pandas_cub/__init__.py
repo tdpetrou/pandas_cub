@@ -126,7 +126,7 @@ class DataFrame:
         """
         Returns
         -------
-        A single 2D NumPy array (or 1D if 1 column) of the underlying data
+        A single 2D NumPy array of the underlying data
         """
         pass
 
