@@ -220,7 +220,7 @@ class DataFrame:
         """
         Returns
         -------
-        A two-column DataFrame of column names in a column and
+        A two-column DataFrame of column names in one column and
         their data type in the other
         """
         DTYPE_NAME = {'O': 'string', 'i': 'int', 'f': 'float', 'b': 'bool'}
