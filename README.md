@@ -605,7 +605,7 @@ Test with `test_nunique`
 
 ### 27. `value_counts` method
 
-Return a list of DataFrames. Each DataFrame will be two columns. The first column name will be the name of the original column. The second column name will be 'count'. The first column will contain the unique values in the original DataFrame column. The 'count' column will hold the frequency of each of those unique values.
+Return a list of DataFrames, unless there is just one column and then just return a single DataFrame. Each DataFrame will be two columns. The first column name will be the name of the original column. The second column name will be 'count'. The first column will contain the unique values in the original DataFrame column. The 'count' column will hold the frequency of each of those unique values.
 
 Use the numpy `unique` function with `return_counts` set to `True`. Return the DataFrames with sorted counts from greatest to least. Use the numpy `argsort` to help with this.
 
