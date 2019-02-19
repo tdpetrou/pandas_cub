@@ -611,9 +611,6 @@ class TestGrouping:
                                    'count': np.array([5, 3])})
         assert_df_equals(df_results[1], df_answer)
 
-        with pytest.raises(TypeError):
-            df_temp.rename(5)
-
     def test_value_counts_normalize(self):
         df_temp = pdc.DataFrame({'state': np.array(['texas', 'texas', 'texas', 'florida', 'florida', 'florida', 'florida', 'ohio']),
                                  'fruit': np.array(['a', 'a', 'a', 'a', 'b', 'b', 'b', 'a'])})
