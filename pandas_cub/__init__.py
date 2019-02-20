@@ -427,8 +427,7 @@ class DataFrame:
     def diff(self, n=1):
         """
         Take the difference between the current value and
-        the nth value below it. The top n rows of the DataFrame
-        are not returned
+        the nth value above it.
 
         Parameters
         ----------
@@ -445,8 +444,7 @@ class DataFrame:
     def pct_change(self, n):
         """
         Take the percentage difference between the current value and
-        the nth value below it. The top n rows of the DataFrame
-        are not returned
+        the nth value above it.
 
         Parameters
         ----------
