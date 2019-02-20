@@ -441,7 +441,7 @@ class DataFrame:
             pass
         return self._non_agg(func)
 
-    def pct_change(self, n):
+    def pct_change(self, n=1):
         """
         Take the percentage difference between the current value and
         the nth value above it.
