@@ -1083,14 +1083,14 @@ def read_csv(fn):
     -------
     A DataFrame
     """
-    values = {}
+    from collections import defaultdict
+    values = defaultdict(list)
     with open(fn) as f:
         header = f.readline()
         column_names = header.strip('\n').split(',')
-        for name in column_names:
-            values[name] = []
-        for line in f.readlines():
-            for val, name in zip(line.strip('\n').split(','), column_names):
+        for line in f:
+            vals = line.strip('\n').split(',')
+            for val, name in zip(vals, column_names):
                 values[name].append(val)
     new_data = {}
     for col, vals in values.items():
