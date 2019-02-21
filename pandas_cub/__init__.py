@@ -556,6 +556,8 @@ class DataFrame:
             Proportion of the data to sample
         replace: bool
             Whether or not to sample with replacement
+        seed: int
+            Seeds the random number generator
 
         Returns
         -------
