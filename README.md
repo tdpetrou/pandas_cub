@@ -719,23 +719,7 @@ You will be using numpy's random module to complete this method. Within it are t
 
 Run `test_sample` to test.
 
-### 37. String-only methods with the `str` accessor
-
-Look back up at the `__init__` method. One of the last lines defines `str` as an instance variable assigned to a new instance of `StringMethods`. Pandas uses the same variable name for its DataFrames and calls it a string 'accessor'. We will also refer to it as an accessor as it gives us access to string-only methods.
-
-Scroll down below the definition of the `DataFrame` class. You will see the `StringMethods` class defined there. During initialization it stores a reference to the underlying DataFrame with `_df`.
-
-There are many string methods defined in this class. The first parameter to each string method is the name of the column you would like to apply the string method to. We will only allow our accessor to work on a single column of the DataFrame.
-
-You will only be modifying the `_str_method` which accepts the string method, the name of the column, and any extra arguments.
-
-Within `_str_method` select the underlying numpy array of the given `col`. Raise a `TypeError` if it does not have kind 'O'.
-
-Iterate over each value in the array and pass it to `method`. It will look like this: `method(val, *args)`. Return a one-column DataFrame with the new data.
-
-Test with class `TestStrings`
-
-### 38. `pivot_table` method
+### 37. `pivot_table` method
 
 This is a complex method to implement. This method allows you to create a [pivot table][5] from your DataFrame. The following image shows the final result of calling the pivot table on a DataFrame. It summarizes the mean salary of each gender for each race.
 
@@ -777,11 +761,27 @@ Other features:
 
 Run `test_pivot_table_rows_or_cols` and `test_pivot_table_both` in the `TestGrouping` class.
 
-### 39. Automatically add documentation
+### 38. Automatically add documentation
 
 All docstrings can be retrieved programmitcally with the `__doc__` special attribute. Docstrings can also be dynamically set by assigning this same special attribute a string.
 
 This method is already completed and automatically adds documentation to the aggregation methods by setting the `__doc__` special attribute.
+
+### 39. String-only methods with the `str` accessor
+
+Look back up at the `__init__` method. One of the last lines defines `str` as an instance variable assigned to a new instance of `StringMethods`. Pandas uses the same variable name for its DataFrames and calls it a string 'accessor'. We will also refer to it as an accessor as it gives us access to string-only methods.
+
+Scroll down below the definition of the `DataFrame` class. You will see the `StringMethods` class defined there. During initialization it stores a reference to the underlying DataFrame with `_df`.
+
+There are many string methods defined in this class. The first parameter to each string method is the name of the column you would like to apply the string method to. We will only allow our accessor to work on a single column of the DataFrame.
+
+You will only be modifying the `_str_method` which accepts the string method, the name of the column, and any extra arguments.
+
+Within `_str_method` select the underlying numpy array of the given `col`. Raise a `TypeError` if it does not have kind 'O'.
+
+Iterate over each value in the array and pass it to `method`. It will look like this: `method(val, *args)`. Return a one-column DataFrame with the new data.
+
+Test with class `TestStrings`
 
 ### 40. Reading simple CSVs
 
