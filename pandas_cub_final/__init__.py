@@ -887,6 +887,8 @@ class DataFrame:
             if aggfunc is None:
                 aggfunc = 'size'
                 val_data = np.empty(len(self))
+            else:
+                raise ValueError('You cannot provide `aggfunc` when `values` is None')
 
         if rows is not None:
             row_data = self._data[rows]

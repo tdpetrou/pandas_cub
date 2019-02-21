@@ -757,7 +757,8 @@ Other features:
 * Return a DataFrame that has the rows and columns sorted
 * You must make your pivot table work when passed just one of `rows` or `columns`. If just `rows` is passed return a two-column DataFrame with the first column containing the unique values of the rows and the second column containing the aggregations. Title the second column the same name as `aggfunc`.
 * If `aggfunc` is `None` and `values` is not None then raise a `ValueError`.
-* If `aggfunc` and `values` are both `None` then set `aggfunc` equal to the string 'size'. This will produce a contingency table (the raw frequency of occurrence).
+* If `values` is `None` and `aggfunc` is not then raise a `ValueError` as there are no values to be aggregated.
+* If `aggfunc` and `values` are both `None` then set `aggfunc` equal to the string 'size'. This will produce a contingency table (the raw frequency of occurrence). You might need to create an empty numpy array to be a placeholder for the values.
 
 Run `test_pivot_table_rows_or_cols` and `test_pivot_table_both` in the `TestGrouping` class.
 
