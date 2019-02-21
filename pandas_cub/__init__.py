@@ -698,6 +698,10 @@ def read_csv(fn):
     """
     Read in a comma-separated value file as a DataFrame
 
+    Parameters
+    ----------
+    fn: string of file location
+
     Returns
     -------
     A DataFrame
