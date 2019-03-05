@@ -58,7 +58,6 @@ dependencies:
 - pandas
 - jupyter
 - pytest
-- nb_conda_kernels
 ```
 
 This file will be used to create a new environment named `pandas_cub`. It will install Python 3.6 in a completely separate directory in your file system along with pandas, jupyter, and pytest. There will actually be many more packages installed as those libraries have dependencies of their own. Visit [this page][2] for more information on conda environments.
@@ -132,7 +131,21 @@ Within the `pandas_cub` environment, launch a Jupyter Notebook with the command 
 
 Although we launched our Jupyter Notebook within the `pandas_cub` environment, our code will be executed within the base environment at first.
 
-If you run the first cell of the notebook (shown below) you can verify the location in your file system where Python is getting executed. This is not where the `pandas_cub` environment was installed.
+If you run the first cell of the notebook (shown below) you can verify the location in your file system where Python is getting executed.
+
+**One of two possibilities can happen**
+
+If the value outputted from `sys.executable` is in the pandas_cub environment, it will have a path that ends like this:
+
+`anaconda3/envs/pandas_cub/bin/python`
+
+If this is your output, you can skip the rest of this step.
+
+If the value outputted from `sys.executable` ends with the following:
+
+`anaconda3/bin/python`
+
+then you are actually not executing python from the `pandas_cub` environment. You need to complete the rest of the step.
 
 ![][17]
 
