@@ -689,9 +689,9 @@ class DataFrame:
         A DataFrame
         """
         def func(values):
+            values = values.astype('float')
             values_shifted = np.roll(values, n)
             values = values - values_shifted
-            values = values.astype('float')
             if n >= 0:
                 values[:n] = np.NAN
             else:
