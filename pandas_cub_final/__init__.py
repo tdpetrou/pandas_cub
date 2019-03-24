@@ -641,7 +641,7 @@ class DataFrame:
         -------
         A DataFrame
         """
-        return self._non_agg(np.round, decimals=n)
+        return self._non_agg(np.round, 'if', decimals=n)
 
     def copy(self):
         """
@@ -653,13 +653,13 @@ class DataFrame:
         """
         return self._non_agg(np.copy)
 
-    def _non_agg(self, func, **kwargs):
+    def _non_agg(self, funcname, kinds='bif', **kwargs):
         """
         Generic non-aggregation function
 
         Parameters
         ----------
-        funcname: str of NumPy name
+        funcname: numpy function
         args: extra arguments for certain functions
 
         Returns
@@ -668,8 +668,8 @@ class DataFrame:
         """
         new_data = {}
         for col, values in self._data.items():
-            if values.dtype.kind in 'bif':
-                values = func(values, **kwargs)
+            if values.dtype.kind in kinds:
+                values = funcname(values, **kwargs)
             else:
                 values = values.copy()
             new_data[col] = values

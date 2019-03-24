@@ -415,7 +415,7 @@ class DataFrame:
     
         Parameters
         ----------
-        funcname: str of NumPy name
+        funcname: numpy function
         kwargs: extra keyword arguments for certain functions
 
         Returns

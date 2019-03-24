@@ -664,6 +664,10 @@ There are several non-aggregation methods that function similarly. All of the fo
 
  There is a different test for each method in the `TestNonAgg` class.
 
+#### Update after videos
+
+If you are watching my videos for the course, I updated the pandas_cub_final init file to contain a better solution. The `round` method should ignore boolean columns. The original solution applied had each non-aggregation method work on boolean, integer, and float columns.
+
 ### 32. `diff` method
 
 The `diff` method accepts a single parameter `n` and takes the difference between the current row and the `n` previous row. For instance, if a column has the values [5, 10, 2] and `n=1`, the `diff` method would return [NaN, 5, -8]. The first value is missing because there is no value preceding it.
