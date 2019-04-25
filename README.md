@@ -129,7 +129,7 @@ Within the `pandas_cub` environment, launch a Jupyter Notebook with the command 
 
 ### Changing the environment within Jupyter
 
-Although we launched our Jupyter Notebook within the `pandas_cub` environment, our code will be executed within the base environment at first.
+Although we launched our Jupyter Notebook within the `pandas_cub` environment, our code may not be executed within the `pandas_cub` environment at first. If that sounds bizarre and non-intuitive then you have reached the same conclusion as me. It is possible to run any python executable from a Jupyter Notebook regardless of the environment that it was launched from.
 
 If you run the first cell of the notebook (shown below) you can verify the location in your file system where Python is getting executed.
 
