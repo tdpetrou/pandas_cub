@@ -48,6 +48,9 @@ class DataFrame:
         int: the number of rows in the dataframe
         """
         pass
+    
+    def _check_instance_in_array(self,Data):
+        pass
 
     @property
     def columns(self):
