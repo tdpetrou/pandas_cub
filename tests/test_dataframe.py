@@ -1,6 +1,6 @@
 import numpy as np
-from numpy.testing import assert_array_equal
 import pytest
+from numpy.testing import assert_array_equal
 
 import pandas_cub as pdc
 from tests import assert_df_equals
@@ -28,20 +28,20 @@ class TestDataFrameCreation:
             pdc.DataFrame({'a': np.array([1]), 'b': 10})
 
         with pytest.raises(ValueError):
-            pdc.DataFrame({'a': np.array([1]), 
+            pdc.DataFrame({'a': np.array([1]),
                            'b': np.array([[1]])})
 
         # correct construction. no error
-        pdc.DataFrame({'a': np.array([1]), 
+        pdc.DataFrame({'a': np.array([1]),
                        'b': np.array([1])})
 
     def test_array_length(self):
         with pytest.raises(ValueError):
-            pdc.DataFrame({'a': np.array([1, 2]), 
+            pdc.DataFrame({'a': np.array([1, 2]),
                            'b': np.array([1])})
         # correct construction. no error                           
-        pdc.DataFrame({'a': np.array([1, 2]), 
-                        'b': np.array([5, 10])})
+        pdc.DataFrame({'a': np.array([1, 2]),
+                       'b': np.array([5, 10])})
 
     def test_unicode_to_object(self):
         a_object = a.astype('O')
@@ -110,8 +110,8 @@ class TestSelection:
         bool_arr = np.array([True, False, False])
         df_bool = pdc.DataFrame({'col': bool_arr})
         df_result = df[df_bool]
-        df_answer = pdc.DataFrame({'a': a[bool_arr], 'b': b[bool_arr], 
-                                   'c': c[bool_arr], 'd': d[bool_arr], 
+        df_answer = pdc.DataFrame({'a': a[bool_arr], 'b': b[bool_arr],
+                                   'c': c[bool_arr], 'd': d[bool_arr],
                                    'e': e[bool_arr]})
         assert_df_equals(df_result, df_answer)
 
@@ -131,7 +131,7 @@ class TestSelection:
         df_answer = pdc.DataFrame({'a': a, 'c': c})
         assert_df_equals(df_result, df_answer)
 
-    def test_int_selcetion(self):
+    def test_int_selection(self):
         assert_df_equals(df[:, 3], pdc.DataFrame({'d': d}))
 
     def test_simultaneous_tuple(self):
@@ -221,7 +221,7 @@ class TestSelection:
 
         with pytest.raises(NotImplementedError):
             df[['a', 'b']] = 5
-        
+
         with pytest.raises(ValueError):
             df['a'] = np.random.rand(5, 5)
 
@@ -246,7 +246,7 @@ class TestSelection:
 
         df_result = df.tail(2)
         df_answer = pdc.DataFrame({'a': a[-2:], 'b': b[-2:], 'c': c[-2:],
-                                   'd':d[-2:], 'e': e[-2:]})
+                                   'd': d[-2:], 'e': e[-2:]})
         assert_df_equals(df_result, df_answer)
 
 
@@ -262,7 +262,6 @@ df2 = pdc.DataFrame({'a': a2, 'b': b2, 'c': c2})
 
 
 class TestAggregation:
-
 
     def test_min(self):
         df_result = df1.min()
@@ -555,7 +554,7 @@ class TestMoreMethods:
     def test_sort_values_desc(self):
         df_result = df6.sort_values('a', asc=False)
         a = np.array(['c', 'b', 'b', 'a', 'a'])
-        b = np.array([5.1, 6, 3.4, 1,2])
+        b = np.array([5.1, 6, 3.4, 1, 2])
         df_answer = pdc.DataFrame({'a': a, 'b': b})
         assert_df_equals(df_result, df_answer)
 
@@ -600,8 +599,9 @@ df8 = pdc.DataFrame({'a': a8, 'b': b8, 'c': c8})
 class TestGrouping:
 
     def test_value_counts(self):
-        df_temp = pdc.DataFrame({'state': np.array(['texas', 'texas', 'texas', 'florida', 'florida', 'florida', 'florida', 'ohio']),
-                                 'fruit': np.array(['a', 'a', 'a', 'a', 'b', 'b', 'b', 'a'])})
+        df_temp = pdc.DataFrame(
+            {'state': np.array(['texas', 'texas', 'texas', 'florida', 'florida', 'florida', 'florida', 'ohio']),
+             'fruit': np.array(['a', 'a', 'a', 'a', 'b', 'b', 'b', 'a'])})
         df_results = df_temp.value_counts()
         df_answer = pdc.DataFrame({'state': np.array(['florida', 'texas', 'ohio'], dtype=object),
                                    'count': np.array([4, 3, 1])})
@@ -612,8 +612,9 @@ class TestGrouping:
         assert_df_equals(df_results[1], df_answer)
 
     def test_value_counts_normalize(self):
-        df_temp = pdc.DataFrame({'state': np.array(['texas', 'texas', 'texas', 'florida', 'florida', 'florida', 'florida', 'ohio']),
-                                 'fruit': np.array(['a', 'a', 'a', 'a', 'b', 'b', 'b', 'a'])})
+        df_temp = pdc.DataFrame(
+            {'state': np.array(['texas', 'texas', 'texas', 'florida', 'florida', 'florida', 'florida', 'ohio']),
+             'fruit': np.array(['a', 'a', 'a', 'a', 'b', 'b', 'b', 'a'])})
         df_results = df_temp.value_counts(normalize=True)
         df_answer = pdc.DataFrame({'state': np.array(['florida', 'texas', 'ohio'], dtype=object),
                                    'count': np.array([.5, .375, .125])})
