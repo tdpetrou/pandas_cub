@@ -4,3 +4,4 @@ dependencies:
 - pandas
 - jupyter
 - pytest
+- nb_conda_kernels
